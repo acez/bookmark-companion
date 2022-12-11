@@ -88,3 +88,9 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+# Jetbrains AppCode
+.idea/
+
+# Private xcode config
+Config.xcconfig

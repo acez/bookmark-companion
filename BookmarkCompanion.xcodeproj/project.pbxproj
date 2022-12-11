@@ -1,0 +1,1408 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A4161678F9A46719B09E5B5 /* LinkdingBookmarkTabFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41671E5DEA9D3F5B7FBB9E /* LinkdingBookmarkTabFilterView.swift */; };
+		5A416343300EB5BA47A9D577 /* LinkdingBookmarkTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416DFC8C830AC24400DFD7 /* LinkdingBookmarkTabView.swift */; };
+		5A4163976EC8707E361C27B3 /* TagElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4165E4526C988197B87FF9 /* TagElementComponent.swift */; };
+		5A4163F8ED5A1E3C757BE0A6 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 5A416C8FF3B046609B48E5D2 /* LICENSE.md */; };
+		5A41643A0DDED9C2E0BCD5CA /* BookmarkEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416A285228B1A88BAA9A1E /* BookmarkEditor.swift */; };
+		5A416520E59B319ED3007D90 /* LinkdingSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4165AE00F6FB1EFC391C9C /* LinkdingSettingsView.swift */; };
+		5A4165E9251BC9DD51B9D103 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4161602285F2D4AED500B1 /* ConfigurationView.swift */; };
+		5A4166EAFAE4A7F3A27837C4 /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416B7041D5F6F06FECE87E /* TagListView.swift */; };
+		5A41676F23EDFE375E1B3FCE /* LinkdingSettingsValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41611D8DDE58D7A68C3046 /* LinkdingSettingsValidator.swift */; };
+		5A4167ADC0BD1F0072BCCE13 /* LinkdingTagsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416CA147709B973F66B221 /* LinkdingTagsTabView.swift */; };
+		5A41685452EE9EC060ACC73F /* ConfigurationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41610A1E6F158EE8A8F069 /* ConfigurationButton.swift */; };
+		5A416953811DB0BCECD2D477 /* LinkdingTagBookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4165957F09D947CF502E88 /* LinkdingTagBookmarksView.swift */; };
+		5A416B81181D5F86A326497B /* TagListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4164B3BE5724D709EB1B68 /* TagListItemView.swift */; };
+		5A416BE530E51E1E6F32ECF9 /* InitialConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416311A9AD15CD6172C872 /* InitialConfiguration.swift */; };
+		5A416CE1CEB5396A1403B8D3 /* LinkdingBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416005E25D3CA66F9597DF /* LinkdingBookmarkView.swift */; };
+		5A416D14489E8B274A81E9A6 /* ShareBookmarkTagSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4161EFDF39D0DE717C77CC /* ShareBookmarkTagSelect.swift */; };
+		5A416D4F79082EDE7AB4B296 /* LinkdingDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416881AEFF4047D3E4D13C /* LinkdingDashboardView.swift */; };
+		5A416DAB2FEAD6150903FE6A /* ShareBookmarkCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416AC0C47832EDBE977C5E /* ShareBookmarkCreate.swift */; };
+		5A416EBAEBC218BC4F2DE806 /* LinkdingCreateBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4160C57605B3EFB0D108CE /* LinkdingCreateBookmarkView.swift */; };
+		5A416FCA26B56326E75DA94D /* SelectTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416428745B3DB040241022 /* SelectTagsView.swift */; };
+		83017F392910313800C341D2 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83017F382910313800C341D2 /* ShareViewController.swift */; };
+		83017F412910313800C341D2 /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 83017F362910313800C341D2 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		830F886429170DC200453E1A /* CreateTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830F886329170DC200453E1A /* CreateTagView.swift */; };
+		830F88662917132E00453E1A /* FilterTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830F88652917132E00453E1A /* FilterTagView.swift */; };
+		835E60952907F47700E86AFE /* BookmarkCompanionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E60942907F47700E86AFE /* BookmarkCompanionApp.swift */; };
+		835E60972907F47700E86AFE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E60962907F47700E86AFE /* ContentView.swift */; };
+		835E60992907F47800E86AFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 835E60982907F47800E86AFE /* Assets.xcassets */; };
+		835E609C2907F47800E86AFE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 835E609B2907F47800E86AFE /* Preview Assets.xcassets */; };
+		835E609E2907F47800E86AFE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E609D2907F47800E86AFE /* Persistence.swift */; };
+		835E60A12907F47800E86AFE /* BookmarkCompanion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 835E609F2907F47800E86AFE /* BookmarkCompanion.xcdatamodeld */; };
+		837009BE29154860006D2A05 /* ShareBookmarkContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837009BD29154860006D2A05 /* ShareBookmarkContainerView.swift */; };
+		83DE86582946230A00E871FC /* Shared.h in Headers */ = {isa = PBXBuildFile; fileRef = 83DE86572946230A00E871FC /* Shared.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		83DE865B2946230A00E871FC /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83DE86552946230A00E871FC /* Shared.framework */; };
+		83DE865C2946230A00E871FC /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83DE86552946230A00E871FC /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		83DE86692946235D00E871FC /* Linkding.h in Headers */ = {isa = PBXBuildFile; fileRef = 83DE86682946235D00E871FC /* Linkding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		83DE866C2946235D00E871FC /* Linkding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83DE86662946235D00E871FC /* Linkding.framework */; };
+		83DE866D2946235D00E871FC /* Linkding.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83DE86662946235D00E871FC /* Linkding.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		83DE86712946237000E871FC /* LinkdingPersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416B4C37D332E1D484FAC6 /* LinkdingPersistenceController.swift */; };
+		83DE86722946239A00E871FC /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41604CC09FEBD0699074C0 /* Tag.swift */; };
+		83DE86752946239A00E871FC /* Integrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41663D73EE6D3DAD82A225 /* Integrations.swift */; };
+		83DE86762946239A00E871FC /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41652B3021C4D4AE49314A /* BookmarkView.swift */; };
+		83DE86772946239A00E871FC /* SyncErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41663634079049AC29FA9B /* SyncErrorView.swift */; };
+		83DE86782946239A00E871FC /* UrlLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4160BF66649F7D4A947EE1 /* UrlLinkView.swift */; };
+		83DE86792946239A00E871FC /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4166FD1099935C7C7337C6 /* Bookmark.swift */; };
+		83DE867A2946239A00E871FC /* GlobalSettingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416E71FD6BED216DEE8DBB /* GlobalSettingKeys.swift */; };
+		83DE867B294623A800E871FC /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830F885D2916D6A200453E1A /* BookmarkModel.swift */; };
+		83DE867C294623AC00E871FC /* TagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830F885F2916D74C00453E1A /* TagModel.swift */; };
+		83DE867D294623AE00E871FC /* LinkdingModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83B9F2E92909EA9800ADEB02 /* LinkdingModel.xcdatamodeld */; };
+		83DE867E294623B400E871FC /* LinkdingBookmarkEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4163A690417AE561630BF6 /* LinkdingBookmarkEntity.swift */; };
+		83DE867F294623B400E871FC /* LinkdingBookmarkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416FCD94201712E5C39746 /* LinkdingBookmarkRepository.swift */; };
+		83DE8680294623B400E871FC /* LinkdingBookmarkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416AB9C3E70A34D3BBCABA /* LinkdingBookmarkStore.swift */; };
+		83DE8681294623B800E871FC /* LinkdingTagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416010E3E298509BCB0B4B /* LinkdingTagRepository.swift */; };
+		83DE8682294623B800E871FC /* LinkdingTagEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416AD7440FFBB5DCE66D79 /* LinkdingTagEntity.swift */; };
+		83DE8683294623B800E871FC /* LinkdingTagStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41648988BDA9EC924A67CF /* LinkdingTagStore.swift */; };
+		83DE8684294623BC00E871FC /* PersistenceHistoryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41654CCE1EFCBAF88D1556 /* PersistenceHistoryFetcher.swift */; };
+		83DE8685294623BC00E871FC /* PersistenceHistoryMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416750702516FEDD657464 /* PersistenceHistoryMerger.swift */; };
+		83DE8686294623BC00E871FC /* PersistenceHistoryObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416639655787E2270F6902 /* PersistenceHistoryObserver.swift */; };
+		83DE8687294623BC00E871FC /* PersistenceHistoryCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416C4FB9B4FE28462F59D0 /* PersistenceHistoryCleaner.swift */; };
+		83DE8688294623C000E871FC /* LinkdingSyncClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4167E5BF9DD7626B404E6D /* LinkdingSyncClient.swift */; };
+		83DE8689294623C400E871FC /* LinkdingTagDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4169C74CE1B62309819E3C /* LinkdingTagDto.swift */; };
+		83DE868A294623C400E871FC /* LinkdingTagUpdateDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830F88612917088600453E1A /* LinkdingTagUpdateDto.swift */; };
+		83DE868B294623C400E871FC /* LinkdingBookmarkDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4162CC082A9FD8469C68A1 /* LinkdingBookmarkDto.swift */; };
+		83DE868C294623C400E871FC /* LinkdingApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4166DD9753C5B0E41A2791 /* LinkdingApiClient.swift */; };
+		83DE868D294623C400E871FC /* LinkdingBookmarkUpdateDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41666141CB989234076D84 /* LinkdingBookmarkUpdateDto.swift */; };
+		83DE868E294623CC00E871FC /* LinkdingSettingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41626EDBE7A33FF05D9C40 /* LinkdingSettingKeys.swift */; };
+		83DE868F294623CC00E871FC /* AppStorageSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4162CABCFDAFB9F27CF965 /* AppStorageSupport.swift */; };
+		83DE8690294623D600E871FC /* SecureSettingsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416252662B76B514443D35 /* SecureSettingsError.swift */; };
+		83DE8691294623D600E871FC /* SecureSettingsSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4167D09C774E55CD7B562C /* SecureSettingsSupport.swift */; };
+		83DE86922946243000E871FC /* Linkding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83DE86662946235D00E871FC /* Linkding.framework */; };
+		83DE86932946243000E871FC /* Linkding.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83DE86662946235D00E871FC /* Linkding.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		83DE86962946243000E871FC /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83DE86552946230A00E871FC /* Shared.framework */; };
+		83DE86972946243000E871FC /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83DE86552946230A00E871FC /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		83017F3E2910313800C341D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 835E60892907F47700E86AFE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83017F352910313800C341D2;
+			remoteInfo = ShareExtension;
+		};
+		83DE86592946230A00E871FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 835E60892907F47700E86AFE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83DE86542946230A00E871FC;
+			remoteInfo = Shared;
+		};
+		83DE866A2946235D00E871FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 835E60892907F47700E86AFE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83DE86652946235D00E871FC;
+			remoteInfo = Linkding;
+		};
+		83DE86942946243000E871FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 835E60892907F47700E86AFE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83DE86652946235D00E871FC;
+			remoteInfo = Linkding;
+		};
+		83DE86982946243000E871FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 835E60892907F47700E86AFE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83DE86542946230A00E871FC;
+			remoteInfo = Shared;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		83017F402910313800C341D2 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				83017F412910313800C341D2 /* ShareExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83DE86602946230A00E871FC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				83DE866D2946235D00E871FC /* Linkding.framework in Embed Frameworks */,
+				83DE865C2946230A00E871FC /* Shared.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83DE869A2946243000E871FC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				83DE86932946243000E871FC /* Linkding.framework in Embed Frameworks */,
+				83DE86972946243000E871FC /* Shared.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5A416005E25D3CA66F9597DF /* LinkdingBookmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkView.swift; sourceTree = "<group>"; };
+		5A416010E3E298509BCB0B4B /* LinkdingTagRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingTagRepository.swift; sourceTree = "<group>"; };
+		5A41604CC09FEBD0699074C0 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		5A4160BF66649F7D4A947EE1 /* UrlLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlLinkView.swift; sourceTree = "<group>"; };
+		5A4160C57605B3EFB0D108CE /* LinkdingCreateBookmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingCreateBookmarkView.swift; sourceTree = "<group>"; };
+		5A41610A1E6F158EE8A8F069 /* ConfigurationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationButton.swift; sourceTree = "<group>"; };
+		5A41611D8DDE58D7A68C3046 /* LinkdingSettingsValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingSettingsValidator.swift; sourceTree = "<group>"; };
+		5A4161602285F2D4AED500B1 /* ConfigurationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
+		5A4161EFDF39D0DE717C77CC /* ShareBookmarkTagSelect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareBookmarkTagSelect.swift; sourceTree = "<group>"; };
+		5A416252662B76B514443D35 /* SecureSettingsError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureSettingsError.swift; sourceTree = "<group>"; };
+		5A41626EDBE7A33FF05D9C40 /* LinkdingSettingKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingSettingKeys.swift; sourceTree = "<group>"; };
+		5A4162A17A1F70D9DB146D55 /* ActivationRule.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ActivationRule.md; sourceTree = "<group>"; };
+		5A4162CABCFDAFB9F27CF965 /* AppStorageSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStorageSupport.swift; sourceTree = "<group>"; };
+		5A4162CC082A9FD8469C68A1 /* LinkdingBookmarkDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkDto.swift; sourceTree = "<group>"; };
+		5A416311A9AD15CD6172C872 /* InitialConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialConfiguration.swift; sourceTree = "<group>"; };
+		5A4163A690417AE561630BF6 /* LinkdingBookmarkEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkEntity.swift; sourceTree = "<group>"; };
+		5A416428745B3DB040241022 /* SelectTagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTagsView.swift; sourceTree = "<group>"; };
+		5A41648988BDA9EC924A67CF /* LinkdingTagStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingTagStore.swift; sourceTree = "<group>"; };
+		5A4164B3BE5724D709EB1B68 /* TagListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagListItemView.swift; sourceTree = "<group>"; };
+		5A41652B3021C4D4AE49314A /* BookmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
+		5A41654CCE1EFCBAF88D1556 /* PersistenceHistoryFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceHistoryFetcher.swift; sourceTree = "<group>"; };
+		5A4165957F09D947CF502E88 /* LinkdingTagBookmarksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingTagBookmarksView.swift; sourceTree = "<group>"; };
+		5A4165AE00F6FB1EFC391C9C /* LinkdingSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingSettingsView.swift; sourceTree = "<group>"; };
+		5A4165E4526C988197B87FF9 /* TagElementComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagElementComponent.swift; sourceTree = "<group>"; };
+		5A41663634079049AC29FA9B /* SyncErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncErrorView.swift; sourceTree = "<group>"; };
+		5A416639655787E2270F6902 /* PersistenceHistoryObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceHistoryObserver.swift; sourceTree = "<group>"; };
+		5A41663D73EE6D3DAD82A225 /* Integrations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Integrations.swift; sourceTree = "<group>"; };
+		5A4166410BFBB493C63D53C4 /* appstore-download.svg */ = {isa = PBXFileReference; lastKnownFileType = file.svg; path = "appstore-download.svg"; sourceTree = "<group>"; };
+		5A41666141CB989234076D84 /* LinkdingBookmarkUpdateDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkUpdateDto.swift; sourceTree = "<group>"; };
+		5A4166DD9753C5B0E41A2791 /* LinkdingApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingApiClient.swift; sourceTree = "<group>"; };
+		5A4166FD1099935C7C7337C6 /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		5A41671E5DEA9D3F5B7FBB9E /* LinkdingBookmarkTabFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkTabFilterView.swift; sourceTree = "<group>"; };
+		5A416750702516FEDD657464 /* PersistenceHistoryMerger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceHistoryMerger.swift; sourceTree = "<group>"; };
+		5A4167D09C774E55CD7B562C /* SecureSettingsSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureSettingsSupport.swift; sourceTree = "<group>"; };
+		5A4167E5BF9DD7626B404E6D /* LinkdingSyncClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingSyncClient.swift; sourceTree = "<group>"; };
+		5A416881AEFF4047D3E4D13C /* LinkdingDashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingDashboardView.swift; sourceTree = "<group>"; };
+		5A4169C74CE1B62309819E3C /* LinkdingTagDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingTagDto.swift; sourceTree = "<group>"; };
+		5A416A285228B1A88BAA9A1E /* BookmarkEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkEditor.swift; sourceTree = "<group>"; };
+		5A416AB9C3E70A34D3BBCABA /* LinkdingBookmarkStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkStore.swift; sourceTree = "<group>"; };
+		5A416AC0C47832EDBE977C5E /* ShareBookmarkCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareBookmarkCreate.swift; sourceTree = "<group>"; };
+		5A416AD7440FFBB5DCE66D79 /* LinkdingTagEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingTagEntity.swift; sourceTree = "<group>"; };
+		5A416AFED161E2B9AF558796 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5A416B4C37D332E1D484FAC6 /* LinkdingPersistenceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingPersistenceController.swift; sourceTree = "<group>"; };
+		5A416B7041D5F6F06FECE87E /* TagListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagListView.swift; sourceTree = "<group>"; };
+		5A416C4FB9B4FE28462F59D0 /* PersistenceHistoryCleaner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceHistoryCleaner.swift; sourceTree = "<group>"; };
+		5A416C8FF3B046609B48E5D2 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		5A416CA147709B973F66B221 /* LinkdingTagsTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingTagsTabView.swift; sourceTree = "<group>"; };
+		5A416DFC8C830AC24400DFD7 /* LinkdingBookmarkTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkTabView.swift; sourceTree = "<group>"; };
+		5A416E71FD6BED216DEE8DBB /* GlobalSettingKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalSettingKeys.swift; sourceTree = "<group>"; };
+		5A416FCD94201712E5C39746 /* LinkdingBookmarkRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkRepository.swift; sourceTree = "<group>"; };
+		83017F362910313800C341D2 /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		83017F382910313800C341D2 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		83017F3D2910313800C341D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83017F472910314800C341D2 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
+		8305572B2946371C007E128A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		830F885D2916D6A200453E1A /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
+		830F885F2916D74C00453E1A /* TagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
+		830F88612917088600453E1A /* LinkdingTagUpdateDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkdingTagUpdateDto.swift; sourceTree = "<group>"; };
+		830F886329170DC200453E1A /* CreateTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTagView.swift; sourceTree = "<group>"; };
+		830F88652917132E00453E1A /* FilterTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTagView.swift; sourceTree = "<group>"; };
+		8312CF4E29100EED00CE3C1C /* BookmarkCompanion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BookmarkCompanion.entitlements; sourceTree = "<group>"; };
+		835E60912907F47700E86AFE /* BookmarkCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookmarkCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		835E60942907F47700E86AFE /* BookmarkCompanionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCompanionApp.swift; sourceTree = "<group>"; };
+		835E60962907F47700E86AFE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		835E60982907F47800E86AFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		835E609B2907F47800E86AFE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		835E609D2907F47800E86AFE /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		835E60A02907F47800E86AFE /* BookmarkCompanion.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookmarkCompanion.xcdatamodel; sourceTree = "<group>"; };
+		837009BD29154860006D2A05 /* ShareBookmarkContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBookmarkContainerView.swift; sourceTree = "<group>"; };
+		83B06F1329105C600032F6FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		83B9F2EA2909EA9800ADEB02 /* LinkdingModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinkdingModel.xcdatamodel; sourceTree = "<group>"; };
+		83DE86552946230A00E871FC /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83DE86572946230A00E871FC /* Shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
+		83DE86662946235D00E871FC /* Linkding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Linkding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83DE86682946235D00E871FC /* Linkding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Linkding.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		83017F332910313800C341D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83DE86922946243000E871FC /* Linkding.framework in Frameworks */,
+				83DE86962946243000E871FC /* Shared.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		835E608E2907F47700E86AFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83DE865B2946230A00E871FC /* Shared.framework in Frameworks */,
+				83DE866C2946235D00E871FC /* Linkding.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83DE86522946230A00E871FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83DE86632946235D00E871FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A416006C311CE60BFDC5033 /* shared */ = {
+			isa = PBXGroup;
+			children = (
+				5A416C903BCCBD899292A8E2 /* settings */,
+			);
+			path = shared;
+			sourceTree = "<group>";
+		};
+		5A41607A15A5A3E4896C04A3 /* persistence */ = {
+			isa = PBXGroup;
+			children = (
+				5A416639655787E2270F6902 /* PersistenceHistoryObserver.swift */,
+				5A416750702516FEDD657464 /* PersistenceHistoryMerger.swift */,
+				5A41654CCE1EFCBAF88D1556 /* PersistenceHistoryFetcher.swift */,
+				5A416C4FB9B4FE28462F59D0 /* PersistenceHistoryCleaner.swift */,
+			);
+			path = persistence;
+			sourceTree = "<group>";
+		};
+		5A41607D8F0D6F4B90979DA7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				5A41604CC09FEBD0699074C0 /* Tag.swift */,
+				5A4166FD1099935C7C7337C6 /* Bookmark.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		5A4160C77934F127653EFFFB /* bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				5A4163A690417AE561630BF6 /* LinkdingBookmarkEntity.swift */,
+				5A416FCD94201712E5C39746 /* LinkdingBookmarkRepository.swift */,
+				5A416AB9C3E70A34D3BBCABA /* LinkdingBookmarkStore.swift */,
+			);
+			path = bookmark;
+			sourceTree = "<group>";
+		};
+		5A4161374D54A36C8485D962 /* tag */ = {
+			isa = PBXGroup;
+			children = (
+				5A4165E4526C988197B87FF9 /* TagElementComponent.swift */,
+			);
+			path = tag;
+			sourceTree = "<group>";
+		};
+		5A4161C01045D26CF33BEEEB /* error */ = {
+			isa = PBXGroup;
+			children = (
+				5A41663634079049AC29FA9B /* SyncErrorView.swift */,
+			);
+			path = error;
+			sourceTree = "<group>";
+		};
+		5A416306FE716B8CEBAC703D /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				5A4165AE00F6FB1EFC391C9C /* LinkdingSettingsView.swift */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
+		5A41631752C13E588D090BD9 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5A416005E25D3CA66F9597DF /* LinkdingBookmarkView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		5A41644447948384FBFFD1EF /* components */ = {
+			isa = PBXGroup;
+			children = (
+				5A416452B67C39C8F4F417A4 /* config */,
+				5A4166D646DB81C6EAAAF96B /* onboarding */,
+				5A4161374D54A36C8485D962 /* tag */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		5A416452B67C39C8F4F417A4 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				5A41610A1E6F158EE8A8F069 /* ConfigurationButton.swift */,
+				5A4161602285F2D4AED500B1 /* ConfigurationView.swift */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		5A4165DB8301917A7EF945CE /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				5A41626EDBE7A33FF05D9C40 /* LinkdingSettingKeys.swift */,
+				5A4162CABCFDAFB9F27CF965 /* AppStorageSupport.swift */,
+				5A41611D8DDE58D7A68C3046 /* LinkdingSettingsValidator.swift */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
+		5A416663C4A86DE110ADB702 /* edit */ = {
+			isa = PBXGroup;
+			children = (
+				5A416A285228B1A88BAA9A1E /* BookmarkEditor.swift */,
+			);
+			path = edit;
+			sourceTree = "<group>";
+		};
+		5A41667F23A2C548BFD2D59E /* linkding */ = {
+			isa = PBXGroup;
+			children = (
+				5A4166906F058E577A23295C /* ui */,
+			);
+			path = linkding;
+			sourceTree = "<group>";
+		};
+		5A4166906F058E577A23295C /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				5A416881AEFF4047D3E4D13C /* LinkdingDashboardView.swift */,
+				5A416DF3B916FC07A732F98C /* bookmarks */,
+				5A4169E620A75CA113B552D9 /* tags */,
+				5A416306FE716B8CEBAC703D /* settings */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		5A4166D646DB81C6EAAAF96B /* onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				5A416311A9AD15CD6172C872 /* InitialConfiguration.swift */,
+			);
+			path = onboarding;
+			sourceTree = "<group>";
+		};
+		5A4167D7FD5A5569E5A44CC5 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				5A416FD5CC91DCE6DB578C18 /* bookmark */,
+				5A4161C01045D26CF33BEEEB /* error */,
+				5A416CA6D32487D48EF6A1F7 /* tag */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		5A4167E29771752AA7D78200 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				5A4162CC082A9FD8469C68A1 /* LinkdingBookmarkDto.swift */,
+				5A4169C74CE1B62309819E3C /* LinkdingTagDto.swift */,
+				5A4166DD9753C5B0E41A2791 /* LinkdingApiClient.swift */,
+				5A41666141CB989234076D84 /* LinkdingBookmarkUpdateDto.swift */,
+				830F88612917088600453E1A /* LinkdingTagUpdateDto.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		5A4168AA22F18FE74AA44689 /* sync */ = {
+			isa = PBXGroup;
+			children = (
+				5A4167E5BF9DD7626B404E6D /* LinkdingSyncClient.swift */,
+			);
+			path = sync;
+			sourceTree = "<group>";
+		};
+		5A41693CAB2A9CB07C04A255 /* tag */ = {
+			isa = PBXGroup;
+			children = (
+				5A416AD7440FFBB5DCE66D79 /* LinkdingTagEntity.swift */,
+				5A416010E3E298509BCB0B4B /* LinkdingTagRepository.swift */,
+				5A41648988BDA9EC924A67CF /* LinkdingTagStore.swift */,
+			);
+			path = tag;
+			sourceTree = "<group>";
+		};
+		5A41693E49EC45A60B7E610F /* create */ = {
+			isa = PBXGroup;
+			children = (
+				5A4160C57605B3EFB0D108CE /* LinkdingCreateBookmarkView.swift */,
+				5A416428745B3DB040241022 /* SelectTagsView.swift */,
+			);
+			path = create;
+			sourceTree = "<group>";
+		};
+		5A4169E620A75CA113B552D9 /* tags */ = {
+			isa = PBXGroup;
+			children = (
+				5A416CA147709B973F66B221 /* LinkdingTagsTabView.swift */,
+				5A4165957F09D947CF502E88 /* LinkdingTagBookmarksView.swift */,
+				830F886329170DC200453E1A /* CreateTagView.swift */,
+				830F88652917132E00453E1A /* FilterTagView.swift */,
+			);
+			path = tags;
+			sourceTree = "<group>";
+		};
+		5A416A5537F9F225D4FACA2F /* integrations */ = {
+			isa = PBXGroup;
+			children = (
+				5A41667F23A2C548BFD2D59E /* linkding */,
+			);
+			path = integrations;
+			sourceTree = "<group>";
+		};
+		5A416C11181E89E664644C3A /* filter */ = {
+			isa = PBXGroup;
+			children = (
+				5A41671E5DEA9D3F5B7FBB9E /* LinkdingBookmarkTabFilterView.swift */,
+			);
+			path = filter;
+			sourceTree = "<group>";
+		};
+		5A416C903BCCBD899292A8E2 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				5A4167D09C774E55CD7B562C /* SecureSettingsSupport.swift */,
+				5A416252662B76B514443D35 /* SecureSettingsError.swift */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
+		5A416CA6D32487D48EF6A1F7 /* tag */ = {
+			isa = PBXGroup;
+			children = (
+				5A416B7041D5F6F06FECE87E /* TagListView.swift */,
+				5A4164B3BE5724D709EB1B68 /* TagListItemView.swift */,
+			);
+			path = tag;
+			sourceTree = "<group>";
+		};
+		5A416D3019EE6C6A9ACD10CF /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				5A4160C77934F127653EFFFB /* bookmark */,
+				5A41693CAB2A9CB07C04A255 /* tag */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		5A416DF3B916FC07A732F98C /* bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+				5A416DFC8C830AC24400DFD7 /* LinkdingBookmarkTabView.swift */,
+				5A41693E49EC45A60B7E610F /* create */,
+				5A41631752C13E588D090BD9 /* view */,
+				5A416663C4A86DE110ADB702 /* edit */,
+				5A416C11181E89E664644C3A /* filter */,
+			);
+			path = bookmarks;
+			sourceTree = "<group>";
+		};
+		5A416EFD95C7DCB9D7711A6A /* config */ = {
+			isa = PBXGroup;
+			children = (
+				5A416E71FD6BED216DEE8DBB /* GlobalSettingKeys.swift */,
+				5A41663D73EE6D3DAD82A225 /* Integrations.swift */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		5A416FD5CC91DCE6DB578C18 /* bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				5A41652B3021C4D4AE49314A /* BookmarkView.swift */,
+				5A4160BF66649F7D4A947EE1 /* UrlLinkView.swift */,
+			);
+			path = bookmark;
+			sourceTree = "<group>";
+		};
+		83017F372910313800C341D2 /* ShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				83017F472910314800C341D2 /* ShareExtension.entitlements */,
+				83017F382910313800C341D2 /* ShareViewController.swift */,
+				83017F3D2910313800C341D2 /* Info.plist */,
+				5A4162A17A1F70D9DB146D55 /* ActivationRule.md */,
+				5A416AC0C47832EDBE977C5E /* ShareBookmarkCreate.swift */,
+				5A4161EFDF39D0DE717C77CC /* ShareBookmarkTagSelect.swift */,
+				837009BD29154860006D2A05 /* ShareBookmarkContainerView.swift */,
+			);
+			path = ShareExtension;
+			sourceTree = "<group>";
+		};
+		83017F452910314000C341D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		830F885C2916D69300453E1A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				830F885D2916D6A200453E1A /* BookmarkModel.swift */,
+				830F885F2916D74C00453E1A /* TagModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		835E60882907F47700E86AFE = {
+			isa = PBXGroup;
+			children = (
+				8305572B2946371C007E128A /* Config.xcconfig */,
+				838748812946304700E7ADF8 /* AppStore */,
+				835E60932907F47700E86AFE /* BookmarkCompanion */,
+				83017F372910313800C341D2 /* ShareExtension */,
+				83DE86562946230A00E871FC /* Shared */,
+				83DE86672946235D00E871FC /* Linkding */,
+				835E60922907F47700E86AFE /* Products */,
+				5A416AFED161E2B9AF558796 /* README.md */,
+				83017F452910314000C341D2 /* Frameworks */,
+				5A416C8FF3B046609B48E5D2 /* LICENSE.md */,
+			);
+			sourceTree = "<group>";
+		};
+		835E60922907F47700E86AFE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				835E60912907F47700E86AFE /* BookmarkCompanion.app */,
+				83017F362910313800C341D2 /* ShareExtension.appex */,
+				83DE86552946230A00E871FC /* Shared.framework */,
+				83DE86662946235D00E871FC /* Linkding.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		835E60932907F47700E86AFE /* BookmarkCompanion */ = {
+			isa = PBXGroup;
+			children = (
+				83B06F1329105C600032F6FE /* Info.plist */,
+				8312CF4E29100EED00CE3C1C /* BookmarkCompanion.entitlements */,
+				835E60942907F47700E86AFE /* BookmarkCompanionApp.swift */,
+				835E60962907F47700E86AFE /* ContentView.swift */,
+				835E60982907F47800E86AFE /* Assets.xcassets */,
+				835E609D2907F47800E86AFE /* Persistence.swift */,
+				835E609F2907F47800E86AFE /* BookmarkCompanion.xcdatamodeld */,
+				835E609A2907F47800E86AFE /* Preview Content */,
+				5A416A5537F9F225D4FACA2F /* integrations */,
+				5A41644447948384FBFFD1EF /* components */,
+			);
+			path = BookmarkCompanion;
+			sourceTree = "<group>";
+		};
+		835E609A2907F47800E86AFE /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				835E609B2907F47800E86AFE /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		838748812946304700E7ADF8 /* AppStore */ = {
+			isa = PBXGroup;
+			children = (
+				5A4166410BFBB493C63D53C4 /* appstore-download.svg */,
+			);
+			path = AppStore;
+			sourceTree = "<group>";
+		};
+		83DE86562946230A00E871FC /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5A416EFD95C7DCB9D7711A6A /* config */,
+				5A4167D7FD5A5569E5A44CC5 /* components */,
+				5A41607D8F0D6F4B90979DA7 /* model */,
+				83DE86572946230A00E871FC /* Shared.h */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		83DE86672946235D00E871FC /* Linkding */ = {
+			isa = PBXGroup;
+			children = (
+				830F885C2916D69300453E1A /* model */,
+				83B9F2E92909EA9800ADEB02 /* LinkdingModel.xcdatamodeld */,
+				5A416B4C37D332E1D484FAC6 /* LinkdingPersistenceController.swift */,
+				5A416D3019EE6C6A9ACD10CF /* domain */,
+				5A41607A15A5A3E4896C04A3 /* persistence */,
+				5A4168AA22F18FE74AA44689 /* sync */,
+				5A4167E29771752AA7D78200 /* api */,
+				5A4165DB8301917A7EF945CE /* settings */,
+				5A416006C311CE60BFDC5033 /* shared */,
+				83DE86682946235D00E871FC /* Linkding.h */,
+			);
+			path = Linkding;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		83DE86502946230A00E871FC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83DE86582946230A00E871FC /* Shared.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83DE86612946235D00E871FC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83DE86692946235D00E871FC /* Linkding.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		83017F352910313800C341D2 /* ShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83017F442910313800C341D2 /* Build configuration list for PBXNativeTarget "ShareExtension" */;
+			buildPhases = (
+				83017F322910313800C341D2 /* Sources */,
+				83017F332910313800C341D2 /* Frameworks */,
+				83017F342910313800C341D2 /* Resources */,
+				83DE869A2946243000E871FC /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				83DE86952946243000E871FC /* PBXTargetDependency */,
+				83DE86992946243000E871FC /* PBXTargetDependency */,
+			);
+			name = ShareExtension;
+			productName = ShareExtension;
+			productReference = 83017F362910313800C341D2 /* ShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		835E60902907F47700E86AFE /* BookmarkCompanion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 835E60BA2907F47800E86AFE /* Build configuration list for PBXNativeTarget "BookmarkCompanion" */;
+			buildPhases = (
+				835E608D2907F47700E86AFE /* Sources */,
+				835E608E2907F47700E86AFE /* Frameworks */,
+				835E608F2907F47700E86AFE /* Resources */,
+				83017F402910313800C341D2 /* Embed Foundation Extensions */,
+				83DE86602946230A00E871FC /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				83017F3F2910313800C341D2 /* PBXTargetDependency */,
+				83DE865A2946230A00E871FC /* PBXTargetDependency */,
+				83DE866B2946235D00E871FC /* PBXTargetDependency */,
+			);
+			name = BookmarkCompanion;
+			productName = BookmarkCompanion;
+			productReference = 835E60912907F47700E86AFE /* BookmarkCompanion.app */;
+			productType = "com.apple.product-type.application";
+		};
+		83DE86542946230A00E871FC /* Shared */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83DE865D2946230A00E871FC /* Build configuration list for PBXNativeTarget "Shared" */;
+			buildPhases = (
+				83DE86502946230A00E871FC /* Headers */,
+				83DE86512946230A00E871FC /* Sources */,
+				83DE86522946230A00E871FC /* Frameworks */,
+				83DE86532946230A00E871FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Shared;
+			productName = Shared;
+			productReference = 83DE86552946230A00E871FC /* Shared.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		83DE86652946235D00E871FC /* Linkding */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83DE866E2946235D00E871FC /* Build configuration list for PBXNativeTarget "Linkding" */;
+			buildPhases = (
+				83DE86612946235D00E871FC /* Headers */,
+				83DE86622946235D00E871FC /* Sources */,
+				83DE86632946235D00E871FC /* Frameworks */,
+				83DE86642946235D00E871FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Linkding;
+			productName = Linkding;
+			productReference = 83DE86662946235D00E871FC /* Linkding.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		835E60892907F47700E86AFE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					83017F352910313800C341D2 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+					835E60902907F47700E86AFE = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					83DE86542946230A00E871FC = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					83DE86652946235D00E871FC = {
+						CreatedOnToolsVersion = 14.1;
+					};
+				};
+			};
+			buildConfigurationList = 835E608C2907F47700E86AFE /* Build configuration list for PBXProject "BookmarkCompanion" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 835E60882907F47700E86AFE;
+			productRefGroup = 835E60922907F47700E86AFE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				835E60902907F47700E86AFE /* BookmarkCompanion */,
+				83017F352910313800C341D2 /* ShareExtension */,
+				83DE86542946230A00E871FC /* Shared */,
+				83DE86652946235D00E871FC /* Linkding */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		83017F342910313800C341D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		835E608F2907F47700E86AFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				835E609C2907F47800E86AFE /* Preview Assets.xcassets in Resources */,
+				835E60992907F47800E86AFE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83DE86532946230A00E871FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83DE86642946235D00E871FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		83017F322910313800C341D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				837009BE29154860006D2A05 /* ShareBookmarkContainerView.swift in Sources */,
+				83017F392910313800C341D2 /* ShareViewController.swift in Sources */,
+				5A416DAB2FEAD6150903FE6A /* ShareBookmarkCreate.swift in Sources */,
+				5A416D14489E8B274A81E9A6 /* ShareBookmarkTagSelect.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		835E608D2907F47700E86AFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				835E60A12907F47800E86AFE /* BookmarkCompanion.xcdatamodeld in Sources */,
+				835E609E2907F47800E86AFE /* Persistence.swift in Sources */,
+				835E60972907F47700E86AFE /* ContentView.swift in Sources */,
+				835E60952907F47700E86AFE /* BookmarkCompanionApp.swift in Sources */,
+				5A416D4F79082EDE7AB4B296 /* LinkdingDashboardView.swift in Sources */,
+				5A41685452EE9EC060ACC73F /* ConfigurationButton.swift in Sources */,
+				5A416343300EB5BA47A9D577 /* LinkdingBookmarkTabView.swift in Sources */,
+				5A4167ADC0BD1F0072BCCE13 /* LinkdingTagsTabView.swift in Sources */,
+				830F88662917132E00453E1A /* FilterTagView.swift in Sources */,
+				5A416953811DB0BCECD2D477 /* LinkdingTagBookmarksView.swift in Sources */,
+				830F886429170DC200453E1A /* CreateTagView.swift in Sources */,
+				5A4165E9251BC9DD51B9D103 /* ConfigurationView.swift in Sources */,
+				5A416BE530E51E1E6F32ECF9 /* InitialConfiguration.swift in Sources */,
+				5A4163976EC8707E361C27B3 /* TagElementComponent.swift in Sources */,
+				5A416520E59B319ED3007D90 /* LinkdingSettingsView.swift in Sources */,
+				5A416EBAEBC218BC4F2DE806 /* LinkdingCreateBookmarkView.swift in Sources */,
+				5A416CE1CEB5396A1403B8D3 /* LinkdingBookmarkView.swift in Sources */,
+				5A416FCA26B56326E75DA94D /* SelectTagsView.swift in Sources */,
+				5A41643A0DDED9C2E0BCD5CA /* BookmarkEditor.swift in Sources */,
+				5A4161678F9A46719B09E5B5 /* LinkdingBookmarkTabFilterView.swift in Sources */,
+				5A4163F8ED5A1E3C757BE0A6 /* LICENSE.md in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83DE86512946230A00E871FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83DE86772946239A00E871FC /* SyncErrorView.swift in Sources */,
+				83DE86752946239A00E871FC /* Integrations.swift in Sources */,
+				83DE86762946239A00E871FC /* BookmarkView.swift in Sources */,
+				83DE86722946239A00E871FC /* Tag.swift in Sources */,
+				83DE86782946239A00E871FC /* UrlLinkView.swift in Sources */,
+				83DE86792946239A00E871FC /* Bookmark.swift in Sources */,
+				83DE867A2946239A00E871FC /* GlobalSettingKeys.swift in Sources */,
+				5A4166EAFAE4A7F3A27837C4 /* TagListView.swift in Sources */,
+				5A416B81181D5F86A326497B /* TagListItemView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83DE86622946235D00E871FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83DE867C294623AC00E871FC /* TagModel.swift in Sources */,
+				83DE86712946237000E871FC /* LinkdingPersistenceController.swift in Sources */,
+				83DE8689294623C400E871FC /* LinkdingTagDto.swift in Sources */,
+				83DE8685294623BC00E871FC /* PersistenceHistoryMerger.swift in Sources */,
+				83DE8683294623B800E871FC /* LinkdingTagStore.swift in Sources */,
+				83DE8686294623BC00E871FC /* PersistenceHistoryObserver.swift in Sources */,
+				83DE868D294623C400E871FC /* LinkdingBookmarkUpdateDto.swift in Sources */,
+				83DE868F294623CC00E871FC /* AppStorageSupport.swift in Sources */,
+				83DE8681294623B800E871FC /* LinkdingTagRepository.swift in Sources */,
+				83DE8690294623D600E871FC /* SecureSettingsError.swift in Sources */,
+				83DE867B294623A800E871FC /* BookmarkModel.swift in Sources */,
+				83DE8691294623D600E871FC /* SecureSettingsSupport.swift in Sources */,
+				83DE867D294623AE00E871FC /* LinkdingModel.xcdatamodeld in Sources */,
+				83DE868A294623C400E871FC /* LinkdingTagUpdateDto.swift in Sources */,
+				83DE867F294623B400E871FC /* LinkdingBookmarkRepository.swift in Sources */,
+				83DE8682294623B800E871FC /* LinkdingTagEntity.swift in Sources */,
+				83DE868C294623C400E871FC /* LinkdingApiClient.swift in Sources */,
+				83DE867E294623B400E871FC /* LinkdingBookmarkEntity.swift in Sources */,
+				83DE8687294623BC00E871FC /* PersistenceHistoryCleaner.swift in Sources */,
+				83DE868E294623CC00E871FC /* LinkdingSettingKeys.swift in Sources */,
+				83DE8680294623B400E871FC /* LinkdingBookmarkStore.swift in Sources */,
+				83DE8688294623C000E871FC /* LinkdingSyncClient.swift in Sources */,
+				83DE8684294623BC00E871FC /* PersistenceHistoryFetcher.swift in Sources */,
+				83DE868B294623C400E871FC /* LinkdingBookmarkDto.swift in Sources */,
+				5A41676F23EDFE375E1B3FCE /* LinkdingSettingsValidator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		83017F3F2910313800C341D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83017F352910313800C341D2 /* ShareExtension */;
+			targetProxy = 83017F3E2910313800C341D2 /* PBXContainerItemProxy */;
+		};
+		83DE865A2946230A00E871FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83DE86542946230A00E871FC /* Shared */;
+			targetProxy = 83DE86592946230A00E871FC /* PBXContainerItemProxy */;
+		};
+		83DE866B2946235D00E871FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83DE86652946235D00E871FC /* Linkding */;
+			targetProxy = 83DE866A2946235D00E871FC /* PBXContainerItemProxy */;
+		};
+		83DE86952946243000E871FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83DE86652946235D00E871FC /* Linkding */;
+			targetProxy = 83DE86942946243000E871FC /* PBXContainerItemProxy */;
+		};
+		83DE86992946243000E871FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83DE86542946230A00E871FC /* Shared */;
+			targetProxy = 83DE86982946243000E871FC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		83017F422910313800C341D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8305572B2946371C007E128A /* Config.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "$(inherited)";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wits.BookmarkCompanion.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		83017F432910313800C341D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8305572B2946371C007E128A /* Config.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "$(inherited)";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wits.BookmarkCompanion.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		835E60B82907F47800E86AFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8305572B2946371C007E128A /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		835E60B92907F47800E86AFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8305572B2946371C007E128A /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		835E60BB2907F47800E86AFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8305572B2946371C007E128A /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BookmarkCompanion/BookmarkCompanion.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_ASSET_PATHS = "\"BookmarkCompanion/Preview Content\"";
+				DEVELOPMENT_TEAM = "$(inherited)";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BookmarkCompanion/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BookmarkCompanion;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wits.BookmarkCompanion;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		835E60BC2907F47800E86AFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8305572B2946371C007E128A /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BookmarkCompanion/BookmarkCompanion.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_ASSET_PATHS = "\"BookmarkCompanion/Preview Content\"";
+				DEVELOPMENT_TEAM = "$(inherited)";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BookmarkCompanion/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BookmarkCompanion;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wits.BookmarkCompanion;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		83DE865E2946230A00E871FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8305572B2946371C007E128A /* Config.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "$(inherited)";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wits.BookmarkCompanion.Shared;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		83DE865F2946230A00E871FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8305572B2946371C007E128A /* Config.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "$(inherited)";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wits.BookmarkCompanion.Shared;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		83DE866F2946235D00E871FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8305572B2946371C007E128A /* Config.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "$(inherited)";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wits.BookmarkCompanion.Linkding;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		83DE86702946235D00E871FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8305572B2946371C007E128A /* Config.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "$(inherited)";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wits.BookmarkCompanion.Linkding;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		83017F442910313800C341D2 /* Build configuration list for PBXNativeTarget "ShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83017F422910313800C341D2 /* Debug */,
+				83017F432910313800C341D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		835E608C2907F47700E86AFE /* Build configuration list for PBXProject "BookmarkCompanion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				835E60B82907F47800E86AFE /* Debug */,
+				835E60B92907F47800E86AFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		835E60BA2907F47800E86AFE /* Build configuration list for PBXNativeTarget "BookmarkCompanion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				835E60BB2907F47800E86AFE /* Debug */,
+				835E60BC2907F47800E86AFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83DE865D2946230A00E871FC /* Build configuration list for PBXNativeTarget "Shared" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83DE865E2946230A00E871FC /* Debug */,
+				83DE865F2946230A00E871FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83DE866E2946235D00E871FC /* Build configuration list for PBXNativeTarget "Linkding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83DE866F2946235D00E871FC /* Debug */,
+				83DE86702946235D00E871FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		835E609F2907F47800E86AFE /* BookmarkCompanion.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				835E60A02907F47800E86AFE /* BookmarkCompanion.xcdatamodel */,
+			);
+			currentVersion = 835E60A02907F47800E86AFE /* BookmarkCompanion.xcdatamodel */;
+			path = BookmarkCompanion.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		83B9F2E92909EA9800ADEB02 /* LinkdingModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				83B9F2EA2909EA9800ADEB02 /* LinkdingModel.xcdatamodel */,
+			);
+			currentVersion = 83B9F2EA2909EA9800ADEB02 /* LinkdingModel.xcdatamodel */;
+			path = LinkdingModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 835E60892907F47700E86AFE /* Project object */;
+}
