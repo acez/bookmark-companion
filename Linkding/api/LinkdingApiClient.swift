@@ -21,11 +21,6 @@ public class LinkdingApiClient: NSObject {
     private let baseUrl: String
     private let jsonDecoder: JSONDecoder
     private let jsonEncoder: JSONEncoder
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
-        return formatter
-    }()
 
     init(baseUrl: String, apiToken: String) {
         self.baseUrl = baseUrl.last == "/" ?
@@ -33,10 +28,34 @@ public class LinkdingApiClient: NSObject {
             baseUrl
         self.apiToken = apiToken
 
+        let dateFormatterWithFractional: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+            return formatter
+        }()
+        let dateFormatterWithoutFractional: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+            return formatter
+        }()
+
         self.jsonDecoder = JSONDecoder()
-        self.jsonDecoder.dateDecodingStrategy = .formatted(self.dateFormatter)
+        self.jsonDecoder.dateDecodingStrategy = .custom({
+            let container = try $0.singleValueContainer()
+            let dateStr = try container.decode(String.self)
+
+            if let withFractional = dateFormatterWithFractional.date(from: dateStr) {
+                return withFractional
+            }
+
+            if let withoutFractional = dateFormatterWithoutFractional.date(from: dateStr) {
+                return withoutFractional
+            }
+
+            throw DecodingError.dataCorruptedError(in: container, debugDescription: "Unable to parse date string '\(dateStr)'")
+        })
         self.jsonEncoder = JSONEncoder()
-        self.jsonEncoder.dateEncodingStrategy = .formatted(self.dateFormatter)
+        self.jsonEncoder.dateEncodingStrategy = .formatted(dateFormatterWithFractional)
         self.jsonEncoder.outputFormatting = .withoutEscapingSlashes
     }
 
@@ -154,6 +173,8 @@ public class LinkdingApiClient: NSObject {
         if (response.statusCode != 200) {
             throw LinkdingApiError(message: "Server responded with code \(response.statusCode).")
         }
+
+        debugPrint(content)
 
         let bookmarks: LinkdingBookmarkDtoList = try self.decodeJson(content: content)
         return (bookmarks.next, bookmarks.results)
