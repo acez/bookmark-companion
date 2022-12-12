@@ -5,7 +5,13 @@
 
 import Foundation
 
-public class LinkdingApiError: Error {}
+public class LinkdingApiError: Error {
+    public let message: String
+
+    public init(message: String? = nil) {
+        self.message = message ?? ""
+    }
+}
 
 public class LinkdingApiClient: NSObject {
     private static let ENDPOINT_TAGS = "/api/tags/"
@@ -88,8 +94,29 @@ public class LinkdingApiClient: NSObject {
         return allTags
     }
 
+    private func performRequest(request: URLRequest) async throws -> (Data, HTTPURLResponse) {
+        let content: Data
+        let response: URLResponse
+
+        do {
+            (content, response) = try await URLSession.shared.data(for: request)
+        } catch (let error) {
+            if let urlError = error as? URLError {
+                throw LinkdingApiError(message: urlError.localizedDescription)
+            } else {
+                throw LinkdingApiError(message: "Unknown request error.")
+            }
+        }
+
+        return (content, response as! HTTPURLResponse)
+    }
+
     private func collectTags(url: URL) async throws -> (String?, [LinkdingTagDto]) {
-        let (content, _) = try await URLSession.shared.data(for: self.buildRequest(url: url))
+        let (content, response) = try await self.performRequest(request: self.buildRequest(url: url))
+
+        if (response.statusCode != 200) {
+            throw LinkdingApiError(message: "Server responded with code \(response.statusCode).")
+        }
 
         do {
             let tags = try self.jsonDecoder.decode(LinkdingTagListDto.self, from: content)
@@ -101,7 +128,11 @@ public class LinkdingApiClient: NSObject {
     }
 
     private func collectBookmarks(url: URL) async throws -> (String?, [LinkdingBookmarkDto]) {
-        let (content, _) = try await URLSession.shared.data(for: self.buildRequest(url: url))
+        let (content, response) = try await self.performRequest(request: self.buildRequest(url: url))
+
+        if (response.statusCode != 200) {
+            throw LinkdingApiError(message: "Server responded with code \(response.statusCode).")
+        }
 
         do {
             let bookmarks = try self.jsonDecoder.decode(LinkdingBookmarkDtoList.self, from: content)
@@ -119,10 +150,10 @@ public class LinkdingApiClient: NSObject {
         guard let postBody = try? self.jsonEncoder.encode(LinkdingBookmarkUpdateDto(url: url, title: title, description: description, isArchived: isArchived, unread: unread, shared: shared, tagNames: tagNames)) else {
             throw LinkdingApiError()
         }
-        let (content, response) = try await URLSession.shared.data(for: self.buildRequest(url: apiUrl, httpMethod: "POST", body: postBody))
+        let (content, response) = try await self.performRequest(request: self.buildRequest(url: apiUrl, httpMethod: "POST", body: postBody))
 
-        if ((response as! HTTPURLResponse).statusCode != 201) {
-            throw LinkdingApiError()
+        if (response.statusCode != 201) {
+            throw LinkdingApiError(message: "Server responded with code \(response.statusCode).")
         }
 
         do {
@@ -142,10 +173,10 @@ public class LinkdingApiClient: NSObject {
         guard let postBody = try? self.jsonEncoder.encode(LinkdingBookmarkUpdateDto(url: url, title: title, description: description, isArchived: isArchived, unread: unread, shared: shared, tagNames: tagNames)) else {
             throw LinkdingApiError()
         }
-        let (content, response) = try await URLSession.shared.data(for: self.buildRequest(url: apiUrl, httpMethod: "PUT", body: postBody))
+        let (content, response) = try await self.performRequest(request: self.buildRequest(url: apiUrl, httpMethod: "PUT", body: postBody))
 
-        if ((response as! HTTPURLResponse).statusCode != 200) {
-            throw LinkdingApiError()
+        if (response.statusCode != 200) {
+            throw LinkdingApiError(message: "Server responded with code \(response.statusCode).")
         }
 
         do {
@@ -162,15 +193,15 @@ public class LinkdingApiClient: NSObject {
             throw LinkdingApiError()
         }
 
-        let (_, response) = try await URLSession.shared.data(for: self.buildRequest(url: apiUrl, httpMethod: "DELETE"))
+        let (_, response) = try await self.performRequest(request: self.buildRequest(url: apiUrl, httpMethod: "DELETE"))
 
-        if ((response as! HTTPURLResponse).statusCode == 404) {
+        if (response.statusCode == 404) {
             // Bookmark was already deleted on the server
             return
         }
 
-        if ((response as! HTTPURLResponse).statusCode != 204) {
-            throw LinkdingApiError()
+        if (response.statusCode != 204) {
+            throw LinkdingApiError(message: "Server responded with code \(response.statusCode).")
         }
     }
     
@@ -183,10 +214,10 @@ public class LinkdingApiClient: NSObject {
             throw LinkdingApiError()
         }
         
-        let (content, response) = try await URLSession.shared.data(for: self.buildRequest(url: apiUrl, httpMethod: "POST", body: postBody))
-        
-        if ((response as! HTTPURLResponse).statusCode != 201) {
-            throw LinkdingApiError()
+        let (content, response) = try await self.performRequest(request: self.buildRequest(url: apiUrl, httpMethod: "POST", body: postBody))
+
+        if (response.statusCode != 201) {
+            throw LinkdingApiError(message: "Server responded with code \(response.statusCode).")
         }
         
         do {

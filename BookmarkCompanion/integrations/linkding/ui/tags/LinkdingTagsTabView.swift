@@ -11,6 +11,7 @@ struct LinkdingTagsTabView: View {
     @EnvironmentObject var bookmarkStore: LinkdingBookmarkStore
 
     @AppStorage(LinkdingSettingKeys.syncHadError.rawValue, store: AppStorageSupport.shared.sharedStore) var syncHadError: Bool = false
+    @AppStorage(LinkdingSettingKeys.syncErrorMessage.rawValue, store: AppStorageSupport.shared.sharedStore) var syncErrorMessage: String = ""
     @AppStorage(LinkdingSettingKeys.tagFilterOnlyUsed.rawValue, store: AppStorageSupport.shared.sharedStore) var onlyUsed: Bool = false
 
     @State var selectedTag: LinkdingTagEntity? = nil
@@ -26,6 +27,9 @@ struct LinkdingTagsTabView: View {
                     Section() {
                         Text("Synchronization error.")
                             .foregroundColor(.red)
+                        if (self.syncErrorMessage != "") {
+                            Text(self.syncErrorMessage)
+                        }
                         Text("Please check your URL and your Token in the configuration dialog.")
                     }
 

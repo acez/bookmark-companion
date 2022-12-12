@@ -13,6 +13,7 @@ struct LinkdingBookmarkTabView: View {
     @AppStorage("linkding.bookmarks.filter.archived", store: AppStorageSupport.shared.sharedStore) var showArchived: Bool = false
     @AppStorage("linkding.bookmarks.filter.unread", store: AppStorageSupport.shared.sharedStore) var showUnread: Bool = false
     @AppStorage(LinkdingSettingKeys.syncHadError.rawValue, store: AppStorageSupport.shared.sharedStore) var syncHadError: Bool = false
+    @AppStorage(LinkdingSettingKeys.syncErrorMessage.rawValue, store: AppStorageSupport.shared.sharedStore) var syncErrorMessage: String = ""
 
     @State var textFilter: String = ""
     @State var filterViewOpen: Bool = false
@@ -26,6 +27,9 @@ struct LinkdingBookmarkTabView: View {
                         Section() {
                             Text("Synchronization error.")
                                 .foregroundColor(.red)
+                            if (self.syncErrorMessage != "") {
+                                Text(self.syncErrorMessage)
+                            }
                             Text("Please check your URL and your Token in the configuration dialog.")
                         }
                     }

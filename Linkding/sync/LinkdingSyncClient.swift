@@ -44,6 +44,7 @@ public class LinkdingSyncClient: ObservableObject {
         }
 
         AppStorageSupport.shared.sharedStore.set(false, forKey: LinkdingSettingKeys.syncHadError.rawValue)
+        AppStorageSupport.shared.sharedStore.set("", forKey: LinkdingSettingKeys.syncErrorMessage.rawValue)
         AppStorageSupport.shared.sharedStore.setValue(Date.now, forKey: LinkdingSettingKeys.syncRunning.rawValue)
         do {
             try await self.pushNewTags()
@@ -54,6 +55,9 @@ public class LinkdingSyncClient: ObservableObject {
             try await self.syncBookmarks()
         } catch (let error) {
             AppStorageSupport.shared.sharedStore.set(true, forKey: LinkdingSettingKeys.syncHadError.rawValue)
+            if let apiError = error as? LinkdingApiError {
+                AppStorageSupport.shared.sharedStore.set(apiError.message, forKey: LinkdingSettingKeys.syncErrorMessage.rawValue)
+            }
             AppStorageSupport.shared.sharedStore.set(nil, forKey: LinkdingSettingKeys.syncRunning.rawValue)
             throw error
         }

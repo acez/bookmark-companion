@@ -21,6 +21,7 @@ public enum LinkdingSettingKeys: String {
 
     case syncRunning = "linkding.sync.running"
     case syncHadError = "linkding.sync.error"
+    case syncErrorMessage = "linkding.sync.error.message"
 
     case persistenceHistoryLastTransactionTimestamp = "linkding.persistence.lastTransactionTimestamp"
 }
