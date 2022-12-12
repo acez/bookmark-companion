@@ -60,7 +60,7 @@ public class LinkdingApiClient: NSObject {
 
     private func buildUrl(path: [String]) throws -> URL {
         guard var url = URL(string: self.baseUrl) else {
-            throw LinkdingApiError()
+            throw LinkdingApiError(message: "Invalid URL: \(self.baseUrl)")
         }
         for part in path {
             url.appendPathComponent(part)
@@ -111,6 +111,32 @@ public class LinkdingApiClient: NSObject {
         return (content, response as! HTTPURLResponse)
     }
 
+    private func debugStringForCodingPath(_ path: [CodingKey]) -> String {
+        return path.map { $0.stringValue }
+            .joined(separator: " / ")
+    }
+
+    private func decodeJson<T: Decodable>(content: Data) throws -> T {
+        do {
+            return try self.jsonDecoder.decode(T.self, from: content)
+        } catch let DecodingError.keyNotFound(key, context) {
+            let path = self.debugStringForCodingPath(context.codingPath)
+            throw LinkdingApiError(message: "Error when decoding JSON. Key '\(key.stringValue)' not found on path '\(path)'")
+        } catch let DecodingError.valueNotFound(_, context) {
+            let path = self.debugStringForCodingPath(context.codingPath)
+            throw LinkdingApiError(message: "Error when decoding JSON. Value not found for path '\(path)'.")
+        } catch let DecodingError.dataCorrupted(context) {
+            debugPrint(context)
+            let path = self.debugStringForCodingPath(context.codingPath)
+            throw LinkdingApiError(message: "Error when decoding JSON. Data corrupted. Message: '\(context.debugDescription)' for path '\(path)'")
+        } catch let DecodingError.typeMismatch(type, context) {
+            let path = self.debugStringForCodingPath(context.codingPath)
+            throw LinkdingApiError(message: "Error when decoding JSON. Type mismatch. Expect type '\(type)' for path '\(path)'")
+        } catch {
+            throw LinkdingApiError(message: "Unknown error while decoding JSON.")
+        }
+    }
+
     private func collectTags(url: URL) async throws -> (String?, [LinkdingTagDto]) {
         let (content, response) = try await self.performRequest(request: self.buildRequest(url: url))
 
@@ -118,13 +144,8 @@ public class LinkdingApiClient: NSObject {
             throw LinkdingApiError(message: "Server responded with code \(response.statusCode).")
         }
 
-        do {
-            let tags = try self.jsonDecoder.decode(LinkdingTagListDto.self, from: content)
-            return (tags.next, tags.results)
-        } catch (let error) {
-            debugPrint(error)
-            throw LinkdingApiError()
-        }
+        let tags: LinkdingTagListDto = try self.decodeJson(content: content)
+        return (tags.next, tags.results)
     }
 
     private func collectBookmarks(url: URL) async throws -> (String?, [LinkdingBookmarkDto]) {
@@ -134,13 +155,8 @@ public class LinkdingApiClient: NSObject {
             throw LinkdingApiError(message: "Server responded with code \(response.statusCode).")
         }
 
-        do {
-            let bookmarks = try self.jsonDecoder.decode(LinkdingBookmarkDtoList.self, from: content)
-            return (bookmarks.next, bookmarks.results)
-        } catch (let error) {
-            debugPrint(error)
-            throw LinkdingApiError()
-        }
+        let bookmarks: LinkdingBookmarkDtoList = try self.decodeJson(content: content)
+        return (bookmarks.next, bookmarks.results)
     }
 
     func createBookmark(url: String, title: String, description: String, isArchived: Bool, unread: Bool, shared: Bool, tagNames: [String]) async throws -> LinkdingBookmarkDto {
@@ -156,13 +172,7 @@ public class LinkdingApiClient: NSObject {
             throw LinkdingApiError(message: "Server responded with code \(response.statusCode).")
         }
 
-        do {
-            let bookmark = try self.jsonDecoder.decode(LinkdingBookmarkDto.self, from: content)
-            return bookmark
-        } catch (let error) {
-            debugPrint(error)
-            throw LinkdingApiError()
-        }
+        return try self.decodeJson(content: content)
     }
 
     func updateBookmark(serverId: Int, url: String, title: String, description: String, isArchived: Bool, unread: Bool, shared: Bool, tagNames: [String]) async throws -> LinkdingBookmarkDto {
@@ -173,19 +183,14 @@ public class LinkdingApiClient: NSObject {
         guard let postBody = try? self.jsonEncoder.encode(LinkdingBookmarkUpdateDto(url: url, title: title, description: description, isArchived: isArchived, unread: unread, shared: shared, tagNames: tagNames)) else {
             throw LinkdingApiError()
         }
+
         let (content, response) = try await self.performRequest(request: self.buildRequest(url: apiUrl, httpMethod: "PUT", body: postBody))
 
         if (response.statusCode != 200) {
             throw LinkdingApiError(message: "Server responded with code \(response.statusCode).")
         }
 
-        do {
-            let bookmark = try self.jsonDecoder.decode(LinkdingBookmarkDto.self, from: content)
-            return bookmark
-        } catch (let error) {
-            debugPrint(error)
-            throw LinkdingApiError()
-        }
+        return try self.decodeJson(content: content)
     }
 
     func deleteBookmark(serverId: Int) async throws {
@@ -219,12 +224,7 @@ public class LinkdingApiClient: NSObject {
         if (response.statusCode != 201) {
             throw LinkdingApiError(message: "Server responded with code \(response.statusCode).")
         }
-        
-        do {
-            let tag = try self.jsonDecoder.decode(LinkdingTagDto.self, from: content)
-            return tag
-        } catch {
-            throw LinkdingApiError()
-        }
+
+        return try self.decodeJson(content: content)
     }
 }
