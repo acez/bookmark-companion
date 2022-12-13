@@ -10,7 +10,6 @@
 		5A4161678F9A46719B09E5B5 /* LinkdingBookmarkTabFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41671E5DEA9D3F5B7FBB9E /* LinkdingBookmarkTabFilterView.swift */; };
 		5A416343300EB5BA47A9D577 /* LinkdingBookmarkTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416DFC8C830AC24400DFD7 /* LinkdingBookmarkTabView.swift */; };
 		5A4163976EC8707E361C27B3 /* TagElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4165E4526C988197B87FF9 /* TagElementComponent.swift */; };
-		5A4163F8ED5A1E3C757BE0A6 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 5A416C8FF3B046609B48E5D2 /* LICENSE.md */; };
 		5A41643A0DDED9C2E0BCD5CA /* BookmarkEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416A285228B1A88BAA9A1E /* BookmarkEditor.swift */; };
 		5A416520E59B319ED3007D90 /* LinkdingSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4165AE00F6FB1EFC391C9C /* LinkdingSettingsView.swift */; };
 		5A4165E9251BC9DD51B9D103 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4161602285F2D4AED500B1 /* ConfigurationView.swift */; };
@@ -855,7 +854,6 @@
 				5A416FCA26B56326E75DA94D /* SelectTagsView.swift in Sources */,
 				5A41643A0DDED9C2E0BCD5CA /* BookmarkEditor.swift in Sources */,
 				5A4161678F9A46719B09E5B5 /* LinkdingBookmarkTabFilterView.swift in Sources */,
-				5A4163F8ED5A1E3C757BE0A6 /* LICENSE.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1188,6 +1186,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8305572B2946371C007E128A /* Config.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1221,6 +1220,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8305572B2946371C007E128A /* Config.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1254,6 +1254,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8305572B2946371C007E128A /* Config.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1287,6 +1288,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8305572B2946371C007E128A /* Config.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
