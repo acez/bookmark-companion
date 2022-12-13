@@ -145,7 +145,6 @@ public class LinkdingApiClient: NSObject {
             let path = self.debugStringForCodingPath(context.codingPath)
             throw LinkdingApiError(message: "Error when decoding JSON. Value not found for path '\(path)'.")
         } catch let DecodingError.dataCorrupted(context) {
-            debugPrint(context)
             let path = self.debugStringForCodingPath(context.codingPath)
             throw LinkdingApiError(message: "Error when decoding JSON. Data corrupted. Message: '\(context.debugDescription)' for path '\(path)'")
         } catch let DecodingError.typeMismatch(type, context) {
@@ -173,8 +172,6 @@ public class LinkdingApiClient: NSObject {
         if (response.statusCode != 200) {
             throw LinkdingApiError(message: "Server responded with code \(response.statusCode).")
         }
-
-        debugPrint(content)
 
         let bookmarks: LinkdingBookmarkDtoList = try self.decodeJson(content: content)
         return (bookmarks.next, bookmarks.results)
