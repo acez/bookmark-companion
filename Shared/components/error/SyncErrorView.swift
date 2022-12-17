@@ -16,3 +16,11 @@ public struct SyncErrorView: View {
         }
     }
 }
+
+struct SyncErrorView_Previews: PreviewProvider {
+    static var previews: some View {
+        Form {
+            SyncErrorView()
+        }
+    }
+}

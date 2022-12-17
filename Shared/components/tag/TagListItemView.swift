@@ -19,3 +19,13 @@ struct TagListItemView: View {
             .cornerRadius(15)
     }
 }
+
+
+struct TagListItemView_Previews: PreviewProvider {
+    static let tag = Tag(id: UUID(), name: "tag-1")
+    
+    static var previews: some View {
+        TagListItemView(tag: tag)
+    }
+}
+

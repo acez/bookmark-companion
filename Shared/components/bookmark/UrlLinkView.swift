@@ -34,3 +34,13 @@ public struct UrlLinkView: View {
         return URL(string: urlString)
     }
 }
+
+struct UrlLinkView_Previews: PreviewProvider {
+    static let url = "https://www.github.com"
+    static let emptyUrl: String? = nil
+    
+    static var previews: some View {
+        UrlLinkView(url: url)
+        UrlLinkView(url: emptyUrl)
+    }
+}

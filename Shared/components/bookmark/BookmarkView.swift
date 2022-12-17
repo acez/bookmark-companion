@@ -29,3 +29,14 @@ public struct BookmarkView: View {
         }
     }
 }
+
+struct BookmarkView_Previews: PreviewProvider {
+    static let bookmark = Bookmark(id: UUID(), title: "Dummy Bookmark Title", url: "https://www.github.com", tags: [
+        Tag(id: UUID(), name: "tag-1"),
+        Tag(id: UUID(), name: "tag-2")
+    ])
+    
+    static var previews: some View {
+        BookmarkView(bookmark: bookmark)
+    }
+}

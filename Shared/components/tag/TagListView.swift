@@ -18,3 +18,14 @@ struct TagListView: View {
         }
     }
 }
+
+struct TagListView_Previews: PreviewProvider {
+    static let tags = [
+        Tag(id: UUID(), name: "tag-1"),
+        Tag(id: UUID(), name: "tag-2")
+    ]
+    
+    static var previews: some View {
+        TagListView(tags: tags)
+    }
+}
