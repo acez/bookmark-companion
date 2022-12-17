@@ -6,7 +6,7 @@
 import SwiftUI
 
 public struct UrlLinkView: View {
-    var url: String?
+    private var url: String?
 
     public init(url: String?) {
         self.url = url

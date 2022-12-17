@@ -18,7 +18,6 @@
 		5A4167ADC0BD1F0072BCCE13 /* LinkdingTagsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416CA147709B973F66B221 /* LinkdingTagsTabView.swift */; };
 		5A41685452EE9EC060ACC73F /* ConfigurationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41610A1E6F158EE8A8F069 /* ConfigurationButton.swift */; };
 		5A416953811DB0BCECD2D477 /* LinkdingTagBookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4165957F09D947CF502E88 /* LinkdingTagBookmarksView.swift */; };
-		5A416B81181D5F86A326497B /* TagListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4164B3BE5724D709EB1B68 /* TagListItemView.swift */; };
 		5A416BE530E51E1E6F32ECF9 /* InitialConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416311A9AD15CD6172C872 /* InitialConfiguration.swift */; };
 		5A416CE1CEB5396A1403B8D3 /* LinkdingBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416005E25D3CA66F9597DF /* LinkdingBookmarkView.swift */; };
 		5A416D14489E8B274A81E9A6 /* ShareBookmarkTagSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4161EFDF39D0DE717C77CC /* ShareBookmarkTagSelect.swift */; };
@@ -30,6 +29,10 @@
 		83017F412910313800C341D2 /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 83017F362910313800C341D2 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		830F886429170DC200453E1A /* CreateTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830F886329170DC200453E1A /* CreateTagView.swift */; };
 		830F88662917132E00453E1A /* FilterTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830F88652917132E00453E1A /* FilterTagView.swift */; };
+		8311A4E2294E2A1700B81008 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311A4E1294E2A1700B81008 /* ErrorView.swift */; };
+		8311A4E4294E2ED200B81008 /* BookmarkListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311A4E3294E2ED200B81008 /* BookmarkListView.swift */; };
+		8311A4E6294E4AEF00B81008 /* BookmarkTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311A4E5294E4AEF00B81008 /* BookmarkTagsView.swift */; };
+		8311A4E8294E4CBB00B81008 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311A4E7294E4CBB00B81008 /* TagView.swift */; };
 		835E60952907F47700E86AFE /* BookmarkCompanionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E60942907F47700E86AFE /* BookmarkCompanionApp.swift */; };
 		835E60972907F47700E86AFE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E60962907F47700E86AFE /* ContentView.swift */; };
 		835E60992907F47800E86AFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 835E60982907F47800E86AFE /* Assets.xcassets */; };
@@ -161,7 +164,6 @@
 		5A4163A690417AE561630BF6 /* LinkdingBookmarkEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkEntity.swift; sourceTree = "<group>"; };
 		5A416428745B3DB040241022 /* SelectTagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTagsView.swift; sourceTree = "<group>"; };
 		5A41648988BDA9EC924A67CF /* LinkdingTagStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingTagStore.swift; sourceTree = "<group>"; };
-		5A4164B3BE5724D709EB1B68 /* TagListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagListItemView.swift; sourceTree = "<group>"; };
 		5A41652B3021C4D4AE49314A /* BookmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
 		5A41654CCE1EFCBAF88D1556 /* PersistenceHistoryFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceHistoryFetcher.swift; sourceTree = "<group>"; };
 		5A4165957F09D947CF502E88 /* LinkdingTagBookmarksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingTagBookmarksView.swift; sourceTree = "<group>"; };
@@ -203,6 +205,10 @@
 		830F88612917088600453E1A /* LinkdingTagUpdateDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkdingTagUpdateDto.swift; sourceTree = "<group>"; };
 		830F886329170DC200453E1A /* CreateTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTagView.swift; sourceTree = "<group>"; };
 		830F88652917132E00453E1A /* FilterTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTagView.swift; sourceTree = "<group>"; };
+		8311A4E1294E2A1700B81008 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		8311A4E3294E2ED200B81008 /* BookmarkListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListView.swift; sourceTree = "<group>"; };
+		8311A4E5294E4AEF00B81008 /* BookmarkTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTagsView.swift; sourceTree = "<group>"; };
+		8311A4E7294E4CBB00B81008 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		8312CF4E29100EED00CE3C1C /* BookmarkCompanion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BookmarkCompanion.entitlements; sourceTree = "<group>"; };
 		835E60912907F47700E86AFE /* BookmarkCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookmarkCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		835E60942907F47700E86AFE /* BookmarkCompanionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCompanionApp.swift; sourceTree = "<group>"; };
@@ -306,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				5A41663634079049AC29FA9B /* SyncErrorView.swift */,
+				8311A4E1294E2A1700B81008 /* ErrorView.swift */,
 			);
 			path = error;
 			sourceTree = "<group>";
@@ -479,7 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				5A416B7041D5F6F06FECE87E /* TagListView.swift */,
-				5A4164B3BE5724D709EB1B68 /* TagListItemView.swift */,
+				8311A4E7294E4CBB00B81008 /* TagView.swift */,
 			);
 			path = tag;
 			sourceTree = "<group>";
@@ -519,6 +526,8 @@
 			children = (
 				5A41652B3021C4D4AE49314A /* BookmarkView.swift */,
 				5A4160BF66649F7D4A947EE1 /* UrlLinkView.swift */,
+				8311A4E3294E2ED200B81008 /* BookmarkListView.swift */,
+				8311A4E5294E4AEF00B81008 /* BookmarkTagsView.swift */,
 			);
 			path = bookmark;
 			sourceTree = "<group>";
@@ -863,13 +872,16 @@
 			files = (
 				83DE86772946239A00E871FC /* SyncErrorView.swift in Sources */,
 				83DE86752946239A00E871FC /* Integrations.swift in Sources */,
+				8311A4E4294E2ED200B81008 /* BookmarkListView.swift in Sources */,
 				83DE86762946239A00E871FC /* BookmarkView.swift in Sources */,
 				83DE86722946239A00E871FC /* Tag.swift in Sources */,
+				8311A4E6294E4AEF00B81008 /* BookmarkTagsView.swift in Sources */,
 				83DE86782946239A00E871FC /* UrlLinkView.swift in Sources */,
+				8311A4E2294E2A1700B81008 /* ErrorView.swift in Sources */,
 				83DE86792946239A00E871FC /* Bookmark.swift in Sources */,
 				83DE867A2946239A00E871FC /* GlobalSettingKeys.swift in Sources */,
 				5A4166EAFAE4A7F3A27837C4 /* TagListView.swift in Sources */,
-				5A416B81181D5F86A326497B /* TagListItemView.swift in Sources */,
+				8311A4E8294E4CBB00B81008 /* TagView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
