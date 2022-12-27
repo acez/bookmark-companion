@@ -262,14 +262,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5A416006C311CE60BFDC5033 /* shared */ = {
-			isa = PBXGroup;
-			children = (
-				5A416C903BCCBD899292A8E2 /* settings */,
-			);
-			path = shared;
-			sourceTree = "<group>";
-		};
 		5A41607A15A5A3E4896C04A3 /* persistence */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,15 +465,6 @@
 			path = filter;
 			sourceTree = "<group>";
 		};
-		5A416C903BCCBD899292A8E2 /* settings */ = {
-			isa = PBXGroup;
-			children = (
-				5A4167D09C774E55CD7B562C /* SecureSettingsSupport.swift */,
-				5A416252662B76B514443D35 /* SecureSettingsError.swift */,
-			);
-			path = settings;
-			sourceTree = "<group>";
-		};
 		5A416CA6D32487D48EF6A1F7 /* tag */ = {
 			isa = PBXGroup;
 			children = (
@@ -562,6 +545,15 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		83200674295B820100EC94F8 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				5A4167D09C774E55CD7B562C /* SecureSettingsSupport.swift */,
+				5A416252662B76B514443D35 /* SecureSettingsError.swift */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
 		835E60882907F47700E86AFE = {
 			isa = PBXGroup;
 			children = (
@@ -625,6 +617,7 @@
 		83DE86562946230A00E871FC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				83200674295B820100EC94F8 /* settings */,
 				5A416EFD95C7DCB9D7711A6A /* config */,
 				5A4167D7FD5A5569E5A44CC5 /* components */,
 				5A41607D8F0D6F4B90979DA7 /* model */,
@@ -644,7 +637,6 @@
 				5A4168AA22F18FE74AA44689 /* sync */,
 				5A4167E29771752AA7D78200 /* api */,
 				5A4165DB8301917A7EF945CE /* settings */,
-				5A416006C311CE60BFDC5033 /* shared */,
 				83DE86682946235D00E871FC /* Linkding.h */,
 			);
 			path = Linkding;

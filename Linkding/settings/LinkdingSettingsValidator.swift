@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import Shared
 
 public class LinkdingSettingsValidator {
     public init() {

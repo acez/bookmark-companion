@@ -5,6 +5,7 @@
 
 import SwiftUI
 import Linkding
+import Shared
 
 struct LinkdingSettingsView: View {
     var secureToken: Binding<String> = Binding(
