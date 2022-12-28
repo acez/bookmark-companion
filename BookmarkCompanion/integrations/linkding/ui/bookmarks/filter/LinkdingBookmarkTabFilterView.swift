@@ -5,6 +5,7 @@
 
 import SwiftUI
 import Linkding
+import Shared
 
 struct FilterOption {
     var id: String

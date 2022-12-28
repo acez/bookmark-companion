@@ -5,6 +5,7 @@
 
 import SwiftUI
 import Linkding
+import Shared
 
 struct LinkdingCreateBookmarkView: View {
     @Environment(\.presentationMode) private var presentationMode

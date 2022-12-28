@@ -5,6 +5,7 @@
 
 import SwiftUI
 import Linkding
+import Shared
 
 struct LinkdingBookmarkTabView: View {
     @EnvironmentObject var bookmarkStore: LinkdingBookmarkStore

@@ -5,6 +5,7 @@
 
 import SwiftUI
 import Linkding
+import Shared
 
 struct LinkdingTagsTabView: View {
     @EnvironmentObject var tagStore: LinkdingTagStore

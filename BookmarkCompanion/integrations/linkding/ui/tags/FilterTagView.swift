@@ -5,6 +5,7 @@
 
 import SwiftUI
 import Linkding
+import Shared
 
 struct FilterTagView: View {
     @Environment(\.presentationMode) private var presentationMode

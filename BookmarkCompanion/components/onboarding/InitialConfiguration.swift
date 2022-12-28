@@ -4,6 +4,7 @@
 //
 import SwiftUI
 import Linkding
+import Shared
 
 struct InitialConfiguration: View {
     @State var showSettingsError: Bool = false
