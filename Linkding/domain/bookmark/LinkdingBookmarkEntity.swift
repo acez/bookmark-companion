@@ -5,6 +5,7 @@
 
 import Foundation
 import CoreData
+import Shared
 
 @objc(LinkdingBookmarkEntity)
 public class LinkdingBookmarkEntity: NSManagedObject, Identifiable {
@@ -28,6 +29,15 @@ public class LinkdingBookmarkEntity: NSManagedObject, Identifiable {
             self.relTags.map { tag in
                 let castedTag = tag as! LinkdingTagEntity
                 return castedTag.name
+            }
+        }
+    }
+    
+    public var tags: [Tag<Int>] {
+        get {
+            self.relTags.map { tag in
+                let castedTag = tag as! LinkdingTagEntity
+                return Tag(id: castedTag.serverId, name: castedTag.name)
             }
         }
     }

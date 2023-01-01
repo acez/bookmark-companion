@@ -5,14 +5,15 @@
 
 import SwiftUI
 
-public protocol FilteredTagStore {
-    func filter(text: String) -> [Tag]
+public protocol FilteredTagStore<ID> {
+    associatedtype ID: Hashable
+    func filter(text: String) -> [Tag<ID>]
 }
 
-public struct TagListView: View {
-    var tagStore: FilteredTagStore
+public struct TagListView<ID: Hashable>: View {
+    var tagStore: any FilteredTagStore<ID>
     
-    public init(tagStore: FilteredTagStore) {
+    public init(tagStore: any FilteredTagStore<ID>) {
         self.tagStore = tagStore
     }
     
@@ -27,14 +28,14 @@ public struct TagListView: View {
         .searchable(text: self.$searchText)
     }
     
-    private func filteredTags() -> [Tag] {
+    private func filteredTags() -> [Tag<ID>] {
         return self.tagStore.filter(text: self.searchText)
     }
 }
 
 struct TagListView_Previews: PreviewProvider {
     struct PreviewTagStore: FilteredTagStore {
-        func filter(text: String) -> [Tag] {
+        func filter(text: String) -> [Tag<UUID>] {
             return [
                 Tag(id: UUID(), name: "tag-1"),
                 Tag(id: UUID(), name: "tag-2"),

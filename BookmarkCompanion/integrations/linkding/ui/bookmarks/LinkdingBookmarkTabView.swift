@@ -11,34 +11,36 @@ struct LinkdingBookmarkTabView: View {
     @EnvironmentObject var bookmarkStore: LinkdingBookmarkStore
     @EnvironmentObject var tagStore: LinkdingTagStore
 
-    @AppStorage("linkding.bookmarks.filter.archived", store: AppStorageSupport.shared.sharedStore) var showArchived: Bool = false
-    @AppStorage("linkding.bookmarks.filter.unread", store: AppStorageSupport.shared.sharedStore) var showUnread: Bool = false
+    @AppStorage(LinkdingSettingKeys.bookmarkFilterArchived.rawValue, store: AppStorageSupport.shared.sharedStore) var showArchived: Bool = false
+    @AppStorage(LinkdingSettingKeys.bookmarkFilterUnread.rawValue, store: AppStorageSupport.shared.sharedStore) var showUnread: Bool = false
     @AppStorage(LinkdingSettingKeys.syncHadError.rawValue, store: AppStorageSupport.shared.sharedStore) var syncHadError: Bool = false
     @AppStorage(LinkdingSettingKeys.syncErrorMessage.rawValue, store: AppStorageSupport.shared.sharedStore) var syncErrorMessage: String = ""
 
     @State var textFilter: String = ""
     @State var filterViewOpen: Bool = false
     @State var createBookmarkOpen: Bool = false
+    
+    @State var bookmarkToEdit: Bookmark<Int>? = nil
 
     var body: some View {
         NavigationView {
             VStack {
-                List {
-                    if (self.syncHadError) {
-                        Section() {
-                            Text("Synchronization error.")
-                                .foregroundColor(.red)
-                            if (self.syncErrorMessage != "") {
-                                Text(self.syncErrorMessage)
+                BookmarkListView(
+                    bookmarkStore: self,
+                    tapHandler: { bookmark in
+                        self.bookmarkToEdit = bookmark
+                    },
+                    deleteHandler: { bookmark in
+                        print(bookmark)
+                    },
+                    preListView: {
+                        if self.syncHadError {
+                            Section() {
+                                SyncErrorView(errorDetails: self.syncErrorMessage)
                             }
-                            Text("Please check your URL and your Token in the configuration dialog.")
                         }
                     }
-                    ForEach(self.filteredBookmarks()) { bookmark in
-                        LinkdingBookmarkView(bookmark: bookmark, showTags: true)
-                    }
-                        .onDelete(perform: self.deleteBookmark)
-                }
+                )
                     .navigationTitle("Bookmarks")
                     .searchable(text: self.$textFilter)
                     .toolbar {
@@ -68,6 +70,12 @@ struct LinkdingBookmarkTabView: View {
                     .sheet(isPresented: self.$createBookmarkOpen) {
                         LinkdingCreateBookmarkView()
                     }
+                    .sheet(item: self.$bookmarkToEdit) { bookmark in
+                        let entity = self.bookmarkStore.getByServerId(serverId: bookmark.id)
+                        if entity != nil {
+                            BookmarkEditor(bookmark: entity!)
+                        }
+                    }
                     .refreshable {
                         let syncClient = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
                         try? await syncClient.sync()
@@ -77,17 +85,23 @@ struct LinkdingBookmarkTabView: View {
             .navigationViewStyle(.stack)
     }
 
-    private func filteredBookmarks() -> [LinkdingBookmarkEntity] {
-        return self.bookmarkStore
-            .filtered(showArchived: self.showArchived, showUnreadOnly: self.showUnread, filterText: self.textFilter)
-    }
 
-    private func deleteBookmark(at offsets: IndexSet) {
-        for index in offsets {
-            let bookmark = self.filteredBookmarks()[index]
-            let repository = LinkdingBookmarkRepository(bookmarkStore: self.bookmarkStore, tagStore: self.tagStore)
-            repository.markAsDeleted(bookmark: bookmark)
+    private func deleteBookmark(bookmark: Bookmark<Int>) {
+        // TODO: How to delete unsynced bookmarks -> maybe add a internal id
+        guard let entity = self.bookmarkStore.getByServerId(serverId: bookmark.id) else {
+            return
         }
+        let repository = LinkdingBookmarkRepository(bookmarkStore: self.bookmarkStore, tagStore: self.tagStore)
+        repository.markAsDeleted(bookmark: entity)
     }
 
+}
+
+extension LinkdingBookmarkTabView: FilteredBookmarkStore {
+    func filter(text: String) -> [Shared.Bookmark<Int>] {
+        return self.bookmarkStore.filtered(showArchived: self.showArchived, showUnreadOnly: self.showUnread, filterText: text)
+            .map {
+                Bookmark(id: $0.serverId, title: $0.displayTitle, url: $0.url, description: $0.websiteDescription, tags: $0.tags)
+            }
+    }
 }

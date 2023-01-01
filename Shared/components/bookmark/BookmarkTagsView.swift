@@ -5,8 +5,8 @@
 
 import SwiftUI
 
-struct BookmarkTagsView: View {
-    var tags: [Tag]
+struct BookmarkTagsView<ID: Hashable>: View {
+    var tags: [Tag<ID>]
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {

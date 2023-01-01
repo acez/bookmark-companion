@@ -5,12 +5,12 @@
 
 import SwiftUI
 
-struct BookmarkView: View {
-    var bookmark: Bookmark
+struct BookmarkView<ID: Hashable>: View {
+    var bookmark: Bookmark<ID>
     var showLinkButton: Bool = true
     var showTags: Bool = true
     var showDescription: Bool = true
-    var tapHandler: () -> Void = {}
+    var tapHandler: (Bookmark<ID>) -> Void = { _ in }
 
     var body: some View {
         HStack {
@@ -28,7 +28,9 @@ struct BookmarkView: View {
                     BookmarkTagsView(tags: self.bookmark.tags)
                 }
             }
-                .onTapGesture(perform: self.tapHandler)
+                .onTapGesture(perform: {
+                    self.tapHandler(self.bookmark)
+                })
             if self.showLinkButton {
                 Spacer()
                 UrlLinkView(url: self.bookmark.url)
