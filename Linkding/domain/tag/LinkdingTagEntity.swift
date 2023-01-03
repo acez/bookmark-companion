@@ -9,6 +9,7 @@ import CoreData
 @objc(LinkdingTagEntity)
 public class LinkdingTagEntity: NSManagedObject, Identifiable {
     @NSManaged private(set) public var serverId: Int // is: id in API
+    @NSManaged private(set) public var internalId: UUID
     @NSManaged private(set) public var name: String
     @NSManaged private(set) public var dateAdded: Date?
     @NSManaged private(set) public var relBookmarks: NSSet
@@ -36,6 +37,7 @@ extension LinkdingTagEntity {
         let entity = LinkdingTagEntity.init(context: moc)
 
         entity.serverId = 0
+        entity.internalId = UUID()
         entity.name = name
 
         return entity

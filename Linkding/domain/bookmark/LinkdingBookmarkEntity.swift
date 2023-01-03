@@ -10,6 +10,7 @@ import Shared
 @objc(LinkdingBookmarkEntity)
 public class LinkdingBookmarkEntity: NSManagedObject, Identifiable {
     @NSManaged private(set) public var serverId: Int // is: id in API
+    @NSManaged private(set) public var internalId: UUID
     @NSManaged private(set) public var url: String
     @NSManaged private(set) public var title: String
     @NSManaged private(set) public var urlDescription: String // is: description in API
@@ -33,11 +34,11 @@ public class LinkdingBookmarkEntity: NSManagedObject, Identifiable {
         }
     }
     
-    public var tags: [Tag<Int>] {
+    public var tags: [Tag<UUID>] {
         get {
             self.relTags.map { tag in
                 let castedTag = tag as! LinkdingTagEntity
-                return Tag(id: castedTag.serverId, name: castedTag.name)
+                return Tag(id: castedTag.internalId, name: castedTag.name)
             }
         }
     }
@@ -158,6 +159,7 @@ extension LinkdingBookmarkEntity {
         let entity = LinkdingBookmarkEntity.init(context: moc)
 
         entity.serverId = 0
+        entity.internalId = UUID()
         entity.url = url
         entity.title = title
         entity.urlDescription = urlDescription

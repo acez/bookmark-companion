@@ -20,7 +20,7 @@ struct LinkdingBookmarkTabView: View {
     @State var filterViewOpen: Bool = false
     @State var createBookmarkOpen: Bool = false
     
-    @State var bookmarkToEdit: Bookmark<Int>? = nil
+    @State var bookmarkToEdit: Bookmark<UUID>? = nil
 
     var body: some View {
         NavigationView {
@@ -31,7 +31,7 @@ struct LinkdingBookmarkTabView: View {
                         self.bookmarkToEdit = bookmark
                     },
                     deleteHandler: { bookmark in
-                        print(bookmark)
+                        self.deleteBookmark(bookmark: bookmark)
                     },
                     preListView: {
                         if self.syncHadError {
@@ -71,7 +71,7 @@ struct LinkdingBookmarkTabView: View {
                         LinkdingCreateBookmarkView()
                     }
                     .sheet(item: self.$bookmarkToEdit) { bookmark in
-                        let entity = self.bookmarkStore.getByServerId(serverId: bookmark.id)
+                        let entity = self.bookmarkStore.getByInternalId(internalId: bookmark.id)
                         if entity != nil {
                             BookmarkEditor(bookmark: entity!)
                         }
@@ -86,9 +86,8 @@ struct LinkdingBookmarkTabView: View {
     }
 
 
-    private func deleteBookmark(bookmark: Bookmark<Int>) {
-        // TODO: How to delete unsynced bookmarks -> maybe add a internal id
-        guard let entity = self.bookmarkStore.getByServerId(serverId: bookmark.id) else {
+    private func deleteBookmark(bookmark: Bookmark<UUID>) {
+        guard let entity = self.bookmarkStore.getByInternalId(internalId: bookmark.id) else {
             return
         }
         let repository = LinkdingBookmarkRepository(bookmarkStore: self.bookmarkStore, tagStore: self.tagStore)
@@ -98,10 +97,10 @@ struct LinkdingBookmarkTabView: View {
 }
 
 extension LinkdingBookmarkTabView: FilteredBookmarkStore {
-    func filter(text: String) -> [Shared.Bookmark<Int>] {
+    func filter(text: String) -> [Shared.Bookmark<UUID>] {
         return self.bookmarkStore.filtered(showArchived: self.showArchived, showUnreadOnly: self.showUnread, filterText: text)
             .map {
-                Bookmark(id: $0.serverId, title: $0.displayTitle, url: $0.url, description: $0.websiteDescription, tags: $0.tags)
+                Bookmark(id: $0.internalId, title: $0.displayTitle, url: $0.url, description: $0.websiteDescription, tags: $0.tags)
             }
     }
 }
