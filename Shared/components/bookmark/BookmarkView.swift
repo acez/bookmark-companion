@@ -5,14 +5,28 @@
 
 import SwiftUI
 
-struct BookmarkView: View {
-    var bookmark: Bookmark
-    var showLinkButton: Bool = true
-    var showTags: Bool = true
-    var showDescription: Bool = true
-    var tapHandler: () -> Void = {}
+public struct BookmarkView<ID: Hashable>: View {
+    var bookmark: Bookmark<ID>
+    var showLinkButton: Bool
+    var showTags: Bool
+    var showDescription: Bool
+    var tapHandler: (Bookmark<ID>) -> Void
+    
+    public init(
+        bookmark: Bookmark<ID>,
+        showLinkButton: Bool = true,
+        showTags: Bool = true,
+        showDescription: Bool = true,
+        tapHandler: @escaping (Bookmark<ID>) -> Void = { _ in }
+    ) {
+        self.bookmark = bookmark
+        self.showLinkButton = showLinkButton
+        self.showTags = showTags
+        self.showDescription = showDescription
+        self.tapHandler = tapHandler
+    }
 
-    var body: some View {
+    public var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 Text(self.bookmark.title.trimmingCharacters(in: .whitespacesAndNewlines))
@@ -28,7 +42,9 @@ struct BookmarkView: View {
                     BookmarkTagsView(tags: self.bookmark.tags)
                 }
             }
-                .onTapGesture(perform: self.tapHandler)
+                .onTapGesture(perform: {
+                    self.tapHandler(self.bookmark)
+                })
             if self.showLinkButton {
                 Spacer()
                 UrlLinkView(url: self.bookmark.url)
@@ -38,7 +54,7 @@ struct BookmarkView: View {
 }
 
 struct BookmarkView_Previews: PreviewProvider {
-    static let bookmark = Bookmark(id: UUID(), title: "Dummy Bookmark Title", url: "https://www.github.com", description: "This is a dummy description", tags: [
+    static let bookmark = Bookmark<UUID>(id: UUID(), title: "Dummy Bookmark Title", url: "https://www.github.com", description: "This is a dummy description", tags: [
         Tag(id: UUID(), name: "tag-1"),
         Tag(id: UUID(), name: "tag-2")
     ])

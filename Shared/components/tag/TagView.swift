@@ -5,8 +5,8 @@
 
 import SwiftUI
 
-struct TagView: View {
-    var tag: Tag
+struct TagView<ID: Hashable>: View {
+    var tag: Tag<ID>
     
     var body: some View {
         Text(self.tag.name)

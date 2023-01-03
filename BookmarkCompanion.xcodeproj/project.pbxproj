@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5A4161678F9A46719B09E5B5 /* LinkdingBookmarkTabFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41671E5DEA9D3F5B7FBB9E /* LinkdingBookmarkTabFilterView.swift */; };
 		5A416343300EB5BA47A9D577 /* LinkdingBookmarkTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416DFC8C830AC24400DFD7 /* LinkdingBookmarkTabView.swift */; };
-		5A4163976EC8707E361C27B3 /* TagElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4165E4526C988197B87FF9 /* TagElementComponent.swift */; };
 		5A41643A0DDED9C2E0BCD5CA /* BookmarkEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416A285228B1A88BAA9A1E /* BookmarkEditor.swift */; };
 		5A416520E59B319ED3007D90 /* LinkdingSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4165AE00F6FB1EFC391C9C /* LinkdingSettingsView.swift */; };
 		5A4165E9251BC9DD51B9D103 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4161602285F2D4AED500B1 /* ConfigurationView.swift */; };
@@ -19,7 +18,6 @@
 		5A41685452EE9EC060ACC73F /* ConfigurationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41610A1E6F158EE8A8F069 /* ConfigurationButton.swift */; };
 		5A416953811DB0BCECD2D477 /* LinkdingTagBookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4165957F09D947CF502E88 /* LinkdingTagBookmarksView.swift */; };
 		5A416BE530E51E1E6F32ECF9 /* InitialConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416311A9AD15CD6172C872 /* InitialConfiguration.swift */; };
-		5A416CE1CEB5396A1403B8D3 /* LinkdingBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416005E25D3CA66F9597DF /* LinkdingBookmarkView.swift */; };
 		5A416D14489E8B274A81E9A6 /* ShareBookmarkTagSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4161EFDF39D0DE717C77CC /* ShareBookmarkTagSelect.swift */; };
 		5A416D4F79082EDE7AB4B296 /* LinkdingDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416881AEFF4047D3E4D13C /* LinkdingDashboardView.swift */; };
 		5A416DAB2FEAD6150903FE6A /* ShareBookmarkCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416AC0C47832EDBE977C5E /* ShareBookmarkCreate.swift */; };
@@ -40,6 +38,10 @@
 		835E609E2907F47800E86AFE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E609D2907F47800E86AFE /* Persistence.swift */; };
 		835E60A12907F47800E86AFE /* BookmarkCompanion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 835E609F2907F47800E86AFE /* BookmarkCompanion.xcdatamodeld */; };
 		837009BE29154860006D2A05 /* ShareBookmarkContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837009BD29154860006D2A05 /* ShareBookmarkContainerView.swift */; };
+		83C055962964992700550D73 /* LinkdingModel1To2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 83C055952964992700550D73 /* LinkdingModel1To2.xcmappingmodel */; };
+		83C055992964996D00550D73 /* LinkdingModel1To2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C055982964996D00550D73 /* LinkdingModel1To2.swift */; };
+		83C055A32964D59D00550D73 /* Linkding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83DE86662946235D00E871FC /* Linkding.framework */; };
+		83C055AC2964D5CA00550D73 /* CoreDataMigration1To2Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C055AB2964D5CA00550D73 /* CoreDataMigration1To2Test.swift */; };
 		83C794CD295CD5E200BE88B9 /* SecureSettingsSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4167D09C774E55CD7B562C /* SecureSettingsSupport.swift */; };
 		83C794CE295CD5E600BE88B9 /* SecureSettingsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416252662B76B514443D35 /* SecureSettingsError.swift */; };
 		83C794CF295CD5F500BE88B9 /* AppStorageSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4162CABCFDAFB9F27CF965 /* AppStorageSupport.swift */; };
@@ -89,6 +91,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 83017F352910313800C341D2;
 			remoteInfo = ShareExtension;
+		};
+		83C055A42964D59D00550D73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 835E60892907F47700E86AFE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83DE86652946235D00E871FC;
+			remoteInfo = Linkding;
+		};
+		83C055AD2964DE4000550D73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 835E60892907F47700E86AFE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 835E60902907F47700E86AFE;
+			remoteInfo = BookmarkCompanion;
 		};
 		83C794D2295CD66100BE88B9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -154,7 +170,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5A416005E25D3CA66F9597DF /* LinkdingBookmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkView.swift; sourceTree = "<group>"; };
 		5A416010E3E298509BCB0B4B /* LinkdingTagRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingTagRepository.swift; sourceTree = "<group>"; };
 		5A41604CC09FEBD0699074C0 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		5A4160BF66649F7D4A947EE1 /* UrlLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlLinkView.swift; sourceTree = "<group>"; };
@@ -176,7 +191,6 @@
 		5A41654CCE1EFCBAF88D1556 /* PersistenceHistoryFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceHistoryFetcher.swift; sourceTree = "<group>"; };
 		5A4165957F09D947CF502E88 /* LinkdingTagBookmarksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingTagBookmarksView.swift; sourceTree = "<group>"; };
 		5A4165AE00F6FB1EFC391C9C /* LinkdingSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingSettingsView.swift; sourceTree = "<group>"; };
-		5A4165E4526C988197B87FF9 /* TagElementComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagElementComponent.swift; sourceTree = "<group>"; };
 		5A41663634079049AC29FA9B /* SyncErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncErrorView.swift; sourceTree = "<group>"; };
 		5A416639655787E2270F6902 /* PersistenceHistoryObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceHistoryObserver.swift; sourceTree = "<group>"; };
 		5A41663D73EE6D3DAD82A225 /* Integrations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Integrations.swift; sourceTree = "<group>"; };
@@ -228,6 +242,11 @@
 		837009BD29154860006D2A05 /* ShareBookmarkContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBookmarkContainerView.swift; sourceTree = "<group>"; };
 		83B06F1329105C600032F6FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		83B9F2EA2909EA9800ADEB02 /* LinkdingModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinkdingModel.xcdatamodel; sourceTree = "<group>"; };
+		83C055932964979E00550D73 /* LinkdingModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LinkdingModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		83C055952964992700550D73 /* LinkdingModel1To2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = LinkdingModel1To2.xcmappingmodel; sourceTree = "<group>"; };
+		83C055982964996D00550D73 /* LinkdingModel1To2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkdingModel1To2.swift; sourceTree = "<group>"; };
+		83C0559F2964D59D00550D73 /* LinkdingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinkdingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		83C055AB2964D5CA00550D73 /* CoreDataMigration1To2Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMigration1To2Test.swift; sourceTree = "<group>"; };
 		83DE86552946230A00E871FC /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83DE86572946230A00E871FC /* Shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
 		83DE86662946235D00E871FC /* Linkding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Linkding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +272,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		83C0559C2964D59D00550D73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83C055A32964D59D00550D73 /* Linkding.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83DE86522946230A00E871FC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -274,6 +301,7 @@
 		5A41607A15A5A3E4896C04A3 /* persistence */ = {
 			isa = PBXGroup;
 			children = (
+				83C05594296498D800550D73 /* migrations */,
 				5A416639655787E2270F6902 /* PersistenceHistoryObserver.swift */,
 				5A416750702516FEDD657464 /* PersistenceHistoryMerger.swift */,
 				5A41654CCE1EFCBAF88D1556 /* PersistenceHistoryFetcher.swift */,
@@ -301,14 +329,6 @@
 			path = bookmark;
 			sourceTree = "<group>";
 		};
-		5A4161374D54A36C8485D962 /* tag */ = {
-			isa = PBXGroup;
-			children = (
-				5A4165E4526C988197B87FF9 /* TagElementComponent.swift */,
-			);
-			path = tag;
-			sourceTree = "<group>";
-		};
 		5A4161C01045D26CF33BEEEB /* error */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,20 +346,11 @@
 			path = settings;
 			sourceTree = "<group>";
 		};
-		5A41631752C13E588D090BD9 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				5A416005E25D3CA66F9597DF /* LinkdingBookmarkView.swift */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
 		5A41644447948384FBFFD1EF /* components */ = {
 			isa = PBXGroup;
 			children = (
 				5A416452B67C39C8F4F417A4 /* config */,
 				5A4166D646DB81C6EAAAF96B /* onboarding */,
-				5A4161374D54A36C8485D962 /* tag */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -496,7 +507,6 @@
 			children = (
 				5A416DFC8C830AC24400DFD7 /* LinkdingBookmarkTabView.swift */,
 				5A41693E49EC45A60B7E610F /* create */,
-				5A41631752C13E588D090BD9 /* view */,
 				5A416663C4A86DE110ADB702 /* edit */,
 				5A416C11181E89E664644C3A /* filter */,
 			);
@@ -572,6 +582,7 @@
 				83017F372910313800C341D2 /* ShareExtension */,
 				83DE86562946230A00E871FC /* Shared */,
 				83DE86672946235D00E871FC /* Linkding */,
+				83C055A02964D59D00550D73 /* LinkdingTests */,
 				835E60922907F47700E86AFE /* Products */,
 				5A416AFED161E2B9AF558796 /* README.md */,
 				83017F452910314000C341D2 /* Frameworks */,
@@ -586,6 +597,7 @@
 				83017F362910313800C341D2 /* ShareExtension.appex */,
 				83DE86552946230A00E871FC /* Shared.framework */,
 				83DE86662946235D00E871FC /* Linkding.framework */,
+				83C0559F2964D59D00550D73 /* LinkdingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -621,6 +633,39 @@
 				5A4166410BFBB493C63D53C4 /* appstore-download.svg */,
 			);
 			path = AppStore;
+			sourceTree = "<group>";
+		};
+		83C05594296498D800550D73 /* migrations */ = {
+			isa = PBXGroup;
+			children = (
+				83C055952964992700550D73 /* LinkdingModel1To2.xcmappingmodel */,
+				83C055982964996D00550D73 /* LinkdingModel1To2.swift */,
+			);
+			path = migrations;
+			sourceTree = "<group>";
+		};
+		83C055A02964D59D00550D73 /* LinkdingTests */ = {
+			isa = PBXGroup;
+			children = (
+				83C055A92964D5B600550D73 /* persistence */,
+			);
+			path = LinkdingTests;
+			sourceTree = "<group>";
+		};
+		83C055A92964D5B600550D73 /* persistence */ = {
+			isa = PBXGroup;
+			children = (
+				83C055AA2964D5BF00550D73 /* migrations */,
+			);
+			path = persistence;
+			sourceTree = "<group>";
+		};
+		83C055AA2964D5BF00550D73 /* migrations */ = {
+			isa = PBXGroup;
+			children = (
+				83C055AB2964D5CA00550D73 /* CoreDataMigration1To2Test.swift */,
+			);
+			path = migrations;
 			sourceTree = "<group>";
 		};
 		83DE86562946230A00E871FC /* Shared */ = {
@@ -714,6 +759,25 @@
 			productReference = 835E60912907F47700E86AFE /* BookmarkCompanion.app */;
 			productType = "com.apple.product-type.application";
 		};
+		83C0559E2964D59D00550D73 /* LinkdingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83C055A62964D59D00550D73 /* Build configuration list for PBXNativeTarget "LinkdingTests" */;
+			buildPhases = (
+				83C0559B2964D59D00550D73 /* Sources */,
+				83C0559C2964D59D00550D73 /* Frameworks */,
+				83C0559D2964D59D00550D73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				83C055A52964D59D00550D73 /* PBXTargetDependency */,
+				83C055AE2964DE4000550D73 /* PBXTargetDependency */,
+			);
+			name = LinkdingTests;
+			productName = LinkdingTests;
+			productReference = 83C0559F2964D59D00550D73 /* LinkdingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		83DE86542946230A00E871FC /* Shared */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83DE865D2946230A00E871FC /* Build configuration list for PBXNativeTarget "Shared" */;
@@ -758,7 +822,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					83017F352910313800C341D2 = {
@@ -766,6 +830,9 @@
 					};
 					835E60902907F47700E86AFE = {
 						CreatedOnToolsVersion = 13.4.1;
+					};
+					83C0559E2964D59D00550D73 = {
+						CreatedOnToolsVersion = 14.2;
 					};
 					83DE86542946230A00E871FC = {
 						CreatedOnToolsVersion = 14.1;
@@ -792,6 +859,7 @@
 				83017F352910313800C341D2 /* ShareExtension */,
 				83DE86542946230A00E871FC /* Shared */,
 				83DE86652946235D00E871FC /* Linkding */,
+				83C0559E2964D59D00550D73 /* LinkdingTests */,
 			);
 		};
 /* End PBXProject section */
@@ -810,6 +878,13 @@
 			files = (
 				835E609C2907F47800E86AFE /* Preview Assets.xcassets in Resources */,
 				835E60992907F47800E86AFE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83C0559D2964D59D00550D73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -858,13 +933,19 @@
 				830F886429170DC200453E1A /* CreateTagView.swift in Sources */,
 				5A4165E9251BC9DD51B9D103 /* ConfigurationView.swift in Sources */,
 				5A416BE530E51E1E6F32ECF9 /* InitialConfiguration.swift in Sources */,
-				5A4163976EC8707E361C27B3 /* TagElementComponent.swift in Sources */,
 				5A416520E59B319ED3007D90 /* LinkdingSettingsView.swift in Sources */,
 				5A416EBAEBC218BC4F2DE806 /* LinkdingCreateBookmarkView.swift in Sources */,
-				5A416CE1CEB5396A1403B8D3 /* LinkdingBookmarkView.swift in Sources */,
 				5A416FCA26B56326E75DA94D /* SelectTagsView.swift in Sources */,
 				5A41643A0DDED9C2E0BCD5CA /* BookmarkEditor.swift in Sources */,
 				5A4161678F9A46719B09E5B5 /* LinkdingBookmarkTabFilterView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83C0559B2964D59D00550D73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83C055AC2964D5CA00550D73 /* CoreDataMigration1To2Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +976,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83DE867C294623AC00E871FC /* TagModel.swift in Sources */,
+				83C055992964996D00550D73 /* LinkdingModel1To2.swift in Sources */,
 				83DE86712946237000E871FC /* LinkdingPersistenceController.swift in Sources */,
 				83DE8689294623C400E871FC /* LinkdingTagDto.swift in Sources */,
 				83DE8685294623BC00E871FC /* PersistenceHistoryMerger.swift in Sources */,
@@ -910,6 +992,7 @@
 				83DE868C294623C400E871FC /* LinkdingApiClient.swift in Sources */,
 				83DE867E294623B400E871FC /* LinkdingBookmarkEntity.swift in Sources */,
 				83DE8687294623BC00E871FC /* PersistenceHistoryCleaner.swift in Sources */,
+				83C055962964992700550D73 /* LinkdingModel1To2.xcmappingmodel in Sources */,
 				83DE868E294623CC00E871FC /* LinkdingSettingKeys.swift in Sources */,
 				83DE8680294623B400E871FC /* LinkdingBookmarkStore.swift in Sources */,
 				83DE8688294623C000E871FC /* LinkdingSyncClient.swift in Sources */,
@@ -926,6 +1009,16 @@
 			isa = PBXTargetDependency;
 			target = 83017F352910313800C341D2 /* ShareExtension */;
 			targetProxy = 83017F3E2910313800C341D2 /* PBXContainerItemProxy */;
+		};
+		83C055A52964D59D00550D73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83DE86652946235D00E871FC /* Linkding */;
+			targetProxy = 83C055A42964D59D00550D73 /* PBXContainerItemProxy */;
+		};
+		83C055AE2964DE4000550D73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 835E60902907F47700E86AFE /* BookmarkCompanion */;
+			targetProxy = 83C055AD2964DE4000550D73 /* PBXContainerItemProxy */;
 		};
 		83C794D3295CD66100BE88B9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1201,6 +1294,40 @@
 			};
 			name = Release;
 		};
+		83C055A72964D59D00550D73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wits.BookmarkCompanion.LinkdingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		83C055A82964D59D00550D73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wits.BookmarkCompanion.LinkdingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		83DE865E2946230A00E871FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8305572B2946371C007E128A /* Config.xcconfig */;
@@ -1367,6 +1494,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		83C055A62964D59D00550D73 /* Build configuration list for PBXNativeTarget "LinkdingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83C055A72964D59D00550D73 /* Debug */,
+				83C055A82964D59D00550D73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		83DE865D2946230A00E871FC /* Build configuration list for PBXNativeTarget "Shared" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1401,9 +1537,10 @@
 		83B9F2E92909EA9800ADEB02 /* LinkdingModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				83C055932964979E00550D73 /* LinkdingModel 2.xcdatamodel */,
 				83B9F2EA2909EA9800ADEB02 /* LinkdingModel.xcdatamodel */,
 			);
-			currentVersion = 83B9F2EA2909EA9800ADEB02 /* LinkdingModel.xcdatamodel */;
+			currentVersion = 83C055932964979E00550D73 /* LinkdingModel 2.xcdatamodel */;
 			path = LinkdingModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

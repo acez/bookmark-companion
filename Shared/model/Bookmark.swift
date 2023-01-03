@@ -5,14 +5,14 @@
 
 import Foundation
 
-public struct Bookmark: Identifiable {
-    public var id: UUID
+public struct Bookmark<ID: Hashable>: Identifiable {
+    public var id: ID
     public var title: String
     public var url: String
     public var description: String?
-    public var tags: [Tag]
+    public var tags: [Tag<ID>]
     
-    public init(id: UUID, title: String, url: String, description: String? = nil, tags: [Tag]) {
+    public init(id: ID, title: String, url: String, description: String? = nil, tags: [Tag<ID>]) {
         self.id = id
         self.title = title
         self.url = url

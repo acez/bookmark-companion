@@ -5,12 +5,18 @@
 
 import SwiftUI
 
-struct ErrorView: View {
-    var title: String
-    var message: String
-    var details: String?
+public struct ErrorView: View {
+    private var title: String
+    private var message: String
+    private var details: String?
 
-    var body: some View {
+    public init(title: String, message: String, details: String? = nil) {
+        self.title = title
+        self.message = message
+        self.details = details
+    }
+    
+    public var body: some View {
         VStack {
             Section() {
                 VStack {

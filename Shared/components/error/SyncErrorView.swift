@@ -8,6 +8,10 @@ import SwiftUI
 public struct SyncErrorView: View {
     var errorDetails: String?
     
+    public init(errorDetails: String? = nil) {
+        self.errorDetails = errorDetails
+    }
+    
     public var body: some View {
         VStack {
             Section() {
