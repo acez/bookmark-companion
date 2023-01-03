@@ -5,6 +5,7 @@
 
 import SwiftUI
 import Linkding
+import Shared
 
 struct LinkdingTagBookmarksView: View {
     @EnvironmentObject var bookmarkStore: LinkdingBookmarkStore
@@ -16,7 +17,7 @@ struct LinkdingTagBookmarksView: View {
             List {
                 if self.bookmarks().count > 0 {
                     ForEach(self.bookmarks()) { bookmark in
-                        LinkdingBookmarkView(bookmark: bookmark, showTags: false)
+                        BookmarkView(bookmark: bookmark, showTags: false)
                     }
                 } else {
                     Text("No bookmarks for this tag")
@@ -25,10 +26,10 @@ struct LinkdingTagBookmarksView: View {
             .navigationTitle("Bookmarks for \(self.title)")
     }
 
-    private func bookmarks() -> [LinkdingBookmarkEntity] {
-        guard let tagEntity = self.tag else {
-            return bookmarkStore.untagged
+    private func bookmarks() -> [Bookmark<Int>] {
+        let bookmarks = self.tag != nil ? self.tag!.bookmarks : self.bookmarkStore.untagged
+        return bookmarks.map {
+            Bookmark(id: $0.serverId, title: $0.displayTitle, url: $0.url, description: $0.websiteDescription, tags: $0.tags.map { Tag(id: $0.id, name: $0.name) })
         }
-        return tagEntity.bookmarks
     }
 }
