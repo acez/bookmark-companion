@@ -4,10 +4,9 @@
 //
 
 import SwiftUI
-import Linkding
 import Shared
 
-struct LinkdingSettingsView: View {
+public struct LinkdingSettingsView: View {
     var secureToken: Binding<String> = Binding(
         get: {
             guard let value = try? SecureSettingsSupport.getSecureSettingString(key: LinkdingSettingKeys.settingsToken.rawValue) else {
@@ -27,7 +26,10 @@ struct LinkdingSettingsView: View {
     @State var urlError: Bool = false
     @State var tokenError: Bool = false
 
-    var body: some View {
+    public init() {
+    }
+    
+    public var body: some View {
         Section("Linkding Settings") {
             VStack {
                 TextField(text: self.$url) {
