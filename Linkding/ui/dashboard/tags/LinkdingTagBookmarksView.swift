@@ -4,7 +4,6 @@
 //
 
 import SwiftUI
-import Linkding
 import Shared
 
 struct LinkdingTagBookmarksView: View {

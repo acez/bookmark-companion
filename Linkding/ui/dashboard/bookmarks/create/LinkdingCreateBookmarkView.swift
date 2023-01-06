@@ -1,20 +1,19 @@
 //
-// BookmarkEditor.swift
+// LinkdingCreateBookmarkView.swift
 // Created by Christian Wilhelm
 //
 
 import SwiftUI
-import Linkding
 import Shared
 
-struct BookmarkEditor: View {
+struct LinkdingCreateBookmarkView: View {
     @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject var bookmarkStore: LinkdingBookmarkStore
     @EnvironmentObject var tagStore: LinkdingTagStore
 
-    @ObservedObject var bookmark: LinkdingBookmarkEntity
-
-    @AppStorage(LinkdingSettingKeys.syncHadError.rawValue, store: AppStorageSupport.shared.sharedStore) var syncHadError: Bool = false
+    @AppStorage(LinkdingSettingKeys.createBookmarkDefaultArchived.rawValue, store: AppStorageSupport.shared.sharedStore) var defaultArchived: Bool = false
+    @AppStorage(LinkdingSettingKeys.createBookmarkDefaultUnread.rawValue, store: AppStorageSupport.shared.sharedStore) var defaultUnread: Bool = false
+    @AppStorage(LinkdingSettingKeys.createBookmarkDefaultShared.rawValue, store: AppStorageSupport.shared.sharedStore) var defaultShared: Bool = false
 
     @State var url: String = ""
     @State var title: String = ""
@@ -70,17 +69,23 @@ struct BookmarkEditor: View {
                     }
                 })
             }
-                .onAppear() {
-                    self.url = self.bookmark.url
-                    self.title = self.bookmark.title
-                    self.description = self.bookmark.urlDescription
-                    self.isArchived = self.bookmark.isArchived
-                    self.unread = self.bookmark.unread
-                    self.shared = self.bookmark.shared
-                    self.tags = Set(self.bookmark.tagNames)
-                }
-                .navigationBarTitle("Edit Bookmark")
+                .navigationBarTitle("Create Bookmark")
                 .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            if (self.url != "") {
+                                let repository = LinkdingBookmarkRepository(bookmarkStore: self.bookmarkStore, tagStore: self.tagStore)
+                                let bookmark = repository.createNewBookmark(url: self.url, title: self.title, description: self.description, isArchived: self.isArchived, unread: self.unread, shared: self.shared, tags: self.tags.map{ $0 })
+                                let syncClient = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
+                                Task {
+                                    try await syncClient.syncSingleBookmark(bookmark: bookmark)
+                                    self.presentationMode.wrappedValue.dismiss()
+                                }
+                            }
+                        }) {
+                            Image(systemName: "tray.and.arrow.down")
+                        }
+                    }
                     ToolbarItemGroup(placement: .navigationBarLeading) {
                         Button(action: {
                             self.presentationMode.wrappedValue.dismiss()
@@ -88,24 +93,14 @@ struct BookmarkEditor: View {
                             Image(systemName: "xmark")
                         }
                     }
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            if (self.url != "") {
-                                let repository = LinkdingBookmarkRepository(bookmarkStore: self.bookmarkStore, tagStore: self.tagStore)
-                                let bookmark = repository.updateBookmark(bookmark: self.bookmark, url: self.url, title: self.title, description: self.description, isArchived: self.isArchived, unread: self.unread, shared: self.shared, tags: self.tags.map { $0 })
-                                let syncClient = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
-                                Task {
-                                    try await syncClient.syncSingleBookmark(bookmark: bookmark)
-                                }
-                                self.presentationMode.wrappedValue.dismiss()
-                            }
-                        }) {
-                            Image(systemName: "tray.and.arrow.down")
-                        }
-                    }
                 }
                 .sheet(isPresented: self.$selectTagsOpen) {
                     SelectTagsView(selectedTags: self.$tags)
+                }
+                .onAppear() {
+                    self.isArchived = self.defaultArchived
+                    self.unread = self.defaultUnread
+                    self.shared = self.defaultShared
                 }
         }
     }

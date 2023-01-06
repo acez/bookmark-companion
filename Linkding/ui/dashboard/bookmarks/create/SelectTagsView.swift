@@ -4,7 +4,6 @@
 //
 
 import SwiftUI
-import Linkding
 
 struct SelectTagsView: View {
     @EnvironmentObject var tagStore: LinkdingTagStore

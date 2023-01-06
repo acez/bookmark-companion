@@ -4,7 +4,6 @@
 //
 
 import SwiftUI
-import Linkding
 
 struct CreateTagView: View {
     @Environment(\.presentationMode) private var presentationMode

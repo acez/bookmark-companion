@@ -4,16 +4,18 @@
 //
 
 import SwiftUI
-import Linkding
 
-struct LinkdingDashboardView: View {
+public struct LinkdingDashboardView: View {
     @Environment(\.scenePhase) var scenePhase
     let persistenceController = LinkdingPersistenceController.shared
 
     var tagStore: LinkdingTagStore = LinkdingTagStore()
     var bookmarkStore: LinkdingBookmarkStore = LinkdingBookmarkStore()
+    
+    public init() {
+    }
 
-    var body: some View {
+    public var body: some View {
         TabView {
             LinkdingBookmarkTabView()
                 .tabItem {

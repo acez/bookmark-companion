@@ -4,11 +4,11 @@
 //
 
 import SwiftUI
-import Linkding
 
 struct ConfigurationButton: View {
     @State var configurationOpen: Bool = false
     @State var hasSettingsError: Bool = false
+    @State var integrationSelection: String = "linkding"
 
     private let validator = LinkdingSettingsValidator()
 
@@ -24,7 +24,17 @@ struct ConfigurationButton: View {
         })
             .sheet(isPresented: self.$configurationOpen, content: {
                 NavigationView {
-                    ConfigurationView()
+                    List {
+                        // Copy of ConfigurationView structure
+                        // TODO: Needs to be replaced with general solution how to include the general integration configuration
+                        //       UI from the main app. This should not be implemented in each integration
+                        Section() {
+                            Picker("Select Bookmark Service", selection: self.$integrationSelection) {
+                                Text("Linkding").tag("linkding")
+                            }
+                        }
+                        LinkdingSettingsView()
+                    }
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button(action: {
