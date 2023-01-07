@@ -10,22 +10,40 @@ enum BookmarkIntegrations {
 }
 
 struct ConfigurationView: View {
+    @Environment(\.presentationMode) private var presentationMode
+    
     @State var selectedIntegration: BookmarkIntegrations = .linkding
+    @State var hasSettingsError: Bool = false
+    @State var integrationSelection: String = "linkding"
+    
+    private let validator = LinkdingSettingsValidator()
 
     var body: some View {
-        VStack {
-            List {
-                Section() {
-                    Picker("Select Bookmark Service", selection: self.$selectedIntegration) {
-                        Text("Linkding").tag(BookmarkIntegrations.linkding)
-                    }
-                }
-                switch self.selectedIntegration {
-                case .linkding:
-                    LinkdingSettingsView()
+        List {
+            Section() {
+                Picker("Select Bookmark Service", selection: self.$selectedIntegration) {
+                    Text("Linkding").tag(BookmarkIntegrations.linkding)
                 }
             }
-                .listStyle(.insetGrouped)
+            switch self.selectedIntegration {
+            case .linkding:
+                LinkdingSettingsView()
+            }
         }
+            .listStyle(.insetGrouped)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        if (!validator.validateSettings()) {
+                            self.hasSettingsError = true
+                        } else {
+                            self.hasSettingsError = false
+                        }
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("Close")
+                    }
+                }
+            }
     }
 }

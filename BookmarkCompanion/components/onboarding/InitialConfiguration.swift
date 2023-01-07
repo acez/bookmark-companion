@@ -37,3 +37,11 @@ struct InitialConfiguration: View {
             .navigationViewStyle(.stack)
     }
 }
+
+
+struct InitialConfiguration_Previews: PreviewProvider {
+    static var previews: some View {
+        InitialConfiguration()
+    }
+}
+

@@ -9,8 +9,16 @@ import SwiftUI
 import Linkding
 
 struct IntegrationDashboardView: View {
+    @State var openConfig: Bool = false
+    
     var body: some View {
-        LinkdingDashboardView()
+        LinkdingDashboardView(openConfig: self.$openConfig)
+            .sheet(isPresented: self.$openConfig, content: {
+                NavigationView {
+                    ConfigurationView()
+                        .navigationTitle("Configuration")
+                }
+            })
     }
 }
 

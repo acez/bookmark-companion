@@ -16,23 +16,18 @@ struct LinkdingTagsTabView: View {
 
     @State var selectedTag: LinkdingTagEntity? = nil
     @State var tagSearchString: String = ""
-    
     @State var createSheetOpen: Bool = false
     @State var filterSheetOpen: Bool = false
 
+    @Binding var openConfig: Bool
+    
     var body: some View {
         NavigationView {
             List {
-                if (self.syncHadError) {
+                if self.syncHadError {
                     Section() {
-                        Text("Synchronization error.")
-                            .foregroundColor(.red)
-                        if (self.syncErrorMessage != "") {
-                            Text(self.syncErrorMessage)
-                        }
-                        Text("Please check your URL and your Token in the configuration dialog.")
+                        SyncErrorView(errorDetails: self.syncErrorMessage)
                     }
-
                 }
                 if (self.tagSearchString == "" || "untagged".contains(self.tagSearchString.lowercased())) {
                     NavigationLink(destination: LinkdingTagBookmarksView(tag: nil, title: "untagged")) {
@@ -55,7 +50,9 @@ struct LinkdingTagsTabView: View {
                 }
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarLeading) {
-                        ConfigurationButton()
+                        ConfigurationButton(actionHandler: {
+                            self.openConfig.toggle()
+                        })
                     }
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         Button(action: {

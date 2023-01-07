@@ -18,8 +18,9 @@ struct LinkdingBookmarkTabView: View {
     @State var textFilter: String = ""
     @State var filterViewOpen: Bool = false
     @State var createBookmarkOpen: Bool = false
-    
     @State var bookmarkToEdit: Bookmark<UUID>? = nil
+    
+    @Binding var openConfig: Bool
 
     var body: some View {
         NavigationView {
@@ -44,7 +45,9 @@ struct LinkdingBookmarkTabView: View {
                     .searchable(text: self.$textFilter)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
-                            ConfigurationButton()
+                            ConfigurationButton(actionHandler: {
+                                self.openConfig.toggle()
+                            })
                         }
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
                             Button(action: {
