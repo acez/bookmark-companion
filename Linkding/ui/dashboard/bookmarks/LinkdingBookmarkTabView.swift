@@ -102,7 +102,7 @@ extension LinkdingBookmarkTabView: FilteredBookmarkStore {
     func filter(text: String) -> [Shared.Bookmark<UUID>] {
         return self.bookmarkStore.filtered(showArchived: self.showArchived, showUnreadOnly: self.showUnread, filterText: text)
             .map {
-                Bookmark(id: $0.internalId, title: $0.displayTitle, url: $0.url, description: $0.websiteDescription, tags: $0.tags)
+                Bookmark(id: $0.internalId, title: $0.displayTitle, url: $0.url, description: $0.displayDescription, tags: $0.tags)
             }
     }
 }

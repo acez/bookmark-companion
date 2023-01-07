@@ -147,6 +147,20 @@ public class LinkdingBookmarkEntity: NSManagedObject, Identifiable {
             return self.url
         }
     }
+    
+    public var displayDescription: String {
+        get {
+            if (self.urlDescription != "") {
+                return self.urlDescription
+            }
+            
+            if (self.websiteDescription != nil && self.websiteDescription != "") {
+                return self.websiteDescription!
+            }
+            
+            return ""
+        }
+    }
 }
 
 extension LinkdingBookmarkEntity {

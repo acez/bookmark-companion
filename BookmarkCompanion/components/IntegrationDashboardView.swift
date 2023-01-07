@@ -15,7 +15,13 @@ struct IntegrationDashboardView: View {
         LinkdingDashboardView(openConfig: self.$openConfig)
             .sheet(isPresented: self.$openConfig, content: {
                 NavigationView {
-                    ConfigurationView()
+                    ConfigurationView(
+                        dismissToolbarItem: {
+                            Text("Close")
+                        }, dismissHandler: {
+                            return true
+                        }
+                    )
                         .navigationTitle("Configuration")
                 }
             })

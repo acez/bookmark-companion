@@ -13,8 +13,6 @@ struct BookmarkEditor: View {
 
     @ObservedObject var bookmark: LinkdingBookmarkEntity
 
-    @AppStorage(LinkdingSettingKeys.syncHadError.rawValue, store: AppStorageSupport.shared.sharedStore) var syncHadError: Bool = false
-
     @State var url: String = ""
     @State var title: String = ""
     @State var description: String = ""
@@ -33,10 +31,10 @@ struct BookmarkEditor: View {
                         Text("URL")
                     }
                     TextField(text: $title) {
-                        Text("Title")
+                        Text(self.bookmark.websiteTitle ?? "Title")
                     }
                     TextField(text: $description) {
-                        Text("Description")
+                        Text(self.bookmark.websiteDescription ?? "Description")
                     }
                 }
                 Section("Flags") {

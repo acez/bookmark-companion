@@ -9,7 +9,7 @@ enum BookmarkIntegrations {
     case linkding
 }
 
-struct ConfigurationView: View {
+struct ConfigurationView<DismissToolbarItem: View>: View {
     @Environment(\.presentationMode) private var presentationMode
     
     @State var selectedIntegration: BookmarkIntegrations = .linkding
@@ -17,6 +17,9 @@ struct ConfigurationView: View {
     @State var integrationSelection: String = "linkding"
     
     private let validator = LinkdingSettingsValidator()
+    
+    @ViewBuilder var dismissToolbarItem: () -> DismissToolbarItem
+    var dismissHandler: () -> Bool
 
     var body: some View {
         List {
@@ -34,16 +37,26 @@ struct ConfigurationView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        if (!validator.validateSettings()) {
-                            self.hasSettingsError = true
-                        } else {
-                            self.hasSettingsError = false
+                        let success = self.dismissHandler()
+                        if success {
+                            self.presentationMode.wrappedValue.dismiss()
                         }
-                        self.presentationMode.wrappedValue.dismiss()
                     }) {
-                        Text("Close")
+                        self.dismissToolbarItem()
                     }
                 }
             }
+    }
+}
+
+struct ConfigurationView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            ConfigurationView(dismissToolbarItem: {
+                Text("Close")
+            }, dismissHandler: {
+                return true
+            })
+        }
     }
 }
