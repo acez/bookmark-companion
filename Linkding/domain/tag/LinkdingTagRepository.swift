@@ -13,7 +13,7 @@ public class LinkdingTagRepository {
     }
     
     public func createTag(tag: TagModel) -> LinkdingTagEntity {
-        let entity = self.getOrCreateEntity(serverId: tag.serverId)
+        let entity = self.getOrCreateEntity(serverId: tag.serverId, name: tag.name)
         entity.updateServerData(serverId: tag.serverId ?? 0, name: tag.name, dateAdded: tag.dateAdded)
         try? LinkdingPersistenceController.shared.viewContext.save()
         return entity
@@ -29,7 +29,7 @@ public class LinkdingTagRepository {
     public func batchApplyChanges(models: [TagModel]) {
         LinkdingPersistenceController.shared.viewContext.performAndWait {
             models.forEach {
-                let entity = self.getOrCreateEntity(serverId: $0.serverId)
+                let entity = self.getOrCreateEntity(serverId: $0.serverId, name: $0.name)
                 entity.updateServerData(serverId: $0.serverId ?? 0, name: $0.name, dateAdded: $0.dateAdded)
             }
             try? LinkdingPersistenceController.shared.viewContext.save()
@@ -48,13 +48,13 @@ public class LinkdingTagRepository {
         }
     }
     
-    private func getOrCreateEntity(serverId: Int?) -> LinkdingTagEntity {
+    private func getOrCreateEntity(serverId: Int?, name: String) -> LinkdingTagEntity {
         guard let id = serverId else {
-            return LinkdingTagEntity.init(context: LinkdingPersistenceController.shared.viewContext)
+            return LinkdingTagEntity.createTag(moc: LinkdingPersistenceController.shared.viewContext, name: name)
         }
         
         guard let entity = self.tagStore.getByServerId(serverId: id) else {
-            return LinkdingTagEntity.init(context: LinkdingPersistenceController.shared.viewContext)
+            return LinkdingTagEntity.createTag(moc: LinkdingPersistenceController.shared.viewContext, name: name)
         }
         
         return entity

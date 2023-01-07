@@ -4,7 +4,6 @@
 //
 
 import SwiftUI
-import Linkding
 import Shared
 
 struct LinkdingBookmarkTabView: View {
@@ -19,8 +18,9 @@ struct LinkdingBookmarkTabView: View {
     @State var textFilter: String = ""
     @State var filterViewOpen: Bool = false
     @State var createBookmarkOpen: Bool = false
-    
     @State var bookmarkToEdit: Bookmark<UUID>? = nil
+    
+    @Binding var openConfig: Bool
 
     var body: some View {
         NavigationView {
@@ -45,7 +45,9 @@ struct LinkdingBookmarkTabView: View {
                     .searchable(text: self.$textFilter)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
-                            ConfigurationButton()
+                            ConfigurationButton(actionHandler: {
+                                self.openConfig.toggle()
+                            })
                         }
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
                             Button(action: {
@@ -100,7 +102,7 @@ extension LinkdingBookmarkTabView: FilteredBookmarkStore {
     func filter(text: String) -> [Shared.Bookmark<UUID>] {
         return self.bookmarkStore.filtered(showArchived: self.showArchived, showUnreadOnly: self.showUnread, filterText: text)
             .map {
-                Bookmark(id: $0.internalId, title: $0.displayTitle, url: $0.url, description: $0.websiteDescription, tags: $0.tags)
+                Bookmark(id: $0.internalId, title: $0.displayTitle, url: $0.url, description: $0.displayDescription, tags: $0.tags)
             }
     }
 }
