@@ -6,6 +6,11 @@
 import SwiftUI
 import Shared
 
+struct FilterOption {
+    var id: String
+    var text: String
+}
+
 struct FilterTagView: View {
     @Environment(\.presentationMode) private var presentationMode
 

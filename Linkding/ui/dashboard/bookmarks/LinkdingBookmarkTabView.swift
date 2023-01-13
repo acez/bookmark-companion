@@ -53,11 +53,7 @@ struct LinkdingBookmarkTabView: View {
                             Button(action: {
                                 self.filterViewOpen = true
                             }) {
-                                if (self.showUnread == true || self.showArchived == true) {
-                                    Image(systemName: "line.3.horizontal.decrease.circle.fill")
-                                } else {
-                                    Image(systemName: "line.3.horizontal.decrease.circle")
-                                }
+                                Image(systemName: "slider.horizontal.3")
                             }
                             Button(action: {
                                 self.createBookmarkOpen = true
@@ -67,7 +63,7 @@ struct LinkdingBookmarkTabView: View {
                         }
                     }
                     .sheet(isPresented: self.$filterViewOpen) {
-                        LinkdingBookmarkTabFilterView()
+                        LinkdingBookmarkTabSettingsView()
                     }
                     .sheet(isPresented: self.$createBookmarkOpen) {
                         LinkdingCreateBookmarkView()
