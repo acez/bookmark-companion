@@ -20,6 +20,7 @@ public enum LinkdingSettingKeys: String {
     case createBookmarkDefaultArchived = "linkding.create.default.archived"
     
     case tagFilterOnlyUsed = "linkding.tags.filter.onlyused"
+    case tagSortOrder = "linkding.tags.sort.order"
 
     case syncRunning = "linkding.sync.running"
     case syncHadError = "linkding.sync.error"

@@ -35,7 +35,7 @@ struct LinkdingBookmarkTabSettingsView: View {
                     }
                 }
             }
-                .navigationTitle("Settings")
+                .navigationTitle("Bookmark Settings")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {

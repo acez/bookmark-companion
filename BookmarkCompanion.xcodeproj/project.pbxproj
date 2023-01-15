@@ -454,8 +454,6 @@
 			isa = PBXGroup;
 			children = (
 				5A41671E5DEA9D3F5B7FBB9E /* LinkdingBookmarkTabSettingsView.swift */,
-				83B84AC12974409900A4AD50 /* SortField.swift */,
-				83B84AC3297440AD00A4AD50 /* SortOrder.swift */,
 			);
 			path = filter;
 			sourceTree = "<group>";
@@ -653,6 +651,15 @@
 			path = configuration;
 			sourceTree = "<group>";
 		};
+		83B84AC52974609300A4AD50 /* sort */ = {
+			isa = PBXGroup;
+			children = (
+				83B84AC12974409900A4AD50 /* SortField.swift */,
+				83B84AC3297440AD00A4AD50 /* SortOrder.swift */,
+			);
+			path = sort;
+			sourceTree = "<group>";
+		};
 		83C05594296498D800550D73 /* migrations */ = {
 			isa = PBXGroup;
 			children = (
@@ -702,6 +709,7 @@
 		83DE86672946235D00E871FC /* Linkding */ = {
 			isa = PBXGroup;
 			children = (
+				83B84AC52974609300A4AD50 /* sort */,
 				8389D7A42964F6B700B7CCAA /* ui */,
 				830F885C2916D69300453E1A /* model */,
 				83B9F2E92909EA9800ADEB02 /* LinkdingModel.xcdatamodeld */,
