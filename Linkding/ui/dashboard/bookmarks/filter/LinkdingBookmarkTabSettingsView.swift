@@ -27,6 +27,7 @@ struct LinkdingBookmarkTabSettingsView: View {
                             Text("Title").tag(SortField.title)
                             Text("Description").tag(SortField.description)
                             Text("Date added").tag(SortField.dateAdded)
+                            Text("Date modified").tag(SortField.dateModified)
                         }
                         Picker("Sort order", selection: self.$sortOrder) {
                             Text("Ascending").tag(SortOrder.ascending)

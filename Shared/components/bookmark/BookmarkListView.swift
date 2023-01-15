@@ -15,6 +15,7 @@ public struct BookmarkListView<Content: View, ID: Hashable>: View {
     var showLinkButton: Bool
     var showTags: Bool
     var showDescription: Bool
+    var enableDelete: Bool
     var tapHandler: (Bookmark<ID>) -> Void
     var deleteHandler: (Bookmark<ID>) -> Void
     var preListView: () -> Content
@@ -24,6 +25,7 @@ public struct BookmarkListView<Content: View, ID: Hashable>: View {
         showLinkButton: Bool = true,
         showTags: Bool = true,
         showDescription: Bool = true,
+        enableDelete: Bool = true,
         tapHandler: @escaping (Bookmark<ID>) -> Void = { _ in },
         deleteHandler: @escaping (Bookmark<ID>) -> Void = { _ in },
         @ViewBuilder preListView: @escaping () -> Content = { EmptyView() }
@@ -32,6 +34,7 @@ public struct BookmarkListView<Content: View, ID: Hashable>: View {
         self.showLinkButton = showLinkButton
         self.showDescription = showDescription
         self.showTags = showTags
+        self.enableDelete = enableDelete
         self.tapHandler = tapHandler
         self.deleteHandler = deleteHandler
         self.preListView = preListView
@@ -51,7 +54,9 @@ public struct BookmarkListView<Content: View, ID: Hashable>: View {
                     tapHandler: self.tapHandler
                 )
             }
-            .onDelete(perform: self.onDelete)
+            .conditionalModifier(self.enableDelete, exec: {
+                $0.onDelete(perform: self.onDelete)
+            })
         }
         .searchable(text: self.$searchText)
     }
@@ -84,7 +89,7 @@ struct BookmarkListView_Previews: PreviewProvider {
     
     static var previews: some View {
         BookmarkListView(bookmarkStore: store)
-        BookmarkListView(bookmarkStore: store, showLinkButton: false, showTags: false, showDescription: false)
+        BookmarkListView(bookmarkStore: store, showLinkButton: false, showTags: false, showDescription: false, enableDelete: false)
         BookmarkListView(bookmarkStore: store, preListView: {
             Section() {
                 SyncErrorView(errorDetails: "Some more details about the error.")

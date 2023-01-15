@@ -84,6 +84,7 @@ struct LinkdingTagsTabView: View {
             .filteredTags(nameFilter: self.tagSearchString, onlyUsed: self.onlyUsed)
             .sorted {
                 let compareOrder = self.sortOrder == .ascending ? ComparisonResult.orderedAscending : ComparisonResult.orderedDescending
+
                 return $0.name.compare($1.name, options: .caseInsensitive) == compareOrder
             }
     }

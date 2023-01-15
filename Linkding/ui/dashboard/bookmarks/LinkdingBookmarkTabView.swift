@@ -18,7 +18,6 @@ struct LinkdingBookmarkTabView: View {
     @AppStorage(LinkdingSettingKeys.bookmarkSortField.rawValue, store: AppStorageSupport.shared.sharedStore)  var sortField: SortField = .url
     @AppStorage(LinkdingSettingKeys.bookmarkSortOrder.rawValue, store: AppStorageSupport.shared.sharedStore) var sortOrder: SortOrder = .ascending
 
-    @State var textFilter: String = ""
     @State var filterViewOpen: Bool = false
     @State var createBookmarkOpen: Bool = false
     @State var bookmarkToEdit: Bookmark<UUID>? = nil
@@ -45,7 +44,6 @@ struct LinkdingBookmarkTabView: View {
                     }
                 )
                     .navigationTitle("Bookmarks")
-                    .searchable(text: self.$textFilter)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
                             ConfigurationButton(actionHandler: {
@@ -99,33 +97,13 @@ struct LinkdingBookmarkTabView: View {
 
 extension LinkdingBookmarkTabView: FilteredBookmarkStore {
     func filter(text: String) -> [Shared.Bookmark<UUID>] {
+        let bookmarkSorter = BookmarkSorter(sortField: self.sortField, sortOrder: self.sortOrder)
         return self.bookmarkStore.filtered(showArchived: self.showArchived, showUnreadOnly: self.showUnread, filterText: text)
             .sorted {
-                self.compareBookmarks(a: $0, b: $1)
+                bookmarkSorter.compareBookmark(a: $0, b: $1)
             }
             .map {
                 Bookmark(id: $0.internalId, title: $0.displayTitle, url: $0.url, description: $0.displayDescription, tags: $0.tags)
             }
-    }
-    
-    private func compareBookmarks(a: LinkdingBookmarkEntity, b: LinkdingBookmarkEntity) -> Bool {
-        let compareOrder = self.sortOrder == .ascending ? ComparisonResult.orderedAscending : ComparisonResult.orderedDescending
-        
-        switch self.sortField {
-        case .url:
-            return a.url.compare(b.url, options: .caseInsensitive) == compareOrder
-        case .title:
-            return a.displayTitle.compare(b.displayTitle, options: .caseInsensitive) == compareOrder
-        case .description:
-            return a.displayDescription.compare(b.displayDescription, options: .caseInsensitive) == compareOrder
-        case .dateAdded:
-            guard let dateA = a.dateAdded else {
-                return true
-            }
-            guard let dateB = b.dateAdded else {
-                return true
-            }
-            return dateA.compare(dateB) == compareOrder
-        }
     }
 }
