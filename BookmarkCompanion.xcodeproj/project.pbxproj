@@ -26,7 +26,7 @@
 		835E60A12907F47800E86AFE /* BookmarkCompanion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 835E609F2907F47800E86AFE /* BookmarkCompanion.xcdatamodeld */; };
 		83666D102968B6900043E6B6 /* LinkdingSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4165AE00F6FB1EFC391C9C /* LinkdingSettingsView.swift */; };
 		83666D162968B8380043E6B6 /* LinkdingDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416881AEFF4047D3E4D13C /* LinkdingDashboardView.swift */; };
-		83666D172968B84A0043E6B6 /* LinkdingBookmarkTabFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41671E5DEA9D3F5B7FBB9E /* LinkdingBookmarkTabFilterView.swift */; };
+		83666D172968B84A0043E6B6 /* LinkdingBookmarkTabSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41671E5DEA9D3F5B7FBB9E /* LinkdingBookmarkTabSettingsView.swift */; };
 		83666D182968B84A0043E6B6 /* SelectTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416428745B3DB040241022 /* SelectTagsView.swift */; };
 		83666D192968B84A0043E6B6 /* LinkdingCreateBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4160C57605B3EFB0D108CE /* LinkdingCreateBookmarkView.swift */; };
 		83666D1A2968B84A0043E6B6 /* FilterTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830F88652917132E00453E1A /* FilterTagView.swift */; };
@@ -40,6 +40,10 @@
 		83666D2A2968EF640043E6B6 /* BaseIntegrationDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83666D292968EF640043E6B6 /* BaseIntegrationDashboard.swift */; };
 		83666D2E2968F3340043E6B6 /* ConfigurationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83666D2D2968F3340043E6B6 /* ConfigurationButton.swift */; };
 		837009BE29154860006D2A05 /* ShareBookmarkContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837009BD29154860006D2A05 /* ShareBookmarkContainerView.swift */; };
+		83B84AC22974409900A4AD50 /* SortField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B84AC12974409900A4AD50 /* SortField.swift */; };
+		83B84AC4297440AD00A4AD50 /* SortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B84AC3297440AD00A4AD50 /* SortOrder.swift */; };
+		83B84AC8297465EF00A4AD50 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B84AC7297465EF00A4AD50 /* View.swift */; };
+		83B84ACB297467F000A4AD50 /* BookmarkSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B84ACA297467F000A4AD50 /* BookmarkSorter.swift */; };
 		83C055962964992700550D73 /* LinkdingModel1To2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 83C055952964992700550D73 /* LinkdingModel1To2.xcmappingmodel */; };
 		83C055992964996D00550D73 /* LinkdingModel1To2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C055982964996D00550D73 /* LinkdingModel1To2.swift */; };
 		83C055A32964D59D00550D73 /* Linkding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83DE86662946235D00E871FC /* Linkding.framework */; };
@@ -199,7 +203,7 @@
 		5A41666141CB989234076D84 /* LinkdingBookmarkUpdateDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkUpdateDto.swift; sourceTree = "<group>"; };
 		5A4166DD9753C5B0E41A2791 /* LinkdingApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingApiClient.swift; sourceTree = "<group>"; };
 		5A4166FD1099935C7C7337C6 /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
-		5A41671E5DEA9D3F5B7FBB9E /* LinkdingBookmarkTabFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkTabFilterView.swift; sourceTree = "<group>"; };
+		5A41671E5DEA9D3F5B7FBB9E /* LinkdingBookmarkTabSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkTabSettingsView.swift; sourceTree = "<group>"; };
 		5A416750702516FEDD657464 /* PersistenceHistoryMerger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceHistoryMerger.swift; sourceTree = "<group>"; };
 		5A4167D09C774E55CD7B562C /* SecureSettingsSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureSettingsSupport.swift; sourceTree = "<group>"; };
 		5A4167E5BF9DD7626B404E6D /* LinkdingSyncClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingSyncClient.swift; sourceTree = "<group>"; };
@@ -245,6 +249,10 @@
 		83666D2D2968F3340043E6B6 /* ConfigurationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationButton.swift; sourceTree = "<group>"; };
 		837009BD29154860006D2A05 /* ShareBookmarkContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBookmarkContainerView.swift; sourceTree = "<group>"; };
 		83B06F1329105C600032F6FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		83B84AC12974409900A4AD50 /* SortField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortField.swift; sourceTree = "<group>"; };
+		83B84AC3297440AD00A4AD50 /* SortOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOrder.swift; sourceTree = "<group>"; };
+		83B84AC7297465EF00A4AD50 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		83B84ACA297467F000A4AD50 /* BookmarkSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkSorter.swift; sourceTree = "<group>"; };
 		83B9F2EA2909EA9800ADEB02 /* LinkdingModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinkdingModel.xcdatamodel; sourceTree = "<group>"; };
 		83C055932964979E00550D73 /* LinkdingModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LinkdingModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		83C055952964992700550D73 /* LinkdingModel1To2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = LinkdingModel1To2.xcmappingmodel; sourceTree = "<group>"; };
@@ -449,7 +457,7 @@
 		5A416C11181E89E664644C3A /* filter */ = {
 			isa = PBXGroup;
 			children = (
-				5A41671E5DEA9D3F5B7FBB9E /* LinkdingBookmarkTabFilterView.swift */,
+				5A41671E5DEA9D3F5B7FBB9E /* LinkdingBookmarkTabSettingsView.swift */,
 			);
 			path = filter;
 			sourceTree = "<group>";
@@ -647,6 +655,24 @@
 			path = configuration;
 			sourceTree = "<group>";
 		};
+		83B84AC52974609300A4AD50 /* sort */ = {
+			isa = PBXGroup;
+			children = (
+				83B84AC12974409900A4AD50 /* SortField.swift */,
+				83B84AC3297440AD00A4AD50 /* SortOrder.swift */,
+				83B84ACA297467F000A4AD50 /* BookmarkSorter.swift */,
+			);
+			path = sort;
+			sourceTree = "<group>";
+		};
+		83B84AC6297465E200A4AD50 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				83B84AC7297465EF00A4AD50 /* View.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 		83C05594296498D800550D73 /* migrations */ = {
 			isa = PBXGroup;
 			children = (
@@ -683,6 +709,7 @@
 		83DE86562946230A00E871FC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				83B84AC6297465E200A4AD50 /* extensions */,
 				83666D2B2968F2DE0043E6B6 /* base */,
 				83200674295B820100EC94F8 /* settings */,
 				5A416EFD95C7DCB9D7711A6A /* config */,
@@ -696,6 +723,7 @@
 		83DE86672946235D00E871FC /* Linkding */ = {
 			isa = PBXGroup;
 			children = (
+				83B84AC52974609300A4AD50 /* sort */,
 				8389D7A42964F6B700B7CCAA /* ui */,
 				830F885C2916D69300453E1A /* model */,
 				83B9F2E92909EA9800ADEB02 /* LinkdingModel.xcdatamodeld */,
@@ -960,6 +988,7 @@
 				83DE86772946239A00E871FC /* SyncErrorView.swift in Sources */,
 				83DE86752946239A00E871FC /* Integrations.swift in Sources */,
 				83C794CD295CD5E200BE88B9 /* SecureSettingsSupport.swift in Sources */,
+				83B84AC8297465EF00A4AD50 /* View.swift in Sources */,
 				8311A4E4294E2ED200B81008 /* BookmarkListView.swift in Sources */,
 				83DE86762946239A00E871FC /* BookmarkView.swift in Sources */,
 				83DE86722946239A00E871FC /* Tag.swift in Sources */,
@@ -983,9 +1012,11 @@
 				83DE867C294623AC00E871FC /* TagModel.swift in Sources */,
 				83666D182968B84A0043E6B6 /* SelectTagsView.swift in Sources */,
 				83C055992964996D00550D73 /* LinkdingModel1To2.swift in Sources */,
+				83B84AC4297440AD00A4AD50 /* SortOrder.swift in Sources */,
 				83DE86712946237000E871FC /* LinkdingPersistenceController.swift in Sources */,
 				83DE8689294623C400E871FC /* LinkdingTagDto.swift in Sources */,
 				83DE8685294623BC00E871FC /* PersistenceHistoryMerger.swift in Sources */,
+				83B84AC22974409900A4AD50 /* SortField.swift in Sources */,
 				83666D162968B8380043E6B6 /* LinkdingDashboardView.swift in Sources */,
 				83DE8683294623B800E871FC /* LinkdingTagStore.swift in Sources */,
 				83666D1B2968B84A0043E6B6 /* LinkdingTagsTabView.swift in Sources */,
@@ -999,7 +1030,7 @@
 				83DE868A294623C400E871FC /* LinkdingTagUpdateDto.swift in Sources */,
 				83DE867F294623B400E871FC /* LinkdingBookmarkRepository.swift in Sources */,
 				83DE8682294623B800E871FC /* LinkdingTagEntity.swift in Sources */,
-				83666D172968B84A0043E6B6 /* LinkdingBookmarkTabFilterView.swift in Sources */,
+				83666D172968B84A0043E6B6 /* LinkdingBookmarkTabSettingsView.swift in Sources */,
 				83DE868C294623C400E871FC /* LinkdingApiClient.swift in Sources */,
 				83DE867E294623B400E871FC /* LinkdingBookmarkEntity.swift in Sources */,
 				83DE8687294623BC00E871FC /* PersistenceHistoryCleaner.swift in Sources */,
@@ -1012,6 +1043,7 @@
 				83DE8680294623B400E871FC /* LinkdingBookmarkStore.swift in Sources */,
 				83DE8688294623C000E871FC /* LinkdingSyncClient.swift in Sources */,
 				83DE8684294623BC00E871FC /* PersistenceHistoryFetcher.swift in Sources */,
+				83B84ACB297467F000A4AD50 /* BookmarkSorter.swift in Sources */,
 				83DE868B294623C400E871FC /* LinkdingBookmarkDto.swift in Sources */,
 				5A41676F23EDFE375E1B3FCE /* LinkdingSettingsValidator.swift in Sources */,
 				83666D1A2968B84A0043E6B6 /* FilterTagView.swift in Sources */,

@@ -13,6 +13,8 @@ struct LinkdingTagsTabView: View {
     @AppStorage(LinkdingSettingKeys.syncHadError.rawValue, store: AppStorageSupport.shared.sharedStore) var syncHadError: Bool = false
     @AppStorage(LinkdingSettingKeys.syncErrorMessage.rawValue, store: AppStorageSupport.shared.sharedStore) var syncErrorMessage: String = ""
     @AppStorage(LinkdingSettingKeys.tagFilterOnlyUsed.rawValue, store: AppStorageSupport.shared.sharedStore) var onlyUsed: Bool = false
+    
+    @AppStorage(LinkdingSettingKeys.tagSortOrder.rawValue, store: AppStorageSupport.shared.sharedStore) var sortOrder: SortOrder = .ascending
 
     @State var selectedTag: LinkdingTagEntity? = nil
     @State var tagSearchString: String = ""
@@ -58,11 +60,7 @@ struct LinkdingTagsTabView: View {
                         Button(action: {
                             self.filterSheetOpen = true
                         }) {
-                            if (self.onlyUsed == true) {
-                                Image(systemName: "line.3.horizontal.decrease.circle.fill")
-                            } else {
-                                Image(systemName: "line.3.horizontal.decrease.circle")
-                            }
+                            Image(systemName: "slider.horizontal.3")
                         }
                         Button(action: {
                             self.createSheetOpen = true
@@ -84,5 +82,10 @@ struct LinkdingTagsTabView: View {
     private func filteredTags() -> [LinkdingTagEntity] {
         return self.tagStore
             .filteredTags(nameFilter: self.tagSearchString, onlyUsed: self.onlyUsed)
+            .sorted {
+                let compareOrder = self.sortOrder == .ascending ? ComparisonResult.orderedAscending : ComparisonResult.orderedDescending
+
+                return $0.name.compare($1.name, options: .caseInsensitive) == compareOrder
+            }
     }
 }

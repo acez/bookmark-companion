@@ -10,35 +10,31 @@ struct FilterTagView: View {
     @Environment(\.presentationMode) private var presentationMode
 
     @AppStorage(LinkdingSettingKeys.tagFilterOnlyUsed.rawValue, store: AppStorageSupport.shared.sharedStore) var onlyUsed: Bool = false
+    @AppStorage(LinkdingSettingKeys.tagSortOrder.rawValue, store: AppStorageSupport.shared.sharedStore) var sortOrder: SortOrder = .ascending
 
-    @State var selection: Set<String> = []
-    
-    @State private var filterOptions = [
-        FilterOption(id: "onlyused", text: "Hide unused tags")
-    ]
-    
     var body: some View {
         NavigationView {
             VStack {
-                List(self.filterOptions, id: \.id, selection: self.$selection) { option in
-                    Text(option.text)
-                }
-                    .environment(\.editMode, .constant(EditMode.active))
-            }
-            .navigationTitle("Filter options")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        self.onlyUsed = self.selection.contains("onlyused")
-                        self.presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Text("Apply")
+                Form {
+                    Section("Filter") {
+                        Toggle("Hide unused tags", isOn: self.$onlyUsed)
+                    }
+                    Section("Sort") {
+                        Picker("Sort order", selection: self.$sortOrder) {
+                            Text("Ascending").tag(SortOrder.ascending)
+                            Text("Descending").tag(SortOrder.descending)
+                        }
                     }
                 }
             }
-            .onAppear() {
-                if (self.onlyUsed) {
-                    self.selection.update(with: "onlyused")
+            .navigationTitle("Tag Settings")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("Close")
+                    }
                 }
             }
         }

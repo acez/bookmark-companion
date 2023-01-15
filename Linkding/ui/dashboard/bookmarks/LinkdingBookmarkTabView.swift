@@ -14,8 +14,10 @@ struct LinkdingBookmarkTabView: View {
     @AppStorage(LinkdingSettingKeys.bookmarkFilterUnread.rawValue, store: AppStorageSupport.shared.sharedStore) var showUnread: Bool = false
     @AppStorage(LinkdingSettingKeys.syncHadError.rawValue, store: AppStorageSupport.shared.sharedStore) var syncHadError: Bool = false
     @AppStorage(LinkdingSettingKeys.syncErrorMessage.rawValue, store: AppStorageSupport.shared.sharedStore) var syncErrorMessage: String = ""
+    
+    @AppStorage(LinkdingSettingKeys.bookmarkSortField.rawValue, store: AppStorageSupport.shared.sharedStore)  var sortField: SortField = .url
+    @AppStorage(LinkdingSettingKeys.bookmarkSortOrder.rawValue, store: AppStorageSupport.shared.sharedStore) var sortOrder: SortOrder = .ascending
 
-    @State var textFilter: String = ""
     @State var filterViewOpen: Bool = false
     @State var createBookmarkOpen: Bool = false
     @State var bookmarkToEdit: Bookmark<UUID>? = nil
@@ -42,7 +44,6 @@ struct LinkdingBookmarkTabView: View {
                     }
                 )
                     .navigationTitle("Bookmarks")
-                    .searchable(text: self.$textFilter)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
                             ConfigurationButton(actionHandler: {
@@ -53,11 +54,7 @@ struct LinkdingBookmarkTabView: View {
                             Button(action: {
                                 self.filterViewOpen = true
                             }) {
-                                if (self.showUnread == true || self.showArchived == true) {
-                                    Image(systemName: "line.3.horizontal.decrease.circle.fill")
-                                } else {
-                                    Image(systemName: "line.3.horizontal.decrease.circle")
-                                }
+                                Image(systemName: "slider.horizontal.3")
                             }
                             Button(action: {
                                 self.createBookmarkOpen = true
@@ -67,7 +64,7 @@ struct LinkdingBookmarkTabView: View {
                         }
                     }
                     .sheet(isPresented: self.$filterViewOpen) {
-                        LinkdingBookmarkTabFilterView()
+                        LinkdingBookmarkTabSettingsView()
                     }
                     .sheet(isPresented: self.$createBookmarkOpen) {
                         LinkdingCreateBookmarkView()
@@ -100,7 +97,11 @@ struct LinkdingBookmarkTabView: View {
 
 extension LinkdingBookmarkTabView: FilteredBookmarkStore {
     func filter(text: String) -> [Shared.Bookmark<UUID>] {
+        let bookmarkSorter = BookmarkSorter(sortField: self.sortField, sortOrder: self.sortOrder)
         return self.bookmarkStore.filtered(showArchived: self.showArchived, showUnreadOnly: self.showUnread, filterText: text)
+            .sorted {
+                bookmarkSorter.compareBookmark(a: $0, b: $1)
+            }
             .map {
                 Bookmark(id: $0.internalId, title: $0.displayTitle, url: $0.url, description: $0.displayDescription, tags: $0.tags)
             }

@@ -8,6 +8,8 @@ import Foundation
 public enum LinkdingSettingKeys: String {
     case bookmarkFilterArchived = "linkding.bookmarks.filter.archived"
     case bookmarkFilterUnread = "linkding.bookmarks.filter.unread"
+    case bookmarkSortField = "linkding.bookmarks.sort.field"
+    case bookmarkSortOrder = "linkding.bookmarks.sort.order"
 
     case settingsUrl = "linkding.settings.url"
     case settingsToken = "linkding.settings.token"
@@ -18,6 +20,7 @@ public enum LinkdingSettingKeys: String {
     case createBookmarkDefaultArchived = "linkding.create.default.archived"
     
     case tagFilterOnlyUsed = "linkding.tags.filter.onlyused"
+    case tagSortOrder = "linkding.tags.sort.order"
 
     case syncRunning = "linkding.sync.running"
     case syncHadError = "linkding.sync.error"
