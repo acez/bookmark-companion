@@ -11,13 +11,27 @@ struct LinkdingBookmarkTabSettingsView: View {
 
     @AppStorage(LinkdingSettingKeys.bookmarkFilterArchived.rawValue, store: AppStorageSupport.shared.sharedStore) var showArchived: Bool = false
     @AppStorage(LinkdingSettingKeys.bookmarkFilterUnread.rawValue, store: AppStorageSupport.shared.sharedStore) var showUnread: Bool = false
-
+    @AppStorage(LinkdingSettingKeys.bookmarkSortField.rawValue, store: AppStorageSupport.shared.sharedStore)  var sortField: SortField = .url
+    @AppStorage(LinkdingSettingKeys.bookmarkSortOrder.rawValue, store: AppStorageSupport.shared.sharedStore) var sortOrder: SortOrder = .ascending
+    
     var body: some View {
         NavigationView {
             VStack {
                 Form {
                     Section("Filter") {
                         Toggle("Only show unread", isOn: self.$showUnread)
+                    }
+                    Section("Sort") {
+                        Picker("Sort by field", selection: self.$sortField) {
+                            Text("URL").tag(SortField.url)
+                            Text("Title").tag(SortField.title)
+                            Text("Description").tag(SortField.description)
+                            Text("Date added").tag(SortField.dateAdded)
+                        }
+                        Picker("Sort order", selection: self.$sortOrder) {
+                            Text("Ascending").tag(SortOrder.ascending)
+                            Text("Descending").tag(SortOrder.descending)
+                        }
                     }
                 }
             }
