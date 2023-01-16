@@ -69,14 +69,14 @@ struct LinkdingTagsTabView: View {
                         }
                     }
                 }
-                .sheet(isPresented: self.$createSheetOpen) {
-                    CreateTagView()
-                }
-                .sheet(isPresented: self.$filterSheetOpen) {
-                    FilterTagView()
-                }
                 .searchable(text: self.$tagSearchString)
         }
+            .sheet(isPresented: self.$createSheetOpen) {
+                CreateTagView()
+            }
+            .sheet(isPresented: self.$filterSheetOpen) {
+                FilterTagView()
+            }
     }
 
     private func filteredTags() -> [LinkdingTagEntity] {
