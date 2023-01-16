@@ -63,24 +63,24 @@ struct LinkdingBookmarkTabView: View {
                             }
                         }
                     }
-                    .sheet(isPresented: self.$filterViewOpen) {
-                        LinkdingBookmarkTabSettingsView()
-                    }
-                    .sheet(isPresented: self.$createBookmarkOpen) {
-                        LinkdingCreateBookmarkView()
-                    }
-                    .sheet(item: self.$bookmarkToEdit) { bookmark in
-                        let entity = self.bookmarkStore.getByInternalId(internalId: bookmark.id)
-                        if entity != nil {
-                            BookmarkEditor(bookmark: entity!)
-                        }
-                    }
                     .refreshable {
                         let syncClient = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
                         try? await syncClient.sync()
                     }
             }
         }
+            .sheet(isPresented: self.$filterViewOpen) {
+                LinkdingBookmarkTabSettingsView()
+            }
+            .sheet(isPresented: self.$createBookmarkOpen) {
+                LinkdingCreateBookmarkView()
+            }
+            .sheet(item: self.$bookmarkToEdit) { bookmark in
+                let entity = self.bookmarkStore.getByInternalId(internalId: bookmark.id)
+                if entity != nil {
+                    BookmarkEditor(bookmark: entity!)
+                }
+            }
             .navigationViewStyle(.stack)
     }
 
