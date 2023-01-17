@@ -11,6 +11,8 @@ struct FilterTagView: View {
 
     @AppStorage(LinkdingSettingKeys.tagFilterOnlyUsed.rawValue, store: AppStorageSupport.shared.sharedStore) var onlyUsed: Bool = false
     @AppStorage(LinkdingSettingKeys.tagSortOrder.rawValue, store: AppStorageSupport.shared.sharedStore) var sortOrder: SortOrder = .ascending
+    @AppStorage(LinkdingSettingKeys.tagViewBookmarkDescription.rawValue, store: AppStorageSupport.shared.sharedStore) var viewBookmarkDescription: Bool = false
+    @AppStorage(LinkdingSettingKeys.tagViewBookmarkTags.rawValue, store: AppStorageSupport.shared.sharedStore) var viewBookmarkTags: Bool = false
 
     var body: some View {
         NavigationView {
@@ -24,6 +26,10 @@ struct FilterTagView: View {
                             Text("Ascending").tag(SortOrder.ascending)
                             Text("Descending").tag(SortOrder.descending)
                         }
+                    }
+                    Section("View") {
+                        Toggle("Show bookmark description", isOn: self.$viewBookmarkDescription)
+                        Toggle("Show bookmark tags", isOn: self.$viewBookmarkTags)
                     }
                 }
             }

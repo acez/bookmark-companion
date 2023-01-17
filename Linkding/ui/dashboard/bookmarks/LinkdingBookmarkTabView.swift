@@ -17,6 +17,9 @@ struct LinkdingBookmarkTabView: View {
     
     @AppStorage(LinkdingSettingKeys.bookmarkSortField.rawValue, store: AppStorageSupport.shared.sharedStore)  var sortField: SortField = .url
     @AppStorage(LinkdingSettingKeys.bookmarkSortOrder.rawValue, store: AppStorageSupport.shared.sharedStore) var sortOrder: SortOrder = .ascending
+    
+    @AppStorage(LinkdingSettingKeys.bookmarkViewDescription.rawValue, store: AppStorageSupport.shared.sharedStore) var viewDescription: Bool = true
+    @AppStorage(LinkdingSettingKeys.bookmarkViewTags.rawValue, store: AppStorageSupport.shared.sharedStore) var viewTags: Bool = true
 
     @State var filterViewOpen: Bool = false
     @State var createBookmarkOpen: Bool = false
@@ -29,6 +32,8 @@ struct LinkdingBookmarkTabView: View {
             VStack {
                 BookmarkListView(
                     bookmarkStore: self,
+                    showTags: self.viewTags,
+                    showDescription: self.viewDescription,
                     tapHandler: { bookmark in
                         self.bookmarkToEdit = bookmark
                     },
