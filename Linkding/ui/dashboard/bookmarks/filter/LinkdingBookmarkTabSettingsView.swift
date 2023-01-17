@@ -13,6 +13,8 @@ struct LinkdingBookmarkTabSettingsView: View {
     @AppStorage(LinkdingSettingKeys.bookmarkFilterUnread.rawValue, store: AppStorageSupport.shared.sharedStore) var showUnread: Bool = false
     @AppStorage(LinkdingSettingKeys.bookmarkSortField.rawValue, store: AppStorageSupport.shared.sharedStore)  var sortField: SortField = .url
     @AppStorage(LinkdingSettingKeys.bookmarkSortOrder.rawValue, store: AppStorageSupport.shared.sharedStore) var sortOrder: SortOrder = .ascending
+    @AppStorage(LinkdingSettingKeys.bookmarkViewDescription.rawValue, store: AppStorageSupport.shared.sharedStore) var viewDescription: Bool = true
+    @AppStorage(LinkdingSettingKeys.bookmarkViewTags.rawValue, store: AppStorageSupport.shared.sharedStore) var viewTags: Bool = true
     
     var body: some View {
         NavigationView {
@@ -33,6 +35,10 @@ struct LinkdingBookmarkTabSettingsView: View {
                             Text("Ascending").tag(SortOrder.ascending)
                             Text("Descending").tag(SortOrder.descending)
                         }
+                    }
+                    Section("View") {
+                        Toggle("Show description", isOn: self.$viewDescription)
+                        Toggle("Show tags", isOn: self.$viewTags)
                     }
                 }
             }

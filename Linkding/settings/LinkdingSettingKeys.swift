@@ -10,6 +10,8 @@ public enum LinkdingSettingKeys: String {
     case bookmarkFilterUnread = "linkding.bookmarks.filter.unread"
     case bookmarkSortField = "linkding.bookmarks.sort.field"
     case bookmarkSortOrder = "linkding.bookmarks.sort.order"
+    case bookmarkViewDescription = "linkding.bookmarks.view.description"
+    case bookmarkViewTags = "linkding.bookmarks.view.tags"
 
     case settingsUrl = "linkding.settings.url"
     case settingsToken = "linkding.settings.token"
