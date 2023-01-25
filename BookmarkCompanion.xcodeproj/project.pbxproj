@@ -226,6 +226,7 @@
 		83017F382910313800C341D2 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		83017F3D2910313800C341D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83017F472910314800C341D2 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
+		83038DA52981BB6F00A1FA15 /* Structure.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Structure.md; sourceTree = "<group>"; };
 		8305572B2946371C007E128A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		830F885D2916D6A200453E1A /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
 		830F885F2916D74C00453E1A /* TagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
@@ -259,6 +260,9 @@
 		83C055982964996D00550D73 /* LinkdingModel1To2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkdingModel1To2.swift; sourceTree = "<group>"; };
 		83C0559F2964D59D00550D73 /* LinkdingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinkdingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83C055AB2964D5CA00550D73 /* CoreDataMigration1To2Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMigration1To2Test.swift; sourceTree = "<group>"; };
+		83D49631297C2F0500CBF95F /* screenshot_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot_ipad.png; sourceTree = "<group>"; };
+		83D49632297C2F0500CBF95F /* screenshot_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot_iphone.png; sourceTree = "<group>"; };
+		83D49634297C2F2B00CBF95F /* Release.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Release.md; sourceTree = "<group>"; };
 		83DE86552946230A00E871FC /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83DE86572946230A00E871FC /* Shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
 		83DE86662946235D00E871FC /* Linkding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Linkding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -554,6 +558,7 @@
 		835E60882907F47700E86AFE = {
 			isa = PBXGroup;
 			children = (
+				83D4962F297C2F0500CBF95F /* Docs */,
 				8305572B2946371C007E128A /* Config.xcconfig */,
 				838748812946304700E7ADF8 /* AppStore */,
 				835E60932907F47700E86AFE /* BookmarkCompanion */,
@@ -704,6 +709,25 @@
 				83C055AB2964D5CA00550D73 /* CoreDataMigration1To2Test.swift */,
 			);
 			path = migrations;
+			sourceTree = "<group>";
+		};
+		83D4962F297C2F0500CBF95F /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				83D49630297C2F0500CBF95F /* Images */,
+				83D49634297C2F2B00CBF95F /* Release.md */,
+				83038DA52981BB6F00A1FA15 /* Structure.md */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
+		83D49630297C2F0500CBF95F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				83D49631297C2F0500CBF95F /* screenshot_ipad.png */,
+				83D49632297C2F0500CBF95F /* screenshot_iphone.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		83DE86562946230A00E871FC /* Shared */ = {
