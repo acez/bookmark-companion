@@ -226,6 +226,7 @@
 		83017F382910313800C341D2 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		83017F3D2910313800C341D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83017F472910314800C341D2 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
+		83038DA52981BB6F00A1FA15 /* Structure.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Structure.md; sourceTree = "<group>"; };
 		8305572B2946371C007E128A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		830F885D2916D6A200453E1A /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
 		830F885F2916D74C00453E1A /* TagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
@@ -715,6 +716,7 @@
 			children = (
 				83D49630297C2F0500CBF95F /* Images */,
 				83D49634297C2F2B00CBF95F /* Release.md */,
+				83038DA52981BB6F00A1FA15 /* Structure.md */,
 			);
 			path = Docs;
 			sourceTree = "<group>";
