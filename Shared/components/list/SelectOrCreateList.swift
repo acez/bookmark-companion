@@ -5,20 +5,41 @@
 
 import SwiftUI
 
-protocol ItemListProvider: Identifiable {
+protocol SelectOrCreateItemListProvider: Identifiable {
     func getItemText() -> String
 }
 
-struct SelectOrCreateList<MODEL: ItemListProvider>: View {
+struct SelectOrCreateList<MODEL: SelectOrCreateItemListProvider>: View {
     var items: [MODEL]
+    var createActionHandler: (String) -> Void
     
     @State private var searchTerm: String = ""
     
     var body: some View {
-        List(self.filteredItems()) {
-            Text($0.getItemText())
+        List {
+            if self.filteredItems().isEmpty {
+                if  self.searchTerm == "" {
+                    Text("No items")
+                } else {
+                    Button(action: {
+                        self.createActionHandler(self.searchTerm)
+                    }) {
+                        HStack {
+                            Image(systemName: "square.and.pencil")
+                                .foregroundColor(.blue)
+                            Text("Create \(self.searchTerm)")
+                                .foregroundColor(.blue)
+                        }
+                    }
+                    .buttonStyle(.plain)
+                }
+            } else {
+                ForEach(self.filteredItems()) {
+                    Text($0.getItemText())
+                }
+            }
         }
-            .searchable(text: self.$searchTerm)
+        .searchable(text: self.$searchTerm)
     }
     
     func filteredItems() -> [MODEL] {
@@ -32,7 +53,7 @@ struct SelectOrCreateList<MODEL: ItemListProvider>: View {
 }
 
 struct SelectOrCreateList_Previews: PreviewProvider {
-    struct Item: ItemListProvider, Identifiable {
+    struct Item: SelectOrCreateItemListProvider, Identifiable {
         var id: UUID
         var name: String
         
@@ -44,12 +65,21 @@ struct SelectOrCreateList_Previews: PreviewProvider {
     @State static var selection: [Item] = []
     
     static var previews: some View {
-        SelectOrCreateList(
-            items: [
-                Item(id: UUID(), name: "item-1"),
-                Item(id: UUID(), name: "item-2"),
-                Item(id: UUID(), name: "item-3")
-            ]
-        )
+        NavigationView {
+            SelectOrCreateList(
+                items: [
+                    Item(id: UUID(), name: "item-1"),
+                    Item(id: UUID(), name: "item-2"),
+                    Item(id: UUID(), name: "item-3")
+                ],
+                createActionHandler: {_ in}
+            )
+        }.previewDisplayName("with items")
+        NavigationView {
+            SelectOrCreateList<Item>(
+                items: [],
+                createActionHandler: {_ in}
+            )
+        }.previewDisplayName("without items")
     }
 }
