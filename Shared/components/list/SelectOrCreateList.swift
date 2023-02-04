@@ -5,17 +5,22 @@
 
 import SwiftUI
 
-protocol SelectOrCreateItemListProvider: Identifiable {
+public protocol SelectOrCreateItemListProvider: Identifiable {
     func getItemText() -> String
 }
 
-struct SelectOrCreateList<MODEL: SelectOrCreateItemListProvider>: View {
-    var items: [MODEL]
-    var createActionHandler: (String) -> Void
-    
+public struct SelectOrCreateList<MODEL: SelectOrCreateItemListProvider>: View {
+    private var items: [MODEL]
+    private var createActionHandler: (String) -> Void
+
     @State private var searchTerm: String = ""
+
+    public init(items: [MODEL], createActionHandler: @escaping (String) -> Void) {
+        self.items = items
+        self.createActionHandler = createActionHandler
+    }
     
-    var body: some View {
+    public var body: some View {
         List {
             if self.filteredItems().isEmpty {
                 if  self.searchTerm == "" {
@@ -47,8 +52,14 @@ struct SelectOrCreateList<MODEL: SelectOrCreateItemListProvider>: View {
             return self.items
         }
         
+        let searchTermLower = self.searchTerm.lowercased()
+        
         return self.items
-            .filter { $0.getItemText().contains(self.searchTerm) }
+            .filter {
+                return $0.getItemText()
+                    .lowercased()
+                    .contains(searchTermLower)
+            }
     }
 }
 
