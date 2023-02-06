@@ -5,23 +5,25 @@
 
 import SwiftUI
 
-public protocol SelectOrCreateItemListProvider: Identifiable {
+public protocol SelectOrCreateItemListProvider: Identifiable, Hashable {
     func getItemText() -> String
 }
 
-public struct SelectOrCreateList<MODEL: SelectOrCreateItemListProvider>: View {
-    private var items: [MODEL]
+public struct SelectOrCreateList<T: SelectOrCreateItemListProvider>: View {
+    private var items: [T]
     private var createActionHandler: (String) -> Void
 
     @State private var searchTerm: String = ""
+    @Binding var selectedItems: Set<T>
 
-    public init(items: [MODEL], createActionHandler: @escaping (String) -> Void) {
+    public init(items: [T], selectedItems: Binding<Set<T>>, createActionHandler: @escaping (String) -> Void) {
         self.items = items
         self.createActionHandler = createActionHandler
+        self._selectedItems = selectedItems
     }
     
     public var body: some View {
-        List {
+        Form {
             if self.filteredItems().isEmpty {
                 if  self.searchTerm == "" {
                     Text("No items")
@@ -39,15 +41,16 @@ public struct SelectOrCreateList<MODEL: SelectOrCreateItemListProvider>: View {
                     .buttonStyle(.plain)
                 }
             } else {
-                ForEach(self.filteredItems()) {
+                List(self.filteredItems(), selection: self.$selectedItems) {
                     Text($0.getItemText())
                 }
+                .environment(\.editMode, .constant(EditMode.active))
             }
         }
         .searchable(text: self.$searchTerm)
     }
     
-    func filteredItems() -> [MODEL] {
+    func filteredItems() -> [T] {
         if self.searchTerm == "" {
             return self.items
         }
@@ -73,22 +76,27 @@ struct SelectOrCreateList_Previews: PreviewProvider {
         }
     }
     
+    static let itemList = [
+        Item(id: UUID(), name: "item-1"),
+        Item(id: UUID(), name: "item-2"),
+        Item(id: UUID(), name: "item-3")
+    ]
+    
     @State static var selection: [Item] = []
+    @State static var selectedItems: Set<Item> = [itemList[1]]
     
     static var previews: some View {
         NavigationView {
             SelectOrCreateList(
-                items: [
-                    Item(id: UUID(), name: "item-1"),
-                    Item(id: UUID(), name: "item-2"),
-                    Item(id: UUID(), name: "item-3")
-                ],
+                items: self.itemList,
+                selectedItems: self.$selectedItems,
                 createActionHandler: {_ in}
             )
         }.previewDisplayName("with items")
         NavigationView {
             SelectOrCreateList<Item>(
                 items: [],
+                selectedItems: self.$selectedItems,
                 createActionHandler: {_ in}
             )
         }.previewDisplayName("without items")
