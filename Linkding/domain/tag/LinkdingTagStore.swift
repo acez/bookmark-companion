@@ -35,6 +35,11 @@ public class LinkdingTagStore: NSObject, ObservableObject {
             .first
     }
 
+    public func getByInternalIdList(uuids: [UUID]) -> [LinkdingTagEntity] {
+        return self.tags
+            .filter { uuids.contains($0.internalId) }
+    }
+
     public func getByNameList(names: [String]) -> [LinkdingTagEntity] {
         return self.tags
             .filter { names.contains($0.name) }

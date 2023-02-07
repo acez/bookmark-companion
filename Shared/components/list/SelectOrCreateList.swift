@@ -9,27 +9,28 @@ public protocol SelectOrCreateItemListProvider: Identifiable, Hashable {
     func getItemText() -> String
 }
 
-public struct SelectOrCreateList<T: SelectOrCreateItemListProvider>: View {
+public struct SelectOrCreateList<T: SelectOrCreateItemListProvider, I: Hashable>: View {
     private var items: [T]
     private var createActionHandler: (String) -> Void
 
     @State private var searchTerm: String = ""
-    @Binding var selectedItems: Set<T>
-
-    public init(items: [T], selectedItems: Binding<Set<T>>, createActionHandler: @escaping (String) -> Void) {
+    @Binding var selectedItems: Set<I>
+    
+    public init(items: [T], selectedItems: Binding<Set<I>>, createActionHandler: @escaping (String) -> Void) {
         self.items = items
         self.createActionHandler = createActionHandler
         self._selectedItems = selectedItems
     }
     
     public var body: some View {
-        Form {
+        List(selection: self.$selectedItems) {
             if self.filteredItems().isEmpty {
                 if  self.searchTerm == "" {
                     Text("No items")
                 } else {
                     Button(action: {
                         self.createActionHandler(self.searchTerm)
+                        self.searchTerm = ""
                     }) {
                         HStack {
                             Image(systemName: "square.and.pencil")
@@ -41,13 +42,14 @@ public struct SelectOrCreateList<T: SelectOrCreateItemListProvider>: View {
                     .buttonStyle(.plain)
                 }
             } else {
-                List(self.filteredItems(), selection: self.$selectedItems) {
+                ForEach(self.filteredItems()) {
                     Text($0.getItemText())
                 }
-                .environment(\.editMode, .constant(EditMode.active))
             }
         }
-        .searchable(text: self.$searchTerm)
+        .listStyle(.insetGrouped)
+        .environment(\.editMode, .constant(EditMode.active))
+        .searchable(text: self.$searchTerm, placement: .toolbar)
     }
     
     func filteredItems() -> [T] {
@@ -83,7 +85,7 @@ struct SelectOrCreateList_Previews: PreviewProvider {
     ]
     
     @State static var selection: [Item] = []
-    @State static var selectedItems: Set<Item> = [itemList[1]]
+    @State static var selectedItems: Set<UUID> = [itemList[1].id]
     
     static var previews: some View {
         NavigationView {
@@ -92,13 +94,16 @@ struct SelectOrCreateList_Previews: PreviewProvider {
                 selectedItems: self.$selectedItems,
                 createActionHandler: {_ in}
             )
-        }.previewDisplayName("with items")
+            .navigationTitle("Dummy Title")
+        }
+        .previewDisplayName("with items")
         NavigationView {
-            SelectOrCreateList<Item>(
+            SelectOrCreateList<Item, UUID>(
                 items: [],
                 selectedItems: self.$selectedItems,
                 createActionHandler: {_ in}
             )
+            .navigationTitle("Dummy Title")
         }.previewDisplayName("without items")
     }
 }

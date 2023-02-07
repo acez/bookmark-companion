@@ -21,6 +21,12 @@ public class LinkdingTagEntity: NSManagedObject, Identifiable {
             })
         }
     }
+    
+    public var id: UUID {
+        get {
+            return self.internalId
+        }
+    }
 
     public func updateServerData(serverId: Int, name: String, dateAdded: Date?) {
         self.serverId = serverId
