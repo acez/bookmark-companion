@@ -47,9 +47,8 @@ public struct SelectOrCreateList<T: SelectOrCreateItemListProvider, I: Hashable>
                 }
             }
         }
-        .listStyle(.insetGrouped)
         .environment(\.editMode, .constant(EditMode.active))
-        .searchable(text: self.$searchTerm, placement: .toolbar)
+        .searchable(text: self.$searchTerm)
     }
     
     func filteredItems() -> [T] {
