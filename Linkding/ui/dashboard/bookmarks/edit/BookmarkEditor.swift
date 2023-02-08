@@ -19,9 +19,16 @@ struct BookmarkEditor: View {
     @State var isArchived: Bool = false
     @State var unread: Bool = false
     @State var shared: Bool = false
-    @State var tags = Set<String>()
+    @State var tags = Set<UUID>()
 
     @State var selectTagsOpen: Bool = false
+    
+    var tagEntities: [LinkdingTagEntity] {
+        get {
+            return self.tagStore
+                .getByInternalIdList(uuids: self.tags.map { $0 })
+        }
+    }
 
     var body: some View {
         NavigationView {
@@ -47,8 +54,8 @@ struct BookmarkEditor: View {
                 }
                 Section(content: {
                     if (self.tags.count > 0) {
-                        ForEach(self.tags.map { $0 }, id: \.self) { tag in
-                            Text(tag)
+                        ForEach(self.tagEntities) { tag in
+                            Text(tag.name)
                         }
                     } else {
                         Text("No tags selected")
@@ -74,7 +81,7 @@ struct BookmarkEditor: View {
                     self.isArchived = self.bookmark.isArchived
                     self.unread = self.bookmark.unread
                     self.shared = self.bookmark.shared
-                    self.tags = Set(self.bookmark.tagNames)
+                    self.tags = Set(self.bookmark.tags.map { $0.id })
                 }
                 .navigationBarTitle("Edit Bookmark")
                 .toolbar {
@@ -89,7 +96,7 @@ struct BookmarkEditor: View {
                         Button(action: {
                             if (self.url != "") {
                                 let repository = LinkdingBookmarkRepository(bookmarkStore: self.bookmarkStore, tagStore: self.tagStore)
-                                let bookmark = repository.updateBookmark(bookmark: self.bookmark, url: self.url, title: self.title, description: self.description, isArchived: self.isArchived, unread: self.unread, shared: self.shared, tags: self.tags.map { $0 })
+                                let bookmark = repository.updateBookmark(bookmark: self.bookmark, url: self.url, title: self.title, description: self.description, isArchived: self.isArchived, unread: self.unread, shared: self.shared, tags: self.tagEntities.map { $0.name })
                                 let syncClient = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
                                 Task {
                                     try await syncClient.syncSingleBookmark(bookmark: bookmark)
