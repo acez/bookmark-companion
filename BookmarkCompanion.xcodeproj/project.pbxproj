@@ -18,6 +18,7 @@
 		8311A4E4294E2ED200B81008 /* BookmarkListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311A4E3294E2ED200B81008 /* BookmarkListView.swift */; };
 		8311A4E6294E4AEF00B81008 /* BookmarkTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311A4E5294E4AEF00B81008 /* BookmarkTagsView.swift */; };
 		8311A4E8294E4CBB00B81008 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311A4E7294E4CBB00B81008 /* TagView.swift */; };
+		835B9596299567CA00845773 /* CommonSelectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835B9595299567CA00845773 /* CommonSelectListView.swift */; };
 		835E60952907F47700E86AFE /* BookmarkCompanionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E60942907F47700E86AFE /* BookmarkCompanionApp.swift */; };
 		835E60972907F47700E86AFE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E60962907F47700E86AFE /* ContentView.swift */; };
 		835E60992907F47800E86AFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 835E60982907F47800E86AFE /* Assets.xcassets */; };
@@ -239,6 +240,7 @@
 		8311A4E5294E4AEF00B81008 /* BookmarkTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTagsView.swift; sourceTree = "<group>"; };
 		8311A4E7294E4CBB00B81008 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		8312CF4E29100EED00CE3C1C /* BookmarkCompanion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BookmarkCompanion.entitlements; sourceTree = "<group>"; };
+		835B9595299567CA00845773 /* CommonSelectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSelectListView.swift; sourceTree = "<group>"; };
 		835E60912907F47700E86AFE /* BookmarkCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookmarkCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		835E60942907F47700E86AFE /* BookmarkCompanionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCompanionApp.swift; sourceTree = "<group>"; };
 		835E60962907F47700E86AFE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 			isa = PBXGroup;
 			children = (
 				83D468BD29857F69008CA7FA /* SelectOrCreateList.swift */,
+				835B9595299567CA00845773 /* CommonSelectListView.swift */,
 			);
 			path = list;
 			sourceTree = "<group>";
@@ -1034,6 +1037,7 @@
 				83666D2E2968F3340043E6B6 /* ConfigurationButton.swift in Sources */,
 				83DE86792946239A00E871FC /* Bookmark.swift in Sources */,
 				83C794CF295CD5F500BE88B9 /* AppStorageSupport.swift in Sources */,
+				835B9596299567CA00845773 /* CommonSelectListView.swift in Sources */,
 				83DE867A2946239A00E871FC /* GlobalSettingKeys.swift in Sources */,
 				5A4166EAFAE4A7F3A27837C4 /* TagListView.swift in Sources */,
 				83D468BE29857F69008CA7FA /* SelectOrCreateList.swift in Sources */,
@@ -1139,7 +1143,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
@@ -1168,7 +1172,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
@@ -1315,7 +1319,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BookmarkCompanion/BookmarkCompanion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BookmarkCompanion/Preview Content\"";
 				DEVELOPMENT_TEAM = "$(inherited)";
 				ENABLE_PREVIEWS = YES;
@@ -1351,7 +1355,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BookmarkCompanion/BookmarkCompanion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BookmarkCompanion/Preview Content\"";
 				DEVELOPMENT_TEAM = "$(inherited)";
 				ENABLE_PREVIEWS = YES;
