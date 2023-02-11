@@ -29,9 +29,9 @@ struct CommonSelectListView<T: CommonListItem>: View {
     }
     
     var body: some View {
-        List(selection: self.selectedItems) {
+        List {
             ForEach(self.items) { item in
-                Text(item.getDisplayText())
+                SelectableListItemView(text: item.getDisplayText(), selected: self.selectedItems.wrappedValue.contains(item))
             }
         }
     }
@@ -48,7 +48,8 @@ struct CommonListView_Previews: PreviewProvider {
     
     static var testItems = [
         TestItem(id: UUID(), text: "test-1"),
-        TestItem(id: UUID(), text: "test-2")
+        TestItem(id: UUID(), text: "test-2"),
+        TestItem(id: UUID(), text: "test-3")
     ]
     
     @State static var selection: Set<TestItem> = [testItems[0]]
