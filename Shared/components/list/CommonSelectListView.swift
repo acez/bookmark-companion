@@ -38,7 +38,6 @@ public struct CommonSelectListView<T: CommonListItem>: View {
                 } else {
                     Button(action: {
                         self.createNotFoundHandler?.createItem(text: self.searchTerm)
-                        self.searchTerm = ""
                     }) {
                         HStack {
                             Image(systemName: "square.and.pencil")
