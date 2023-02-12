@@ -10,19 +10,16 @@ import Shared
 struct ShareBookmarkTagSelect: View {
     @EnvironmentObject var tagStore: LinkdingTagStore
     @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.dismissSearch) private var dismissSearch
 
-    @Binding var selectedTags: Set<UUID>
+    @Binding var selectedTags: Set<LinkdingTagEntity>
 
     var body: some View {
         NavigationView {
-            SelectOrCreateList(
+            CommonSelectListView(
                 items: self.tagStore.tags,
                 selectedItems: self.$selectedTags,
-                createActionHandler: {tagName in
-                    let repository = LinkdingTagRepository(tagStore: self.tagStore)
-                    let createdTag = repository.createTag(tag: TagModel(name: tagName))
-                    self.selectedTags.insert(createdTag.internalId)
-                }
+                createNotFoundHandler: self
             )
             .navigationBarTitle("Select tags")
             .toolbar {
@@ -38,3 +35,11 @@ struct ShareBookmarkTagSelect: View {
     }
 }
 
+extension ShareBookmarkTagSelect: CreateNotFoundItemHandler {
+    func createItem(text: String) {
+        let repository = LinkdingTagRepository(tagStore: self.tagStore)
+        let createdTag = repository.createTag(tag: TagModel(name: text))
+        self.selectedTags.insert(createdTag)
+        self.dismissSearch()
+    }
+}

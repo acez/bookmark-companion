@@ -42,6 +42,12 @@ public class LinkdingBookmarkEntity: NSManagedObject, Identifiable {
             }
         }
     }
+    
+    public var tagEntities: [LinkdingTagEntity] {
+        get {
+            self.relTags.map { $0 as! LinkdingTagEntity }
+        }
+    }
 
     public func needsUpdate(
         serverId: Int,

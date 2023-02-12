@@ -21,17 +21,10 @@ struct ShareBookmarkCreate: View {
     @State var isArchived: Bool = false
     @State var unread: Bool = false
     @State var shared: Bool = false
-    @State var tags = Set<UUID>()
+    @State var tags = Set<LinkdingTagEntity>()
 
     @State var selectTagsOpen: Bool = false
 
-    var tagEntities: [LinkdingTagEntity] {
-        get {
-            return self.tagStore
-                .getByInternalIdList(uuids: self.tags.map { $0 })
-        }
-    }
-    
     var onClose: @MainActor () -> ()
 
     var body: some View {
@@ -58,7 +51,7 @@ struct ShareBookmarkCreate: View {
                 }
                 Section(content: {
                     if (self.tags.count > 0) {
-                        ForEach(self.tagEntities) { tag in
+                        ForEach(self.tags.map { $0 }) { tag in
                             Text(tag.name)
                         }
                     } else {
@@ -84,7 +77,7 @@ struct ShareBookmarkCreate: View {
                         Button(action: {
                             if (self.url != "") {
                                 let repository = LinkdingBookmarkRepository(bookmarkStore: self.bookmarkStore, tagStore: self.tagStore)
-                                _ = repository.createNewBookmark(url: self.url, title: self.title, description: self.description, isArchived: self.isArchived, unread: self.unread, shared: self.shared, tags: self.tagEntities.map{ $0.name })
+                                _ = repository.createNewBookmark(url: self.url, title: self.title, description: self.description, isArchived: self.isArchived, unread: self.unread, shared: self.shared, tags: self.tags.map{ $0.name })
                                 self.onClose()
                             }
                         }) {

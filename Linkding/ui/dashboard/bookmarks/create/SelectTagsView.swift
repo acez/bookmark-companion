@@ -11,19 +11,14 @@ struct SelectTagsView: View {
     @Environment(\.presentationMode) private var presentationMode
     @Environment(\.dismissSearch) private var dismissSearch
 
-    @Binding var selectedTags: Set<UUID>
+    @Binding var selectedTags: Set<LinkdingTagEntity>
 
     var body: some View {
         NavigationView {
-            SelectOrCreateList(
+            CommonSelectListView(
                 items: self.tagStore.tags,
                 selectedItems: self.$selectedTags,
-                createActionHandler: { tagName in
-                    let repository = LinkdingTagRepository(tagStore: self.tagStore)
-                    let createdTag = repository.createTag(tag: TagModel(name: tagName))
-                    self.selectedTags.insert(createdTag.internalId)
-                    dismissSearch()
-                }
+                createNotFoundHandler: self
             )
                 .navigationBarTitle("Select tags")
                 .toolbar {
@@ -39,8 +34,17 @@ struct SelectTagsView: View {
     }
 }
 
-extension LinkdingTagEntity: SelectOrCreateItemListProvider {
-    public func getItemText() -> String {
+extension SelectTagsView: CreateNotFoundItemHandler {
+    func createItem(text: String) {
+        let repository = LinkdingTagRepository(tagStore: self.tagStore)
+        let createdTag = repository.createTag(tag: TagModel(name: text))
+        self.selectedTags.insert(createdTag)
+        self.dismissSearch()
+    }
+}
+
+extension LinkdingTagEntity: CommonListItem {
+    public func getDisplayText() -> String {
         return self.name
     }
 }
