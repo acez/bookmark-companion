@@ -7,7 +7,8 @@ import SwiftUI
 
 struct SelectableListItemView: View {
     var text: String
-    @State var selected: Bool
+    var selected: Bool
+    var tapHandler: () -> Void
     
     var body: some View {
         HStack {
@@ -19,16 +20,23 @@ struct SelectableListItemView: View {
         }
         .contentShape(Rectangle())
         .onTapGesture {
-            self.selected.toggle()
+            self.tapHandler()
         }
     }
 }
 
 struct SelectableListItemView_Previews: PreviewProvider {
+    @State static var item1Selected: Bool = true
+    @State static var item2Selected: Bool = false
+    
     static var previews: some View {
         List {
-            SelectableListItemView(text: "item-1", selected: true)
-            SelectableListItemView(text: "item-2", selected: false)
+            SelectableListItemView(text: "item-1", selected: item1Selected, tapHandler: {
+                item1Selected.toggle()
+            })
+            SelectableListItemView(text: "item-2", selected: item2Selected, tapHandler: {
+                item2Selected.toggle()
+            })
         }
     }
 }

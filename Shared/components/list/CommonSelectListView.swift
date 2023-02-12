@@ -5,15 +5,15 @@
 
 import SwiftUI
 
-protocol CreateNotFoundItemHandler {
+public protocol CreateNotFoundItemHandler {
     func createItem(text: String)
 }
 
-protocol CommonListItem: Hashable, Identifiable {
+public protocol CommonListItem: Hashable, Identifiable {
     func getDisplayText() -> String
 }
 
-struct CommonSelectListView<T: CommonListItem>: View {
+public struct CommonSelectListView<T: CommonListItem>: View {
     private var createNotFoundHandler: CreateNotFoundItemHandler?
     private var items: [T]
     private var selectedItems: Binding<Set<T>>
@@ -28,10 +28,16 @@ struct CommonSelectListView<T: CommonListItem>: View {
         self.selectedItems = selectedItems
     }
     
-    var body: some View {
+    public var body: some View {
         List {
             ForEach(self.items) { item in
-                SelectableListItemView(text: item.getDisplayText(), selected: self.selectedItems.wrappedValue.contains(item))
+                SelectableListItemView(text: item.getDisplayText(), selected: self.selectedItems.wrappedValue.contains(item), tapHandler: {
+                    if self.selectedItems.wrappedValue.contains(item) {
+                        self.selectedItems.wrappedValue.remove(item)
+                    } else {
+                        self.selectedItems.wrappedValue.insert(item)
+                    }
+                })
             }
         }
     }
