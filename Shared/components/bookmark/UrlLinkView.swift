@@ -14,14 +14,17 @@ public struct UrlLinkView: View {
 
     public var body: some View {
         let url = self.getUrl()
-        if (url != nil) {
-            Link(destination: url!, label: {
-                Image(systemName: "link")
-            })
-        } else {
-            Image(systemName: "xmark")
-                .foregroundColor(.red)
+        VStack {
+            if (url != nil) {
+                Link(destination: url!, label: {
+                    Image(systemName: "link")
+                })
+            } else {
+                Image(systemName: "xmark")
+                    .foregroundColor(.red)
+            }
         }
+        .padding(.leading, 28)
     }
 
     private func getUrl() -> URL? {

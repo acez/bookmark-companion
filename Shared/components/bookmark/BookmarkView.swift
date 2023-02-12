@@ -28,26 +28,30 @@ public struct BookmarkView<ID: Hashable>: View {
 
     public var body: some View {
         HStack {
-            VStack(alignment: .leading) {
-                Text(self.bookmark.title.trimmingCharacters(in: .whitespacesAndNewlines))
-                    .fontWeight(.bold)
-                    .lineLimit(1)
-                if self.bookmark.description != nil && self.bookmark.description != "" && self.showDescription == true {
-                    HStack(alignment: .top) {
-                        Text(self.bookmark.description!)
-                            .fontWeight(.light)
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(self.bookmark.title.trimmingCharacters(in: .whitespacesAndNewlines))
+                        .fontWeight(.bold)
+                        .lineLimit(1)
+                    if self.bookmark.description != nil && self.bookmark.description != "" && self.showDescription == true {
+                        HStack(alignment: .top) {
+                            Text(self.bookmark.description!)
+                                .fontWeight(.light)
+                        }
+                    }
+                    if self.bookmark.tags.count > 0 && self.showTags {
+                        BookmarkTagsView(tags: self.bookmark.tags)
                     }
                 }
-                if self.bookmark.tags.count > 0 && self.showTags {
-                    BookmarkTagsView(tags: self.bookmark.tags)
-                }
+                Spacer()
             }
+                .contentShape(Rectangle())
                 .onTapGesture(perform: {
                     self.tapHandler(self.bookmark)
                 })
             if self.showLinkButton {
-                Spacer()
                 UrlLinkView(url: self.bookmark.url)
+                    .contentShape(Rectangle())
             }
         }
     }
