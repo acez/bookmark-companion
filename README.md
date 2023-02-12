@@ -22,6 +22,7 @@ After that you can just compile & run the project with XCode.
 ## Documentation
 
 * [New App Releases](Docs/Release.md)
+* [App Structure](Docs/Structure.md)
 
 ## AppStore
 
