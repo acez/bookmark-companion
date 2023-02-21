@@ -5,6 +5,6 @@
 
 import Foundation
 
-protocol BackendSupportClientProtocol {
-    func isBackendAvailable() -> Bool
+public protocol BackendSupportClientProtocol {
+    func isBackendAvailable() async -> Bool
 }

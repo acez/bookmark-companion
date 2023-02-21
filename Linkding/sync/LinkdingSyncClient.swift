@@ -228,3 +228,16 @@ public class LinkdingSyncClient: ObservableObject {
         }
     }
 }
+
+extension LinkdingSyncClient: BackendSupportClientProtocol {    
+    public func isBackendAvailable() async -> Bool {
+        do {
+            _ = try await self.apiClient.loadBookmarks()
+            return true
+        } catch (_) {
+            return false
+        }
+    }
+    
+    
+}
