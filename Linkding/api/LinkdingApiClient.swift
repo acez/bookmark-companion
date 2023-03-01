@@ -245,4 +245,17 @@ public class LinkdingApiClient: NSObject {
 
         return try self.decodeJson(content: content)
     }
+    
+    func apiAvailable() async throws -> Bool {
+        guard let url: URL = try? self.buildUrl(path: [LinkdingApiClient.ENDPOINT_BOOKMARKS]) else {
+            return false
+        }
+        let (_, response) = try await self.performRequest(request: self.buildRequest(url: url))
+        
+        if (response.statusCode != 200) {
+            return false
+        }
+        
+        return true
+    }
 }

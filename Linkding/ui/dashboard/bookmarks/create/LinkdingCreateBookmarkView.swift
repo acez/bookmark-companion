@@ -24,21 +24,34 @@ struct LinkdingCreateBookmarkView: View {
     @State var tags = Set<LinkdingTagEntity>()
 
     @State var selectTagsOpen: Bool = false
+    @State var linkdingAvailable: Bool = false
     
     var body: some View {
         NavigationView {
             Form {
-                Section("Bookmark") {
-                    TextField(text: $url) {
-                        Text("URL")
+                Section(
+                    content: {
+                        TextField(text: $url) {
+                            Text("URL")
+                        }
+                        TextField(text: $title) {
+                            Text("Title")
+                        }
+                        TextField(text: $description) {
+                            Text("Description")
+                        }
+                    },
+                    header: {
+                        Text( "Bookmark")
+                    },
+                    footer: {
+                        if !self.linkdingAvailable {
+                            Text("Linkding backend is not available. Bookmark is stored on your device.")
+                                .font(.caption)
+                                .foregroundColor(.red)
+                        }
                     }
-                    TextField(text: $title) {
-                        Text("Title")
-                    }
-                    TextField(text: $description) {
-                        Text("Description")
-                    }
-                }
+                )
                 Section("Flags") {
                     Toggle(isOn: $unread) {
                         Text("Unread")
@@ -101,6 +114,14 @@ struct LinkdingCreateBookmarkView: View {
                     self.isArchived = self.defaultArchived
                     self.unread = self.defaultUnread
                     self.shared = self.defaultShared
+                    let syncClient = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
+                    Task {
+                        if await syncClient.isBackendAvailable() {
+                            self.linkdingAvailable = true
+                        } else {
+                            self.linkdingAvailable = false
+                        }
+                    }
                 }
         }
     }
