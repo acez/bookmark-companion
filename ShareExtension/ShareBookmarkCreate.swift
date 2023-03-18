@@ -76,9 +76,17 @@ struct ShareBookmarkCreate: View {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         Button(action: {
                             if (self.url != "") {
-                                let repository = LinkdingBookmarkRepository(bookmarkStore: self.bookmarkStore, tagStore: self.tagStore)
-                                _ = repository.createNewBookmark(url: self.url, title: self.title, description: self.description, isArchived: self.isArchived, unread: self.unread, shared: self.shared, tags: self.tags.map{ $0.name })
-                                self.onClose()
+                                Task {
+                                    let repository = LinkdingBookmarkRepository(bookmarkStore: self.bookmarkStore, tagStore: self.tagStore)
+                                    let createdBookmark = repository.createNewBookmark(url: self.url, title: self.title, description: self.description, isArchived: self.isArchived, unread: self.unread, shared: self.shared, tags: self.tags.map{ $0.name })
+                                    let sync = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
+                                    do {
+                                        try await sync.syncSingleBookmark(bookmark: createdBookmark)
+                                    } catch (_) {
+                                        self.onClose()
+                                    }
+                                    self.onClose()
+                                }
                             }
                         }) {
                             Image(systemName: "tray.and.arrow.down")

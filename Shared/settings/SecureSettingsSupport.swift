@@ -13,7 +13,8 @@ public class SecureSettingsSupport {
         let keychainItemQuery = [
             kSecAttrAccount: key,
             kSecValueData: data,
-            kSecClass: kSecClassGenericPassword
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrAccessGroup: "group.bookmarkcompanion"
         ] as CFDictionary
         SecItemDelete(keychainItemQuery)
         SecItemAdd(keychainItemQuery, nil)
@@ -25,7 +26,8 @@ public class SecureSettingsSupport {
             kSecClass: kSecClassGenericPassword,
             kSecReturnAttributes: true,
             kSecReturnData: true,
-            kSecMatchLimit: 1
+            kSecMatchLimit: 1,
+            kSecAttrAccessGroup: "group.bookmarkcompanion"
         ] as CFDictionary
         var result: AnyObject?
         SecItemCopyMatching(keychainItemQuery, &result)
@@ -42,7 +44,8 @@ public class SecureSettingsSupport {
     public static func deleteSecureSetting(key: String) {
         let keychainItemQuery = [
             kSecAttrAccount: key,
-            kSecClass: kSecClassGenericPassword
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrAccessGroup: "group.bookmarkcompanion"
         ] as CFDictionary
         SecItemDelete(keychainItemQuery)
     }

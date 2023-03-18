@@ -21,8 +21,10 @@ public class LinkdingApiClient: NSObject {
     private let baseUrl: String
     private let jsonDecoder: JSONDecoder
     private let jsonEncoder: JSONEncoder
+    private let urlSession: URLSession
 
     init(baseUrl: String, apiToken: String) {
+        
         self.baseUrl = baseUrl.last == "/" ?
             String(baseUrl.dropLast()) :
             baseUrl
@@ -57,6 +59,8 @@ public class LinkdingApiClient: NSObject {
         self.jsonEncoder = JSONEncoder()
         self.jsonEncoder.dateEncodingStrategy = .formatted(dateFormatterWithFractional)
         self.jsonEncoder.outputFormatting = .withoutEscapingSlashes
+        
+        self.urlSession = URLSession.shared
     }
 
     private func buildRequest(url: URL, httpMethod: String? = nil, body: Data? = nil) throws -> URLRequest {
@@ -116,9 +120,9 @@ public class LinkdingApiClient: NSObject {
     private func performRequest(request: URLRequest) async throws -> (Data, HTTPURLResponse) {
         let content: Data
         let response: URLResponse
-
+        
         do {
-            (content, response) = try await URLSession.shared.data(for: request)
+            (content, response) = try await self.urlSession.data(for: request)
         } catch (let error) {
             if let urlError = error as? URLError {
                 throw LinkdingApiError(message: urlError.localizedDescription)

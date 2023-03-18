@@ -237,6 +237,4 @@ extension LinkdingSyncClient: BackendSupportClientProtocol {
             return false
         }
     }
-    
-    
 }

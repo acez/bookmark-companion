@@ -23,13 +23,15 @@ class ShareViewController: UIViewController {
         }
         return ""
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         Task {
             let sharedUrl = await self.getSharedUrl()
-            let container = ShareBookmarkContainerView(onClose: self.closeDialog, url: sharedUrl)
+            let container = ShareBookmarkContainerView(onClose: {
+                self.extensionContext!.completeRequest(returningItems: nil, completionHandler: nil)
+            }, url: sharedUrl)
             let child = UIHostingController(rootView: container)
 
             self.view.addSubview(child.view)
@@ -40,9 +42,5 @@ class ShareViewController: UIViewController {
             child.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
             child.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         }
-    }
-
-    private func closeDialog() {
-        self.extensionContext!.completeRequest(returningItems: nil, completionHandler: nil)
     }
 }
