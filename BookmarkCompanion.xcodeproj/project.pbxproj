@@ -18,6 +18,7 @@
 		8311A4E4294E2ED200B81008 /* BookmarkListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311A4E3294E2ED200B81008 /* BookmarkListView.swift */; };
 		8311A4E6294E4AEF00B81008 /* BookmarkTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311A4E5294E4AEF00B81008 /* BookmarkTagsView.swift */; };
 		8311A4E8294E4CBB00B81008 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311A4E7294E4CBB00B81008 /* TagView.swift */; };
+		833626CD29C683C200E02683 /* AccessTokenMigrationToAppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833626CB29C6831000E02683 /* AccessTokenMigrationToAppGroup.swift */; };
 		835B9596299567CA00845773 /* CommonSelectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835B9595299567CA00845773 /* CommonSelectListView.swift */; };
 		835B95982997DB5900845773 /* SelectableListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835B95972997DB5900845773 /* SelectableListItemView.swift */; };
 		835E60952907F47700E86AFE /* BookmarkCompanionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E60942907F47700E86AFE /* BookmarkCompanionApp.swift */; };
@@ -242,6 +243,7 @@
 		8311A4E5294E4AEF00B81008 /* BookmarkTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTagsView.swift; sourceTree = "<group>"; };
 		8311A4E7294E4CBB00B81008 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		8312CF4E29100EED00CE3C1C /* BookmarkCompanion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BookmarkCompanion.entitlements; sourceTree = "<group>"; };
+		833626CB29C6831000E02683 /* AccessTokenMigrationToAppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenMigrationToAppGroup.swift; sourceTree = "<group>"; };
 		835B9595299567CA00845773 /* CommonSelectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSelectListView.swift; sourceTree = "<group>"; };
 		835B95972997DB5900845773 /* SelectableListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableListItemView.swift; sourceTree = "<group>"; };
 		835E60912907F47700E86AFE /* BookmarkCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookmarkCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -564,6 +566,14 @@
 			path = settings;
 			sourceTree = "<group>";
 		};
+		833626CA29C682C600E02683 /* migrations */ = {
+			isa = PBXGroup;
+			children = (
+				833626CB29C6831000E02683 /* AccessTokenMigrationToAppGroup.swift */,
+			);
+			path = migrations;
+			sourceTree = "<group>";
+		};
 		835E60882907F47700E86AFE = {
 			isa = PBXGroup;
 			children = (
@@ -775,6 +785,7 @@
 		83DE86672946235D00E871FC /* Linkding */ = {
 			isa = PBXGroup;
 			children = (
+				833626CA29C682C600E02683 /* migrations */,
 				83B84AC52974609300A4AD50 /* sort */,
 				8389D7A42964F6B700B7CCAA /* ui */,
 				830F885C2916D69300453E1A /* model */,
@@ -1076,6 +1087,7 @@
 				83666D162968B8380043E6B6 /* LinkdingDashboardView.swift in Sources */,
 				83DE8683294623B800E871FC /* LinkdingTagStore.swift in Sources */,
 				83666D1B2968B84A0043E6B6 /* LinkdingTagsTabView.swift in Sources */,
+				833626CD29C683C200E02683 /* AccessTokenMigrationToAppGroup.swift in Sources */,
 				83DE8686294623BC00E871FC /* PersistenceHistoryObserver.swift in Sources */,
 				83DE868D294623C400E871FC /* LinkdingBookmarkUpdateDto.swift in Sources */,
 				83DE8681294623B800E871FC /* LinkdingTagRepository.swift in Sources */,
