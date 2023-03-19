@@ -38,13 +38,14 @@ public struct LinkdingDashboardView: View, BaseIntegrationDashboard {
             .environmentObject(self.bookmarkStore)
             .onAppear() {
                 LinkdingPersistenceController.shared.setViewContextData(name: "viewContext", author: "BookmarkCompanion")
+                
+                // Migration of linkding token access to app group
+                AccessTokenMigrationToAppGroup().migrate()
+
                 Task {
                     let sync = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
                     try await sync.sync()
                 }
-                
-                // Migration of linkding token access to app group
-                AccessTokenMigrationToAppGroup().migrate()
             }
             .onChange(of: scenePhase, perform: { newPhase in
                 if newPhase == .active {
