@@ -81,12 +81,20 @@ public class LinkdingApiClient: NSObject {
         return request
     }
 
-    private func buildUrl(path: [String]) throws -> URL {
-        guard var url = URL(string: self.baseUrl) else {
+    private func buildUrl(path: [String], query: [String:String] = [:]) throws -> URL {
+        guard var url = URLComponents(string: self.baseUrl) else {
             throw LinkdingApiError(message: "Invalid URL: \(self.baseUrl)")
         }
         for part in path {
-            url.appendPathComponent(part)
+            url.path.append(part)
+        }
+        if query.count > 0 {
+            url.queryItems = query.map {
+                URLQueryItem(name: $0, value: $1)
+            }
+        }
+        guard let url = url.url else {
+            throw LinkdingApiError(message: "Invalid URL: \(url)")
         }
         return url.absoluteURL
     }
@@ -251,7 +259,10 @@ public class LinkdingApiClient: NSObject {
     }
     
     func apiAvailable() async throws -> Bool {
-        guard let url: URL = try? self.buildUrl(path: [LinkdingApiClient.ENDPOINT_BOOKMARKS]) else {
+        guard let url: URL = try? self.buildUrl(
+            path: [LinkdingApiClient.ENDPOINT_BOOKMARKS],
+            query: ["limit": "1"]
+        ) else {
             return false
         }
         let (_, response) = try await self.performRequest(request: self.buildRequest(url: url))
