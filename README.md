@@ -16,6 +16,7 @@ You can add, modify and search your bookmarks while you are on the go. Create ne
 - Sort and filter lists
 - Configurable list view
 - Offline functionality
+- Share URLs from Bookmark Companion to other apps
 - Share sheet to add new bookmarks from other apps
 
 ## Screenshots
