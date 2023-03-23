@@ -24,6 +24,7 @@ struct LinkdingBookmarkTabView: View {
     @State var filterViewOpen: Bool = false
     @State var createBookmarkOpen: Bool = false
     @State var bookmarkToEdit: Bookmark<UUID>? = nil
+    @State var sharedBookmark: Bookmark<UUID>? = nil
     
     @Binding var openConfig: Bool
 
@@ -39,6 +40,9 @@ struct LinkdingBookmarkTabView: View {
                     },
                     deleteHandler: { bookmark in
                         self.deleteBookmark(bookmark: bookmark)
+                    },
+                    longPressHandler: { bookmark in
+                        self.sharedBookmark = bookmark
                     },
                     preListView: {
                         if self.syncHadError {
@@ -74,6 +78,14 @@ struct LinkdingBookmarkTabView: View {
                     }
             }
         }
+            .sheet(item: self.$sharedBookmark) { bookmark in
+                if let url = URL(string: bookmark.url) {
+                    UrlShareView(url: url)
+                } else {
+                    Text("Invalid Bookmark URL.")
+                        .foregroundColor(.red)
+                }
+            }
             .sheet(isPresented: self.$filterViewOpen) {
                 LinkdingBookmarkTabSettingsView()
             }
@@ -88,7 +100,6 @@ struct LinkdingBookmarkTabView: View {
             }
             .navigationViewStyle(.stack)
     }
-
 
     private func deleteBookmark(bookmark: Bookmark<UUID>) {
         guard let entity = self.bookmarkStore.getByInternalId(internalId: bookmark.id) else {

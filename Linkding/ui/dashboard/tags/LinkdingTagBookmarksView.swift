@@ -15,6 +15,7 @@ struct LinkdingTagBookmarksView: View {
     @AppStorage(LinkdingSettingKeys.tagViewBookmarkTags.rawValue, store: AppStorageSupport.shared.sharedStore) var viewBookmarkTags: Bool = false
 
     @State var bookmarkToEdit: Bookmark<UUID>? = nil
+    @State var sharedBookmark: Bookmark<UUID>? = nil
     
     var tag: LinkdingTagEntity?
     var title: String
@@ -28,6 +29,9 @@ struct LinkdingTagBookmarksView: View {
                 enableDelete: false,
                 tapHandler: { bookmark in
                     self.bookmarkToEdit = bookmark
+                },
+                longPressHandler: { bookmark in
+                    self.sharedBookmark = bookmark
                 }
             )
                 .navigationTitle("Bookmarks for \(self.title)")
@@ -35,6 +39,14 @@ struct LinkdingTagBookmarksView: View {
                     let entity = self.bookmarkStore.getByInternalId(internalId: bookmark.id)
                     if entity != nil {
                         BookmarkEditor(bookmark: entity!)
+                    }
+                }
+                .sheet(item: self.$sharedBookmark) { bookmark in
+                    if let url = URL(string: bookmark.url) {
+                        UrlShareView(url: url)
+                    } else {
+                        Text("Invalid Bookmark URL.")
+                            .foregroundColor(.red)
                     }
                 }
         }

@@ -18,6 +18,7 @@ public struct BookmarkListView<Content: View, ID: Hashable>: View {
     var enableDelete: Bool
     var tapHandler: (Bookmark<ID>) -> Void
     var deleteHandler: (Bookmark<ID>) -> Void
+    var longPressHandler: (Bookmark<ID>) -> Void
     var preListView: () -> Content
     
     public init(
@@ -28,6 +29,7 @@ public struct BookmarkListView<Content: View, ID: Hashable>: View {
         enableDelete: Bool = true,
         tapHandler: @escaping (Bookmark<ID>) -> Void = { _ in },
         deleteHandler: @escaping (Bookmark<ID>) -> Void = { _ in },
+        longPressHandler: @escaping (Bookmark<ID>) -> Void = { _ in },
         @ViewBuilder preListView: @escaping () -> Content = { EmptyView() }
     ) {
         self.bookmarkStore = bookmarkStore
@@ -37,6 +39,7 @@ public struct BookmarkListView<Content: View, ID: Hashable>: View {
         self.enableDelete = enableDelete
         self.tapHandler = tapHandler
         self.deleteHandler = deleteHandler
+        self.longPressHandler = longPressHandler
         self.preListView = preListView
     }
     
@@ -53,6 +56,9 @@ public struct BookmarkListView<Content: View, ID: Hashable>: View {
                     showDescription: self.showDescription,
                     tapHandler: self.tapHandler
                 )
+                .onLongPressGesture(perform: {
+                    self.longPressHandler(bookmark)
+                })
             }
             .conditionalModifier(self.enableDelete, exec: {
                 $0.onDelete(perform: self.onDelete)
