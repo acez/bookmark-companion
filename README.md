@@ -5,6 +5,19 @@
 Bookmark Companion is your little helper to manage bookmarks from your self-hosted service.
 You can add, modify and search your bookmarks while you are on the go. Create new bookmarks conveniently via the Share extension.
 
+### Supported services
+
+- Linkding
+
+### Key features
+
+- Create and edit bookmarks & tags
+- Search for bookmarks & tags
+- Sort and filter lists
+- Configurable list view
+- Offline functionality
+- Share sheet to add new bookmarks from other apps
+
 ## Screenshots
 
 <img src="Docs/Images/screenshot_iphone.png" height="400"/> <img src="Docs/Images/screenshot_ipad.png" height="400"/>
