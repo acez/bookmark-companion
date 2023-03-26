@@ -18,7 +18,6 @@ public struct BookmarkListView<Content: View, ID: Hashable>: View {
     var enableDelete: Bool
     var tapHandler: (Bookmark<ID>) -> Void
     var deleteHandler: (Bookmark<ID>) -> Void
-    var longPressHandler: (Bookmark<ID>) -> Void
     var preListView: () -> Content
     
     public init(
@@ -29,7 +28,6 @@ public struct BookmarkListView<Content: View, ID: Hashable>: View {
         enableDelete: Bool = true,
         tapHandler: @escaping (Bookmark<ID>) -> Void = { _ in },
         deleteHandler: @escaping (Bookmark<ID>) -> Void = { _ in },
-        longPressHandler: @escaping (Bookmark<ID>) -> Void = { _ in },
         @ViewBuilder preListView: @escaping () -> Content = { EmptyView() }
     ) {
         self.bookmarkStore = bookmarkStore
@@ -39,11 +37,11 @@ public struct BookmarkListView<Content: View, ID: Hashable>: View {
         self.enableDelete = enableDelete
         self.tapHandler = tapHandler
         self.deleteHandler = deleteHandler
-        self.longPressHandler = longPressHandler
         self.preListView = preListView
     }
     
     @State private var searchText: String = ""
+    @State private var sharedBookmark: Bookmark<ID>?
     
     public var body: some View {
         List {
@@ -57,13 +55,21 @@ public struct BookmarkListView<Content: View, ID: Hashable>: View {
                     tapHandler: self.tapHandler
                 )
                 .onLongPressGesture(perform: {
-                    self.longPressHandler(bookmark)
+                    self.sharedBookmark = bookmark
                 })
             }
             .conditionalModifier(self.enableDelete, exec: {
                 $0.onDelete(perform: self.onDelete)
             })
         }
+        .sheet(item: self.$sharedBookmark, content: { bookmark in
+            if let url = URL(string: bookmark.url) {
+                UrlShareView(url: url)
+            } else {
+                Text("Invalid Bookmark URL.")
+                    .foregroundColor(.red)
+            }
+        })
         .searchable(text: self.$searchText)
     }
     
