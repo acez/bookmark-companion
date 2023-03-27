@@ -41,7 +41,6 @@ public struct BookmarkListView<Content: View, ID: Hashable>: View {
     }
     
     @State private var searchText: String = ""
-    @State private var sharedBookmark: Bookmark<ID>?
     
     public var body: some View {
         List {
@@ -54,22 +53,11 @@ public struct BookmarkListView<Content: View, ID: Hashable>: View {
                     showDescription: self.showDescription,
                     tapHandler: self.tapHandler
                 )
-                .onLongPressGesture(perform: {
-                    self.sharedBookmark = bookmark
-                })
             }
             .conditionalModifier(self.enableDelete, exec: {
                 $0.onDelete(perform: self.onDelete)
             })
         }
-        .sheet(item: self.$sharedBookmark, content: { bookmark in
-            if let url = URL(string: bookmark.url) {
-                UrlShareView(url: url)
-            } else {
-                Text("Invalid Bookmark URL.")
-                    .foregroundColor(.red)
-            }
-        })
         .searchable(text: self.$searchText)
     }
     

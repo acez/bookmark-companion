@@ -45,6 +45,9 @@ struct BookmarkEditor: View {
                         Text("Shared")
                     }
                 }
+                if let urlObj = URL(string: self.url) {
+                    ShareLink("Share bookmark", item: urlObj)
+                }
                 Section(content: {
                     if (self.tags.count > 0) {
                         ForEach(self.tags.map { $0 }) { tag in
