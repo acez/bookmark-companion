@@ -4,12 +4,15 @@
 //
 import SwiftUI
 import Linkding
+import Shared
 
 enum BookmarkIntegrations {
     case linkding
 }
 
 struct ConfigurationView<DismissToolbarItem: View>: View {
+    @AppStorage(SharedSettingKeys.useInAppBrowser.rawValue, store: AppStorageSupport.shared.sharedStore) var useInAppBrowser: Bool = false
+    
     @Environment(\.presentationMode) private var presentationMode
     
     @State var selectedIntegration: BookmarkIntegrations = .linkding
@@ -31,6 +34,9 @@ struct ConfigurationView<DismissToolbarItem: View>: View {
             switch self.selectedIntegration {
             case .linkding:
                 LinkdingSettingsView()
+            }
+            Section("Global") {
+                Toggle("Use In-App Browser", isOn: self.$useInAppBrowser)
             }
         }
             .listStyle(.insetGrouped)
