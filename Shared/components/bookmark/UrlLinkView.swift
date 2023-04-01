@@ -37,9 +37,10 @@ public struct UrlLinkView: View {
             }
         }
         .padding(.leading, 28)
-        .sheet(isPresented: self.$inAppBrowserOpen, content: {
+        .fullScreenCover(isPresented: self.$inAppBrowserOpen, content: {
             if let urlObj = URL(string: self.url!) {
-                InAppBrowser(url: urlObj)
+                WebView(url: urlObj)
+                    .edgesIgnoringSafeArea(.all)
             } else {
                 Text("Error: Invalid URL").foregroundColor(.red)
             }

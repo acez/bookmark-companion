@@ -20,8 +20,6 @@
 		8311A4E8294E4CBB00B81008 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311A4E7294E4CBB00B81008 /* TagView.swift */; };
 		8313E32629D38703005475BC /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8313E32529D38703005475BC /* WebView.swift */; };
 		8313E32829D3890E005475BC /* SharedSettingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8313E32729D3890E005475BC /* SharedSettingKeys.swift */; };
-		8313E32A29D38AC9005475BC /* InAppBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8313E32929D38AC9005475BC /* InAppBrowser.swift */; };
-		8313E32C29D38ECA005475BC /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8313E32B29D38ECA005475BC /* WebViewModel.swift */; };
 		833626CD29C683C200E02683 /* AccessTokenMigrationToAppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833626CB29C6831000E02683 /* AccessTokenMigrationToAppGroup.swift */; };
 		835B9596299567CA00845773 /* CommonSelectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835B9595299567CA00845773 /* CommonSelectListView.swift */; };
 		835B95982997DB5900845773 /* SelectableListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835B95972997DB5900845773 /* SelectableListItemView.swift */; };
@@ -249,8 +247,6 @@
 		8312CF4E29100EED00CE3C1C /* BookmarkCompanion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BookmarkCompanion.entitlements; sourceTree = "<group>"; };
 		8313E32529D38703005475BC /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		8313E32729D3890E005475BC /* SharedSettingKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSettingKeys.swift; sourceTree = "<group>"; };
-		8313E32929D38AC9005475BC /* InAppBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppBrowser.swift; sourceTree = "<group>"; };
-		8313E32B29D38ECA005475BC /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		833626CB29C6831000E02683 /* AccessTokenMigrationToAppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenMigrationToAppGroup.swift; sourceTree = "<group>"; };
 		835B9595299567CA00845773 /* CommonSelectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSelectListView.swift; sourceTree = "<group>"; };
 		835B95972997DB5900845773 /* SelectableListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableListItemView.swift; sourceTree = "<group>"; };
@@ -569,8 +565,6 @@
 			isa = PBXGroup;
 			children = (
 				8313E32529D38703005475BC /* WebView.swift */,
-				8313E32929D38AC9005475BC /* InAppBrowser.swift */,
-				8313E32B29D38ECA005475BC /* WebViewModel.swift */,
 			);
 			path = webview;
 			sourceTree = "<group>";
@@ -1073,14 +1067,12 @@
 				8313E32829D3890E005475BC /* SharedSettingKeys.swift in Sources */,
 				83DE86752946239A00E871FC /* Integrations.swift in Sources */,
 				83C794CD295CD5E200BE88B9 /* SecureSettingsSupport.swift in Sources */,
-				8313E32A29D38AC9005475BC /* InAppBrowser.swift in Sources */,
 				83B84AC8297465EF00A4AD50 /* View.swift in Sources */,
 				8311A4E4294E2ED200B81008 /* BookmarkListView.swift in Sources */,
 				83DE86762946239A00E871FC /* BookmarkView.swift in Sources */,
 				83DE86722946239A00E871FC /* Tag.swift in Sources */,
 				8311A4E6294E4AEF00B81008 /* BookmarkTagsView.swift in Sources */,
 				837765C729A574340017A0B0 /* BackendSupportClient.swift in Sources */,
-				8313E32C29D38ECA005475BC /* WebViewModel.swift in Sources */,
 				837765C529A40E220017A0B0 /* BackendSyncWorker.swift in Sources */,
 				83DE86782946239A00E871FC /* UrlLinkView.swift in Sources */,
 				83C794CE295CD5E600BE88B9 /* SecureSettingsError.swift in Sources */,
@@ -1195,7 +1187,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
@@ -1224,7 +1216,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
@@ -1371,7 +1363,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BookmarkCompanion/BookmarkCompanion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"BookmarkCompanion/Preview Content\"";
 				DEVELOPMENT_TEAM = "$(inherited)";
 				ENABLE_PREVIEWS = YES;
@@ -1407,7 +1399,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BookmarkCompanion/BookmarkCompanion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"BookmarkCompanion/Preview Content\"";
 				DEVELOPMENT_TEAM = "$(inherited)";
 				ENABLE_PREVIEWS = YES;

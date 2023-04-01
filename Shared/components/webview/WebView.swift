@@ -4,23 +4,23 @@
 //
 
 import SwiftUI
-import WebKit
+import SafariServices
 
-struct WebView: UIViewRepresentable {
-    typealias UIViewType = WKWebView
+struct WebView: UIViewControllerRepresentable {
+    typealias UIViewControllerType = SFSafariViewController
     
-    let model: WebViewModel
+    let url: URL
 
-    func makeUIView(context: Context) -> WKWebView {
-        return model.getWebView()
+    func makeUIViewController(context: UIViewControllerRepresentableContext<WebView>) -> SFSafariViewController {
+        return SFSafariViewController(url: self.url)
     }
     
-    func updateUIView(_ uiView: WKWebView, context: Context) {
+    func updateUIViewController(_ uiViewController: SFSafariViewController, context: UIViewControllerRepresentableContext<WebView>) {
     }
 }
 
 struct WebView_Previews: PreviewProvider {
     static var previews: some View {
-        WebView(model: WebViewModel(url: URL(string: "https://www.google.de")!))
+        WebView(url: URL(string: "https://www.google.de")!)
     }
 }
