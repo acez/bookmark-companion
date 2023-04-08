@@ -25,6 +25,7 @@ struct ShareBookmarkCreate: View {
 
     @State var selectTagsOpen: Bool = false
     @State var linkdingAvailable: Bool = false
+    @State var requestInProgress: Bool = false
 
     var onClose: @MainActor () -> ()
 
@@ -87,24 +88,31 @@ struct ShareBookmarkCreate: View {
                 .navigationBarTitle("Create Bookmark")
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            if (self.url != "") {
-                                Task {
-                                    let repository = LinkdingBookmarkRepository(bookmarkStore: self.bookmarkStore, tagStore: self.tagStore)
-                                    let createdBookmark = repository.createNewBookmark(url: self.url, title: self.title, description: self.description, isArchived: self.isArchived, unread: self.unread, shared: self.shared, tags: self.tags.map{ $0.name })
-                                    if self.linkdingAvailable {
-                                        let sync = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
-                                        do {
-                                            try await sync.syncSingleBookmark(bookmark: createdBookmark)
-                                        } catch (_) {
-                                            self.onClose()
+                        if self.requestInProgress {
+                            ProgressView()
+                        } else {
+                            Button(action: {
+                                if (self.url != "") {
+                                    Task {
+                                        self.requestInProgress = true
+                                        let repository = LinkdingBookmarkRepository(bookmarkStore: self.bookmarkStore, tagStore: self.tagStore)
+                                        let createdBookmark = repository.createNewBookmark(url: self.url, title: self.title, description: self.description, isArchived: self.isArchived, unread: self.unread, shared: self.shared, tags: self.tags.map{ $0.name })
+                                        if self.linkdingAvailable {
+                                            let sync = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
+                                            do {
+                                                try await sync.syncSingleBookmark(bookmark: createdBookmark)
+                                            } catch (_) {
+                                                self.requestInProgress = false
+                                                self.onClose()
+                                            }
                                         }
+                                        self.requestInProgress = false
+                                        self.onClose()
                                     }
-                                    self.onClose()
                                 }
+                            }) {
+                                Image(systemName: "tray.and.arrow.down")
                             }
-                        }) {
-                            Image(systemName: "tray.and.arrow.down")
                         }
                     }
                     ToolbarItemGroup(placement: .navigationBarLeading) {

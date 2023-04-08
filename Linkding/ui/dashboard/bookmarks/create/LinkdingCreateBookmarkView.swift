@@ -25,6 +25,7 @@ struct LinkdingCreateBookmarkView: View {
 
     @State var selectTagsOpen: Bool = false
     @State var linkdingAvailable: Bool = false
+    @State var requestInProgress: Bool = false
     
     var body: some View {
         NavigationView {
@@ -85,18 +86,24 @@ struct LinkdingCreateBookmarkView: View {
                 .navigationBarTitle("Create Bookmark")
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            if (self.url != "") {
-                                let repository = LinkdingBookmarkRepository(bookmarkStore: self.bookmarkStore, tagStore: self.tagStore)
-                                let bookmark = repository.createNewBookmark(url: self.url, title: self.title, description: self.description, isArchived: self.isArchived, unread: self.unread, shared: self.shared, tags: self.tags.map { $0.name })
-                                let syncClient = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
-                                Task {
-                                    try await syncClient.syncSingleBookmark(bookmark: bookmark)
-                                    self.presentationMode.wrappedValue.dismiss()
+                        if self.requestInProgress {
+                            ProgressView()
+                        } else {
+                            Button(action: {
+                                if (self.url != "") {
+                                    self.requestInProgress = true
+                                     let repository = LinkdingBookmarkRepository(bookmarkStore: self.bookmarkStore, tagStore: self.tagStore)
+                                     let bookmark = repository.createNewBookmark(url: self.url, title: self.title, description: self.description, isArchived: self.isArchived, unread: self.unread, shared: self.shared, tags: self.tags.map { $0.name })
+                                     let syncClient = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
+                                     Task {
+                                         try await syncClient.syncSingleBookmark(bookmark: bookmark)
+                                         self.requestInProgress = false
+                                         self.presentationMode.wrappedValue.dismiss()
+                                     }
                                 }
+                            }) {
+                                Image(systemName: "tray.and.arrow.down")
                             }
-                        }) {
-                            Image(systemName: "tray.and.arrow.down")
                         }
                     }
                     ToolbarItemGroup(placement: .navigationBarLeading) {
