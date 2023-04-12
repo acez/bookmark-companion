@@ -47,6 +47,12 @@ public class LinkdingBookmarkStore: NSObject, ObservableObject {
             .filter { $0.internalId == internalId }
             .first
     }
+    
+    public func getByUrl(url: String) -> LinkdingBookmarkEntity? {
+        return self.bookmarks
+            .filter { $0.url == url }
+            .first
+    }
 
     public func filtered(showArchived: Bool, showUnreadOnly: Bool, filterText: String) -> [LinkdingBookmarkEntity] {
         return self.bookmarks

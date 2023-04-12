@@ -32,8 +32,8 @@ public struct LinkdingPersistenceController {
     }
 
     public func setViewContextData(name: String, author: String) {
-        self.viewContext.name = "view_context"
-        self.viewContext.transactionAuthor = "main_app"
+        self.viewContext.name = name
+        self.viewContext.transactionAuthor = author
     }
 
     public init(inMemory: Bool = false) {

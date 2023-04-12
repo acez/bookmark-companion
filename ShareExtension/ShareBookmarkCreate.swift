@@ -17,11 +17,13 @@ struct ShareBookmarkCreate: View {
 
     @State var url: String = ""
     @State var title: String = ""
+    @State var displayTitle: String = ""
     @State var description: String = ""
     @State var isArchived: Bool = false
     @State var unread: Bool = false
     @State var shared: Bool = false
     @State var tags = Set<LinkdingTagEntity>()
+    @State var bookmark: LinkdingBookmarkEntity?
 
     @State var selectTagsOpen: Bool = false
     @State var linkdingAvailable: Bool = false
@@ -38,10 +40,10 @@ struct ShareBookmarkCreate: View {
                             Text("URL")
                         }
                         TextField(text: $title) {
-                            Text("Title")
+                            Text(self.bookmark?.websiteTitle ?? "Title")
                         }
                         TextField(text: $description) {
-                            Text("Description")
+                            Text(self.bookmark?.websiteDescription ?? "Description")
                         }
                     },
                     header: {
@@ -96,11 +98,13 @@ struct ShareBookmarkCreate: View {
                                     Task {
                                         self.requestInProgress = true
                                         let repository = LinkdingBookmarkRepository(bookmarkStore: self.bookmarkStore, tagStore: self.tagStore)
-                                        let createdBookmark = repository.createNewBookmark(url: self.url, title: self.title, description: self.description, isArchived: self.isArchived, unread: self.unread, shared: self.shared, tags: self.tags.map{ $0.name })
+                                        let syncBookmark = self.bookmark != nil ?
+                                            repository.updateBookmark(bookmark: self.bookmark!, url: self.url, title: self.title, description: self.description, isArchived: self.isArchived, unread: self.unread, shared: self.shared, tags: self.tags.map { $0.name }) :
+                                            repository.createNewBookmark(url: self.url, title: self.title, description: self.description, isArchived: self.isArchived, unread: self.unread, shared: self.shared, tags: self.tags.map{ $0.name })
                                         if self.linkdingAvailable {
                                             let sync = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
                                             do {
-                                                try await sync.syncSingleBookmark(bookmark: createdBookmark)
+                                                try await sync.syncSingleBookmark(bookmark: syncBookmark)
                                             } catch (_) {
                                                 self.requestInProgress = false
                                                 self.onClose()
@@ -129,11 +133,21 @@ struct ShareBookmarkCreate: View {
                 }
                 .onAppear() {
                     LinkdingPersistenceController.shared.setViewContextData(name: "viewContext", author: "ShareExtension")
-
-                    self.isArchived = self.defaultArchived
-                    self.unread = self.defaultUnread
-                    self.shared = self.defaultShared
                     
+                    if let found = self.bookmarkStore.getByUrl(url: self.url) {
+                        self.bookmark = found
+                        self.title = found.title
+                        self.description = found.urlDescription
+                        self.isArchived = found.isArchived
+                        self.unread = found.unread
+                        self.shared = found.shared
+                        self.tags = Set(self.tagStore.getByNameList(names: found.tagNames))
+                    } else {
+                        self.isArchived = self.defaultArchived
+                        self.unread = self.defaultUnread
+                        self.shared = self.defaultShared
+                    }
+
                     let syncClient = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
                     Task {
                         if await syncClient.isBackendAvailable() {
