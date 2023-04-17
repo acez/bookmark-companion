@@ -32,23 +32,11 @@ public struct CommonSelectListView<T: CommonListItem>: View {
     
     public var body: some View {
         List {
-            if self.filteredItems().isEmpty {
-                if  self.searchTerm == "" || self.createNotFoundHandler == nil {
-                    Text("No items")
-                } else {
-                    Button(action: {
-                        self.createNotFoundHandler?.createItem(text: self.searchTerm)
-                    }) {
-                        HStack {
-                            Image(systemName: "square.and.pencil")
-                                .foregroundColor(.blue)
-                            Text("Create \(self.searchTerm)")
-                                .foregroundColor(.blue)
-                        }
-                    }
-                    .buttonStyle(.plain)
+            let exactSearchMatch = !self.filteredItems().map({ $0.getDisplayText().lowercased() }).contains(self.searchTerm.lowercased())
+            let showCreateButton = (exactSearchMatch && self.searchTerm != "") && self.createNotFoundHandler != nil
 
-                }
+            if self.filteredItems().isEmpty && !showCreateButton {
+                Text("No items")
             } else {
                 ForEach(self.filteredItems()) { item in
                     SelectableListItemView(text: item.getDisplayText(), selected: self.selectedItems.wrappedValue.contains(item), tapHandler: {
@@ -59,6 +47,20 @@ public struct CommonSelectListView<T: CommonListItem>: View {
                         }
                     })
                 }
+            }
+            
+            if showCreateButton {
+                Button(action: {
+                    self.createNotFoundHandler?.createItem(text: self.searchTerm)
+                }) {
+                    HStack {
+                        Image(systemName: "square.and.pencil")
+                            .foregroundColor(.blue)
+                        Text("Create \(self.searchTerm)")
+                            .foregroundColor(.blue)
+                    }
+                }
+                .buttonStyle(.plain)
             }
         }
         .searchable(text: self.$searchTerm)
