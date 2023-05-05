@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Application
+@testable import CompanionApplication
 
 final class ApplicationTests: XCTestCase {
 

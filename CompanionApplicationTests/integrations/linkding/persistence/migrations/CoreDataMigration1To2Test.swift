@@ -4,7 +4,7 @@
 //
 
 import XCTest
-@testable import Application
+@testable import CompanionApplication
 
 import CoreData
 

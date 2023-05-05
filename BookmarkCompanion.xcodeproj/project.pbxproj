@@ -174,7 +174,7 @@
 		8312CF4E29100EED00CE3C1C /* BookmarkCompanion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BookmarkCompanion.entitlements; sourceTree = "<group>"; };
 		834922FB2A05AE6A004CBDEF /* CompanionApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CompanionApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		834922FD2A05AE6A004CBDEF /* Application.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
-		834923022A05AE6A004CBDEF /* ApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		834923022A05AE6A004CBDEF /* CompanionApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CompanionApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		834923092A05AE6A004CBDEF /* ApplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationTests.swift; sourceTree = "<group>"; };
 		8349231B2A05AEF5004CBDEF /* SharedSettingKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedSettingKeys.swift; sourceTree = "<group>"; };
 		8349231C2A05AEF5004CBDEF /* SecureSettingsError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureSettingsError.swift; sourceTree = "<group>"; };
@@ -348,13 +348,13 @@
 			path = CompanionApplication;
 			sourceTree = "<group>";
 		};
-		834923082A05AE6A004CBDEF /* ApplicationTests */ = {
+		834923082A05AE6A004CBDEF /* CompanionApplicationTests */ = {
 			isa = PBXGroup;
 			children = (
 				834923BD2A05AF3D004CBDEF /* integrations */,
 				834923092A05AE6A004CBDEF /* ApplicationTests.swift */,
 			);
-			path = ApplicationTests;
+			path = CompanionApplicationTests;
 			sourceTree = "<group>";
 		};
 		834923192A05AEF5004CBDEF /* shared */ = {
@@ -723,7 +723,7 @@
 				835E60932907F47700E86AFE /* BookmarkCompanion */,
 				83017F372910313800C341D2 /* ShareExtension */,
 				834922FC2A05AE6A004CBDEF /* CompanionApplication */,
-				834923082A05AE6A004CBDEF /* ApplicationTests */,
+				834923082A05AE6A004CBDEF /* CompanionApplicationTests */,
 				835E60922907F47700E86AFE /* Products */,
 				5A416AFED161E2B9AF558796 /* README.md */,
 				83017F452910314000C341D2 /* Frameworks */,
@@ -737,7 +737,7 @@
 				835E60912907F47700E86AFE /* BookmarkCompanion.app */,
 				83017F362910313800C341D2 /* ShareExtension.appex */,
 				834922FB2A05AE6A004CBDEF /* CompanionApplication.framework */,
-				834923022A05AE6A004CBDEF /* ApplicationTests.xctest */,
+				834923022A05AE6A004CBDEF /* CompanionApplicationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -859,9 +859,9 @@
 			productReference = 834922FB2A05AE6A004CBDEF /* CompanionApplication.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		834923012A05AE6A004CBDEF /* ApplicationTests */ = {
+		834923012A05AE6A004CBDEF /* CompanionApplicationTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 834923152A05AE6A004CBDEF /* Build configuration list for PBXNativeTarget "ApplicationTests" */;
+			buildConfigurationList = 834923152A05AE6A004CBDEF /* Build configuration list for PBXNativeTarget "CompanionApplicationTests" */;
 			buildPhases = (
 				834922FE2A05AE6A004CBDEF /* Sources */,
 				834922FF2A05AE6A004CBDEF /* Frameworks */,
@@ -873,9 +873,9 @@
 				834923052A05AE6A004CBDEF /* PBXTargetDependency */,
 				834923072A05AE6A004CBDEF /* PBXTargetDependency */,
 			);
-			name = ApplicationTests;
+			name = CompanionApplicationTests;
 			productName = ApplicationTests;
-			productReference = 834923022A05AE6A004CBDEF /* ApplicationTests.xctest */;
+			productReference = 834923022A05AE6A004CBDEF /* CompanionApplicationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		835E60902907F47700E86AFE /* BookmarkCompanion */ = {
@@ -940,7 +940,7 @@
 				835E60902907F47700E86AFE /* BookmarkCompanion */,
 				83017F352910313800C341D2 /* ShareExtension */,
 				834922FA2A05AE6A004CBDEF /* CompanionApplication */,
-				834923012A05AE6A004CBDEF /* ApplicationTests */,
+				834923012A05AE6A004CBDEF /* CompanionApplicationTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1491,7 +1491,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		834923152A05AE6A004CBDEF /* Build configuration list for PBXNativeTarget "ApplicationTests" */ = {
+		834923152A05AE6A004CBDEF /* Build configuration list for PBXNativeTarget "CompanionApplicationTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				834923122A05AE6A004CBDEF /* Debug */,

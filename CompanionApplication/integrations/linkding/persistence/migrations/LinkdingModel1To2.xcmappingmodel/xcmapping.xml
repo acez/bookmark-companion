@@ -91,14 +91,14 @@ D05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGpCwwXGB0eJiotVSRudWxs1Q0ODxAREhMUFRZZTlNPcGVy
         <relationship name="entitymapping" type="1/1" destination="XDDEVENTITYMAPPING" idrefs="z123"></relationship>
     </object>
     <object type="XDDEVENTITYMAPPING" id="z110">
-        <attribute name="migrationpolicyclassname" type="string">Application.CoreDataMigration1To2</attribute>
+        <attribute name="migrationpolicyclassname" type="string">CompanionApplication.CoreDataMigration1To2</attribute>
         <attribute name="sourcename" type="string">Bookmark</attribute>
         <attribute name="mappingtypename" type="string">Undefined</attribute>
         <attribute name="mappingnumber" type="int16">1</attribute>
         <attribute name="destinationname" type="string">Bookmark</attribute>
         <attribute name="autogenerateexpression" type="bool">1</attribute>
         <relationship name="mappingmodel" type="1/1" destination="XDDEVMAPPINGMODEL" idrefs="z103"></relationship>
-        <relationship name="attributemappings" type="0/0" destination="XDDEVATTRIBUTEMAPPING" idrefs="z112 z106 z118 z105 z119 z107 z117 z113 z115 z120 z114 z121 z111 z124"></relationship>
+        <relationship name="attributemappings" type="0/0" destination="XDDEVATTRIBUTEMAPPING" idrefs="z118 z124 z113 z119 z107 z105 z121 z120 z112 z115 z114 z117 z111 z106"></relationship>
         <relationship name="relationshipmappings" type="0/0" destination="XDDEVRELATIONSHIPMAPPING" idrefs="z108"></relationship>
     </object>
     <object type="XDDEVATTRIBUTEMAPPING" id="z111">
@@ -153,14 +153,14 @@ D05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGpCwwXGB0eJiotVSRudWxs1Q0ODxAREhMUFRZZTlNPcGVy
         <relationship name="entitymapping" type="1/1" destination="XDDEVENTITYMAPPING" idrefs="z123"></relationship>
     </object>
     <object type="XDDEVENTITYMAPPING" id="z123">
-        <attribute name="migrationpolicyclassname" type="string">Application.CoreDataMigration1To2</attribute>
+        <attribute name="migrationpolicyclassname" type="string">CompanionApplication.CoreDataMigration1To2</attribute>
         <attribute name="sourcename" type="string">Tag</attribute>
         <attribute name="mappingtypename" type="string">Undefined</attribute>
         <attribute name="mappingnumber" type="int16">2</attribute>
         <attribute name="destinationname" type="string">Tag</attribute>
         <attribute name="autogenerateexpression" type="bool">1</attribute>
         <relationship name="mappingmodel" type="1/1" destination="XDDEVMAPPINGMODEL" idrefs="z103"></relationship>
-        <relationship name="attributemappings" type="0/0" destination="XDDEVATTRIBUTEMAPPING" idrefs="z122 z109 z116 z102"></relationship>
+        <relationship name="attributemappings" type="0/0" destination="XDDEVATTRIBUTEMAPPING" idrefs="z102 z109 z122 z116"></relationship>
         <relationship name="relationshipmappings" type="0/0" destination="XDDEVRELATIONSHIPMAPPING" idrefs="z104"></relationship>
     </object>
     <object type="XDDEVATTRIBUTEMAPPING" id="z124">
