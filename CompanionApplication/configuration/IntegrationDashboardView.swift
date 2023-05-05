@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CompanionApplication
 
 struct IntegrationDashboardView: View {
     @State var openConfig: Bool = false

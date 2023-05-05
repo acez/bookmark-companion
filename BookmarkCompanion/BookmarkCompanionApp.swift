@@ -4,12 +4,13 @@
 //
 
 import SwiftUI
+import CompanionApplication
 
 @main
 struct BookmarkCompanionApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }

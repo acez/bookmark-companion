@@ -3,7 +3,6 @@
 // Created by Christian Wilhelm
 //
 import SwiftUI
-import CompanionApplication
 
 struct InitialConfiguration: View {
     @State var showSettingsError: Bool = false

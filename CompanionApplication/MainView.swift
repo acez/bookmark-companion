@@ -1,20 +1,29 @@
 //
-// ContentView.swift
-// Created by Christian Wilhelm
+//  MainView.swift
+//  CompanionApplication
+//
+//  Created by Christian Wilhelm on 06.05.23.
 //
 
 import SwiftUI
-import CoreData
-import CompanionApplication
 
-struct ContentView: View {
+public struct MainView: View {
     @AppStorage(LinkdingSettingKeys.configComplete.rawValue, store: AppStorageSupport.shared.sharedStore) var configComplete: Bool = false
-
-    var body: some View {
+    
+    public init() {
+    }
+    
+    public var body: some View {
         if (self.configComplete) {
             IntegrationDashboardView()
         } else {
             InitialConfiguration()
         }
+    }
+}
+
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView()
     }
 }

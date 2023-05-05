@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A416BE530E51E1E6F32ECF9 /* InitialConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416311A9AD15CD6172C872 /* InitialConfiguration.swift */; };
 		5A416D14489E8B274A81E9A6 /* ShareBookmarkTagSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4161EFDF39D0DE717C77CC /* ShareBookmarkTagSelect.swift */; };
 		5A416DAB2FEAD6150903FE6A /* ShareBookmarkCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416AC0C47832EDBE977C5E /* ShareBookmarkCreate.swift */; };
 		83017F392910313800C341D2 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83017F382910313800C341D2 /* ShareViewController.swift */; };
@@ -83,14 +82,15 @@
 		834923BC2A05AF23004CBDEF /* LinkdingTagEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834923952A05AF23004CBDEF /* LinkdingTagEntity.swift */; };
 		834923BF2A05AF53004CBDEF /* CoreDataMigration1To2Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C055AB2964D5CA00550D73 /* CoreDataMigration1To2Test.swift */; };
 		835E60952907F47700E86AFE /* BookmarkCompanionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E60942907F47700E86AFE /* BookmarkCompanionApp.swift */; };
-		835E60972907F47700E86AFE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E60962907F47700E86AFE /* ContentView.swift */; };
 		835E60992907F47800E86AFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 835E60982907F47800E86AFE /* Assets.xcassets */; };
 		835E609C2907F47800E86AFE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 835E609B2907F47800E86AFE /* Preview Assets.xcassets */; };
 		835E609E2907F47800E86AFE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E609D2907F47800E86AFE /* Persistence.swift */; };
 		835E60A12907F47800E86AFE /* BookmarkCompanion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 835E609F2907F47800E86AFE /* BookmarkCompanion.xcdatamodeld */; };
-		83666D222968BA090043E6B6 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4161602285F2D4AED500B1 /* ConfigurationView.swift */; };
-		83666D242968C2F80043E6B6 /* IntegrationDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83666D232968C2F80043E6B6 /* IntegrationDashboardView.swift */; };
 		837009BE29154860006D2A05 /* ShareBookmarkContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837009BD29154860006D2A05 /* ShareBookmarkContainerView.swift */; };
+		83C4708F2A05B940006F6E8F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C4708E2A05B940006F6E8F /* MainView.swift */; };
+		83C470912A05B9D1006F6E8F /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4161602285F2D4AED500B1 /* ConfigurationView.swift */; };
+		83C470922A05B9D5006F6E8F /* InitialConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416311A9AD15CD6172C872 /* InitialConfiguration.swift */; };
+		83C470932A05B9DD006F6E8F /* IntegrationDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83666D232968C2F80043E6B6 /* IntegrationDashboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -242,7 +242,6 @@
 		834923952A05AF23004CBDEF /* LinkdingTagEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingTagEntity.swift; sourceTree = "<group>"; };
 		835E60912907F47700E86AFE /* BookmarkCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookmarkCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		835E60942907F47700E86AFE /* BookmarkCompanionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCompanionApp.swift; sourceTree = "<group>"; };
-		835E60962907F47700E86AFE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		835E60982907F47800E86AFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		835E609B2907F47800E86AFE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		835E609D2907F47800E86AFE /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -251,6 +250,7 @@
 		837009BD29154860006D2A05 /* ShareBookmarkContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBookmarkContainerView.swift; sourceTree = "<group>"; };
 		83B06F1329105C600032F6FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		83C055AB2964D5CA00550D73 /* CoreDataMigration1To2Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMigration1To2Test.swift; sourceTree = "<group>"; };
+		83C4708E2A05B940006F6E8F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		83D49631297C2F0500CBF95F /* screenshot_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot_ipad.png; sourceTree = "<group>"; };
 		83D49632297C2F0500CBF95F /* screenshot_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot_iphone.png; sourceTree = "<group>"; };
 		83D49634297C2F2B00CBF95F /* Release.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Release.md; sourceTree = "<group>"; };
@@ -291,16 +291,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5A41644447948384FBFFD1EF /* components */ = {
-			isa = PBXGroup;
-			children = (
-				5A416452B67C39C8F4F417A4 /* config */,
-				5A4166D646DB81C6EAAAF96B /* onboarding */,
-				83666D232968C2F80043E6B6 /* IntegrationDashboardView.swift */,
-			);
-			path = components;
-			sourceTree = "<group>";
-		};
 		5A416452B67C39C8F4F417A4 /* config */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,9 +331,11 @@
 		834922FC2A05AE6A004CBDEF /* CompanionApplication */ = {
 			isa = PBXGroup;
 			children = (
+				83C470902A05B999006F6E8F /* configuration */,
 				834923572A05AF04004CBDEF /* integrations */,
 				834923192A05AEF5004CBDEF /* shared */,
 				834922FD2A05AE6A004CBDEF /* Application.h */,
+				83C4708E2A05B940006F6E8F /* MainView.swift */,
 			);
 			path = CompanionApplication;
 			sourceTree = "<group>";
@@ -748,12 +740,10 @@
 				83B06F1329105C600032F6FE /* Info.plist */,
 				8312CF4E29100EED00CE3C1C /* BookmarkCompanion.entitlements */,
 				835E60942907F47700E86AFE /* BookmarkCompanionApp.swift */,
-				835E60962907F47700E86AFE /* ContentView.swift */,
 				835E60982907F47800E86AFE /* Assets.xcassets */,
 				835E609D2907F47800E86AFE /* Persistence.swift */,
 				835E609F2907F47800E86AFE /* BookmarkCompanion.xcdatamodeld */,
 				835E609A2907F47800E86AFE /* Preview Content */,
-				5A41644447948384FBFFD1EF /* components */,
 			);
 			path = BookmarkCompanion;
 			sourceTree = "<group>";
@@ -788,6 +778,16 @@
 				83C055AB2964D5CA00550D73 /* CoreDataMigration1To2Test.swift */,
 			);
 			path = migrations;
+			sourceTree = "<group>";
+		};
+		83C470902A05B999006F6E8F /* configuration */ = {
+			isa = PBXGroup;
+			children = (
+				5A416452B67C39C8F4F417A4 /* config */,
+				5A4166D646DB81C6EAAAF96B /* onboarding */,
+				83666D232968C2F80043E6B6 /* IntegrationDashboardView.swift */,
+			);
+			path = configuration;
 			sourceTree = "<group>";
 		};
 		83D4962F297C2F0500CBF95F /* Docs */ = {
@@ -907,7 +907,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					83017F352910313800C341D2 = {
 						CreatedOnToolsVersion = 14.0.1;
@@ -994,6 +994,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C470932A05B9DD006F6E8F /* IntegrationDashboardView.swift in Sources */,
 				8349234E2A05AEF5004CBDEF /* SyncErrorView.swift in Sources */,
 				834923B62A05AF23004CBDEF /* LinkdingSyncClient.swift in Sources */,
 				834923992A05AF23004CBDEF /* LinkdingTagsTabView.swift in Sources */,
@@ -1003,12 +1004,14 @@
 				834923A52A05AF23004CBDEF /* BookmarkSorter.swift in Sources */,
 				834923B82A05AF23004CBDEF /* LinkdingBookmarkRepository.swift in Sources */,
 				834923A92A05AF23004CBDEF /* LinkdingModel1To2.swift in Sources */,
+				83C4708F2A05B940006F6E8F /* MainView.swift in Sources */,
 				834923A42A05AF23004CBDEF /* SortOrder.swift in Sources */,
 				8349239F2A05AF23004CBDEF /* LinkdingCreateBookmarkView.swift in Sources */,
 				834923532A05AEF5004CBDEF /* Tag.swift in Sources */,
 				8349234B2A05AEF5004CBDEF /* WebView.swift in Sources */,
 				834923A62A05AF23004CBDEF /* SortField.swift in Sources */,
 				834923A22A05AF23004CBDEF /* LinkdingSettingsValidator.swift in Sources */,
+				83C470912A05B9D1006F6E8F /* ConfigurationView.swift in Sources */,
 				834923BC2A05AF23004CBDEF /* LinkdingTagEntity.swift in Sources */,
 				834923A72A05AF23004CBDEF /* LinkdingPersistenceController.swift in Sources */,
 				834923972A05AF23004CBDEF /* LinkdingDashboardView.swift in Sources */,
@@ -1039,6 +1042,7 @@
 				834923422A05AEF5004CBDEF /* AppStorageSupport.swift in Sources */,
 				834923512A05AEF5004CBDEF /* TagListView.swift in Sources */,
 				834923982A05AF23004CBDEF /* LinkdingTagBookmarksView.swift in Sources */,
+				83C470922A05B9D5006F6E8F /* InitialConfiguration.swift in Sources */,
 				8349234A2A05AEF5004CBDEF /* BookmarkListView.swift in Sources */,
 				834923562A05AEF5004CBDEF /* BaseIntegrationDashboard.swift in Sources */,
 				8349233F2A05AEF5004CBDEF /* SharedSettingKeys.swift in Sources */,
@@ -1074,12 +1078,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				835E60A12907F47800E86AFE /* BookmarkCompanion.xcdatamodeld in Sources */,
-				83666D242968C2F80043E6B6 /* IntegrationDashboardView.swift in Sources */,
-				83666D222968BA090043E6B6 /* ConfigurationView.swift in Sources */,
 				835E609E2907F47800E86AFE /* Persistence.swift in Sources */,
-				835E60972907F47700E86AFE /* ContentView.swift in Sources */,
 				835E60952907F47700E86AFE /* BookmarkCompanionApp.swift in Sources */,
-				5A416BE530E51E1E6F32ECF9 /* InitialConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1121,7 +1121,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
@@ -1150,7 +1150,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
@@ -1176,6 +1176,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1211,6 +1212,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1407,7 +1409,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BookmarkCompanion/BookmarkCompanion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BookmarkCompanion/Preview Content\"";
 				DEVELOPMENT_TEAM = "$(inherited)";
 				ENABLE_PREVIEWS = YES;
@@ -1443,7 +1445,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BookmarkCompanion/BookmarkCompanion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BookmarkCompanion/Preview Content\"";
 				DEVELOPMENT_TEAM = "$(inherited)";
 				ENABLE_PREVIEWS = YES;
