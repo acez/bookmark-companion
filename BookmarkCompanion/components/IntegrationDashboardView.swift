@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Linkding
+import CompanionApplication
 
 struct IntegrationDashboardView: View {
     @State var openConfig: Bool = false

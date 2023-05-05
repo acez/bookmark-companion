@@ -3,8 +3,7 @@
 // Created by Christian Wilhelm
 //
 import SwiftUI
-import Linkding
-import Shared
+import CompanionApplication
 
 enum BookmarkIntegrations {
     case linkding

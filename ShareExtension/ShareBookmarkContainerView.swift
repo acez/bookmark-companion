@@ -4,8 +4,7 @@
 //
 
 import SwiftUI
-import Linkding
-import Shared
+import CompanionApplication
 
 struct ShareBookmarkContainerView: View {
     @AppStorage(LinkdingSettingKeys.configComplete.rawValue, store: AppStorageSupport.shared.sharedStore) var configComplete: Bool = false

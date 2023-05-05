@@ -3,8 +3,7 @@
 // Created by Christian Wilhelm
 //
 import SwiftUI
-import Linkding
-import Shared
+import CompanionApplication
 
 struct InitialConfiguration: View {
     @State var showSettingsError: Bool = false

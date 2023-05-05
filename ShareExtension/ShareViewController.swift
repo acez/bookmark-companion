@@ -5,7 +5,7 @@
 
 import UIKit
 import SwiftUI
-import Linkding
+import CompanionApplication
 
 class ShareViewController: UIViewController {
     private var sharedUrl: String = ""
