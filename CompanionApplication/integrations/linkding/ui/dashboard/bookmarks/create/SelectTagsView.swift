@@ -30,6 +30,7 @@ struct SelectTagsView: View {
                     }
                 }
         }
+        .navigationViewStyle(.stack)
     }
 }
 
