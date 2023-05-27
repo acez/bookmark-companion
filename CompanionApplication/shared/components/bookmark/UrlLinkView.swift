@@ -20,7 +20,7 @@ public struct UrlLinkView: View {
         let url = self.getUrl()
         VStack {
             if (url != nil) {
-                if self.useInAppBrowser {
+                if self.useInAppBrowser && !ProcessInfo.processInfo.isiOSAppOnMac {
                     Button(action: {
                         self.inAppBrowserOpen = true
                     }) {

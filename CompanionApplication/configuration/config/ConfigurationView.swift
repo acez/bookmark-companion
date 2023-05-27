@@ -33,8 +33,10 @@ struct ConfigurationView<DismissToolbarItem: View>: View {
             case .linkding:
                 LinkdingSettingsView()
             }
-            Section("Global") {
-                Toggle("Use In-App Browser", isOn: self.$useInAppBrowser)
+            if !ProcessInfo.processInfo.isiOSAppOnMac {
+                Section("Global") {
+                    Toggle("Use In-App Browser", isOn: self.$useInAppBrowser)
+                }
             }
         }
             .listStyle(.insetGrouped)
