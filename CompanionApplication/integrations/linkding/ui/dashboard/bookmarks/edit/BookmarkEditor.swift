@@ -23,7 +23,7 @@ struct BookmarkEditor: View {
     @State var selectTagsOpen: Bool = false
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section("Bookmark") {
                     TextField(text: $url) {

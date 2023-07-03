@@ -16,7 +16,7 @@ struct LinkdingBookmarkTabSettingsView: View {
     @AppStorage(LinkdingSettingKeys.bookmarkViewTags.rawValue, store: AppStorageSupport.shared.sharedStore) var viewTags: Bool = true
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Form {
                     Section("Filter") {

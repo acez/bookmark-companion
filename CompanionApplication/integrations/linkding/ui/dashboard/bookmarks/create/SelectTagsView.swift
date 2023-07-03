@@ -13,7 +13,7 @@ struct SelectTagsView: View {
     @Binding var selectedTags: Set<LinkdingTagEntity>
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             CommonSelectListView(
                 items: self.tagStore.tags,
                 selectedItems: self.$selectedTags,
@@ -30,7 +30,6 @@ struct SelectTagsView: View {
                     }
                 }
         }
-        .navigationViewStyle(.stack)
     }
 }
 

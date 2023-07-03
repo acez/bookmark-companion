@@ -27,7 +27,7 @@ struct LinkdingCreateBookmarkView: View {
     @State var requestInProgress: Bool = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section(
                     content: {

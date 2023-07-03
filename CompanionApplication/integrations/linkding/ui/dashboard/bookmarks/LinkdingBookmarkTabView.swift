@@ -27,7 +27,7 @@ struct LinkdingBookmarkTabView: View {
     @Binding var openConfig: Bool
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 BookmarkListView(
                     bookmarkStore: self,
@@ -85,7 +85,6 @@ struct LinkdingBookmarkTabView: View {
                     BookmarkEditor(bookmark: entity!)
                 }
             }
-            .navigationViewStyle(.stack)
     }
 
     private func deleteBookmark(bookmark: Bookmark<UUID>) {
