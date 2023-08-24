@@ -86,6 +86,7 @@
 		835E609C2907F47800E86AFE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 835E609B2907F47800E86AFE /* Preview Assets.xcassets */; };
 		835E609E2907F47800E86AFE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E609D2907F47800E86AFE /* Persistence.swift */; };
 		835E60A12907F47800E86AFE /* BookmarkCompanion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 835E609F2907F47800E86AFE /* BookmarkCompanion.xcdatamodeld */; };
+		83657F022A97966000F00067 /* DashboardTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83657F012A97966000F00067 /* DashboardTile.swift */; };
 		837009BE29154860006D2A05 /* ShareBookmarkContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837009BD29154860006D2A05 /* ShareBookmarkContainerView.swift */; };
 		83C4708F2A05B940006F6E8F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C4708E2A05B940006F6E8F /* MainView.swift */; };
 		83C470912A05B9D1006F6E8F /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4161602285F2D4AED500B1 /* ConfigurationView.swift */; };
@@ -246,6 +247,7 @@
 		835E609B2907F47800E86AFE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		835E609D2907F47800E86AFE /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		835E60A02907F47800E86AFE /* BookmarkCompanion.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookmarkCompanion.xcdatamodel; sourceTree = "<group>"; };
+		83657F012A97966000F00067 /* DashboardTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTile.swift; sourceTree = "<group>"; };
 		83666D232968C2F80043E6B6 /* IntegrationDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationDashboardView.swift; sourceTree = "<group>"; };
 		837009BD29154860006D2A05 /* ShareBookmarkContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBookmarkContainerView.swift; sourceTree = "<group>"; };
 		83B06F1329105C600032F6FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 		834923242A05AEF5004CBDEF /* components */ = {
 			isa = PBXGroup;
 			children = (
+				83657F032A97966800F00067 /* dashboard */,
 				834923252A05AEF5004CBDEF /* configuration */,
 				834923272A05AEF5004CBDEF /* bookmark */,
 				8349232C2A05AEF5004CBDEF /* webview */,
@@ -756,6 +759,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		83657F032A97966800F00067 /* dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				83657F012A97966000F00067 /* DashboardTile.swift */,
+			);
+			path = dashboard;
+			sourceTree = "<group>";
+		};
 		838748812946304700E7ADF8 /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -998,6 +1009,7 @@
 				8349234E2A05AEF5004CBDEF /* SyncErrorView.swift in Sources */,
 				834923B62A05AF23004CBDEF /* LinkdingSyncClient.swift in Sources */,
 				834923992A05AF23004CBDEF /* LinkdingTagsTabView.swift in Sources */,
+				83657F022A97966000F00067 /* DashboardTile.swift in Sources */,
 				834923B12A05AF23004CBDEF /* LinkdingTagDto.swift in Sources */,
 				834923462A05AEF5004CBDEF /* ConfigurationButton.swift in Sources */,
 				834923432A05AEF5004CBDEF /* GlobalSettingKeys.swift in Sources */,
