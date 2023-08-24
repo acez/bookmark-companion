@@ -1,6 +1,6 @@
 //
 //  DashboardTile.swift
-//  Created by Christian Wilhelm.
+//  Created by Christian Wilhelm
 //
 
 import SwiftUI
@@ -33,7 +33,7 @@ struct DashboardTile: View {
             }
             .padding(self.innerPadding)
         }
-        .frame(width: self.calculateWidth())
+            .frame(width: self.calculateWidth())
             .background(self.color)
             .cornerRadius(10)
             .padding(self.outerPadding)
