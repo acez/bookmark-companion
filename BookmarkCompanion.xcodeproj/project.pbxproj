@@ -772,11 +772,19 @@
 		83657F032A97966800F00067 /* dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				83657F142A98E8B200F00067 /* configuration */,
 				83657F012A97966000F00067 /* DashboardTile.swift */,
 				83657F0A2A97A29D00F00067 /* Dashboard.swift */,
 				83657F0C2A97A7D000F00067 /* DashboardTagListItem.swift */,
 			);
 			path = dashboard;
+			sourceTree = "<group>";
+		};
+		83657F142A98E8B200F00067 /* configuration */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = configuration;
 			sourceTree = "<group>";
 		};
 		838748812946304700E7ADF8 /* AppStore */ = {

@@ -7,4 +7,5 @@ import Foundation
 
 public enum SharedSettingKeys: String {
     case useInAppBrowser = "shared.browser.inapp"
+    case useExperimentalDashboard = "shared.experimental.dashboard"
 }

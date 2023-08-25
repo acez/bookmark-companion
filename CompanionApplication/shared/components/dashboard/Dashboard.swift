@@ -9,6 +9,8 @@ struct Dashboard<ID: Hashable>: View {
     var bookmarkStore: any BookmarkStore<ID>
     var tagStore: any TagStore<ID>
     
+    @State var openConfig: Bool = false
+    
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
@@ -29,6 +31,26 @@ struct Dashboard<ID: Hashable>: View {
                 }
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                ConfigurationButton(actionHandler: {
+                    self.openConfig = true
+                })
+            }
+        }
+        .sheet(isPresented: self.$openConfig) {
+            NavigationView {
+                ConfigurationView(
+                    dismissToolbarItem: {
+                        Text("Close")
+                    }, dismissHandler: {
+                        return true
+                    }
+                )
+                .navigationTitle("Configuration")
+            }
+        }
+
     }
     
     func allBookmarksCount() -> Int {
