@@ -23,10 +23,7 @@ public struct LinkdingDashboardView: View, BaseIntegrationDashboard {
     var selectedView: some View {
         ZStack {
             if self.useExperimentalDashboard {
-                NavigationStack {
-                    Dashboard(bookmarkStore: self, tagStore: self)
-                        .navigationTitle("Bookmarks")
-                }
+                Dashboard(bookmarkStore: self, tagStore: self, syncService: self, title: "Linkding")
             } else {
                 TabView {
                     LinkdingBookmarkTabView(openConfig: self.openConfig)
@@ -93,6 +90,11 @@ extension LinkdingDashboardView: TagStore {
             .usedTags
             .map { Tag(id: $0.id, name: $0.name) }
     }
-    
-    
+}
+
+extension LinkdingDashboardView: SyncService {
+    func runFullSync() async {
+        let sync = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
+        try? await sync.sync()
+    }
 }

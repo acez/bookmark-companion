@@ -8,49 +8,53 @@ import SwiftUI
 struct Dashboard<ID: Hashable>: View {
     var bookmarkStore: any BookmarkStore<ID>
     var tagStore: any TagStore<ID>
+    var syncService: SyncService
+    
+    var title: String
     
     @State var openConfig: Bool = false
     
     var body: some View {
         GeometryReader { geometry in
-            ScrollView {
-                VStack(alignment: .leading) {
-                    HStack {
-                        DashboardTile(title: "All bookmarks", count: self.allBookmarksCount(), width: geometry.size.width / 2.0)
-                        DashboardTile(title: "Unread bookmarks", count: self.unreadBookmarksCount(), width: geometry.size.width / 2.0, color: Color.blue, iconName: "tray.full.fill")
-                    }
-                    HStack {
-                        VStack {
-                            Text("Tags").font(.system(size: 24))
-                            ForEach(self.tagStore.filter(text: nil)) { tag in
-                                DashboardTagListItem(tagName: tag.name, tagBookmarkCount: self.tagBookmarkCount(tag: tag), width: geometry.size.width)
+            NavigationStack {
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            DashboardTile(title: "All bookmarks", count: self.allBookmarksCount(), width: geometry.size.width / 2.0)
+                            DashboardTile(title: "Unread bookmarks", count: self.unreadBookmarksCount(), width: geometry.size.width / 2.0, color: Color.blue, iconName: "tray.full.fill")
+                        }
+                        HStack {
+                            VStack {
+                                HStack {
+                                    Text("Tags")
+                                        .font(.system(size: 24))
+                                        .bold()
+                                    Spacer()
+                                }
+                                ForEach(self.tagStore.filter(text: nil)) { tag in
+                                    DashboardTagListItem(tagName: tag.name, tagBookmarkCount: self.tagBookmarkCount(tag: tag), width: geometry.size.width)
+                                }
                             }
                         }
+                        .padding(10)
                     }
-                    .padding(10)
+                }
+                .navigationTitle(self.title)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        ConfigurationButton(actionHandler: {
+                            self.openConfig = true
+                        })
+                    }
+                }
+                .sheet(isPresented: self.$openConfig) {
+                    ConfigurationSheet()
+                }
+                .refreshable {
+                    await self.syncService.runFullSync()
                 }
             }
         }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                ConfigurationButton(actionHandler: {
-                    self.openConfig = true
-                })
-            }
-        }
-        .sheet(isPresented: self.$openConfig) {
-            NavigationView {
-                ConfigurationView(
-                    dismissToolbarItem: {
-                        Text("Close")
-                    }, dismissHandler: {
-                        return true
-                    }
-                )
-                .navigationTitle("Configuration")
-            }
-        }
-
     }
     
     func allBookmarksCount() -> Int {
@@ -105,8 +109,12 @@ struct Dashboard_Previews: PreviewProvider {
             ]
         }
     }
+    
+    struct PreviewSyncService: SyncService {
+        func runFullSync() {}
+    }
 
     static var previews: some View {
-        Dashboard(bookmarkStore: PreviewBookmarkStore(), tagStore: PreviewTagStore())
+        Dashboard(bookmarkStore: PreviewBookmarkStore(), tagStore: PreviewTagStore(), syncService: PreviewSyncService(), title: "Preview")
     }
 }
