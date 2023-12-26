@@ -76,11 +76,18 @@ extension LinkdingDashboardView: BookmarkStore {
         let unreadOnly = filter == .unread ? true : false
         return self.bookmarkStore
             .filtered(showArchived: false, showUnreadOnly: unreadOnly, filterText: text ?? "")
-            .map { Bookmark(id: $0.internalId, title: $0.title, url: $0.url, tags: []) }
+            .map { self.convertToBookmark(bookmark: $0) }
     }
     
     public func byTag(tag: Tag<UUID>) -> [Bookmark<UUID>] {
-        return []
+        return self.bookmarkStore
+            .allBookmarks
+            .filter { $0.tagNames.contains(tag.name) }
+            .map { self.convertToBookmark(bookmark: $0) }
+    }
+    
+    private func convertToBookmark(bookmark: LinkdingBookmarkEntity) -> Bookmark<UUID> {
+        return Bookmark(id: bookmark.internalId, title: bookmark.title, url: bookmark.url, description: bookmark.description, tags: bookmark.tags)
     }
 }
 
