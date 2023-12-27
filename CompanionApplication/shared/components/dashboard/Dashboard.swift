@@ -20,8 +20,12 @@ struct Dashboard<ID: Hashable>: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         HStack {
-                            DashboardTile(title: "All bookmarks", count: self.allBookmarksCount(), width: geometry.size.width / 2.0)
-                            DashboardTile(title: "Unread bookmarks", count: self.unreadBookmarksCount(), width: geometry.size.width / 2.0, color: Color.blue, iconName: "tray.full.fill")
+                            NavigationLink(destination: BookmarkListViewV2(title: "All bookmarks", bookmarks: self.allBookmarks())) {
+                                DashboardTile(title: "All bookmarks", count: self.allBookmarksCount(), width: geometry.size.width / 2.0)
+                            }
+                            NavigationLink(destination: BookmarkListViewV2(title: "Unread bookmarks", bookmarks: self.unreadBookmarks())) {
+                                DashboardTile(title: "Unread bookmarks", count: self.unreadBookmarksCount(), width: geometry.size.width / 2.0, color: Color.orange, iconName: "tray.full.fill")
+                            }
                         }
                         HStack {
                             VStack {
@@ -32,7 +36,9 @@ struct Dashboard<ID: Hashable>: View {
                                     Spacer()
                                 }
                                 ForEach(self.tagStore.filter(text: nil)) { tag in
-                                    DashboardTagListItem(tagName: tag.name, tagBookmarkCount: self.tagBookmarkCount(tag: tag), width: geometry.size.width)
+                                    NavigationLink(destination: BookmarkListViewV2(title: tag.name, bookmarks: self.bookmarkStore.byTag(tag: tag))) {
+                                        DashboardTagListItem(tagName: tag.name, tagBookmarkCount: self.tagBookmarkCount(tag: tag), width: geometry.size.width)
+                                    }
                                 }
                             }
                         }
@@ -57,16 +63,20 @@ struct Dashboard<ID: Hashable>: View {
         }
     }
     
+    func allBookmarks() -> [Bookmark<ID>] {
+        return self.bookmarkStore.filter(text: nil, filter: .all)
+    }
+    
     func allBookmarksCount() -> Int {
-        return self.bookmarkStore
-            .filter(text: nil, filter: .all)
-            .count
+        return self.allBookmarks().count
+    }
+    
+    func unreadBookmarks() -> [Bookmark<ID>] {
+        return self.bookmarkStore.filter(text: nil, filter: .unread)
     }
     
     func unreadBookmarksCount() -> Int {
-        return self.bookmarkStore
-            .filter(text: nil, filter: .unread)
-            .count
+        return self.unreadBookmarks().count
     }
     
     func tagBookmarkCount(tag: Tag<ID>) -> Int {

@@ -87,7 +87,7 @@ extension LinkdingDashboardView: BookmarkStore {
     }
     
     private func convertToBookmark(bookmark: LinkdingBookmarkEntity) -> Bookmark<UUID> {
-        return Bookmark(id: bookmark.internalId, title: bookmark.title, url: bookmark.url, description: bookmark.description, tags: bookmark.tags)
+        return Bookmark(id: bookmark.internalId, title: bookmark.displayTitle, url: bookmark.url, description: bookmark.displayDescription, tags: bookmark.tags)
     }
 }
 

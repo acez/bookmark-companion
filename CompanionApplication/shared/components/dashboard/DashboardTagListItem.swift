@@ -15,7 +15,10 @@ struct DashboardTagListItem: View {
     
     var body: some View {
         HStack {
-            Text(self.tagName)
+            HStack {
+                Image(systemName: "tag")
+                Text(self.tagName)
+            }
             Spacer()
             ZStack {
                 Text("\(self.tagBookmarkCount)")
