@@ -11,6 +11,7 @@ enum BookmarkIntegrations {
 struct ConfigurationView<DismissToolbarItem: View>: View {
     @AppStorage(SharedSettingKeys.useInAppBrowser.rawValue, store: AppStorageSupport.shared.sharedStore) var useInAppBrowser: Bool = false
     @AppStorage(SharedSettingKeys.useExperimentalDashboard.rawValue, store: AppStorageSupport.shared.sharedStore) var useExperimentalDashboard: Bool = false
+    @AppStorage(SharedSettingKeys.showDescription.rawValue, store: AppStorageSupport.shared.sharedStore) var showDescription: Bool = false
     
     @Environment(\.presentationMode) private var presentationMode
     
@@ -37,6 +38,7 @@ struct ConfigurationView<DismissToolbarItem: View>: View {
             if !ProcessInfo.processInfo.isiOSAppOnMac {
                 Section("Global") {
                     Toggle("Use In-App Browser", isOn: self.$useInAppBrowser)
+                    Toggle("Show bookmark description", isOn: self.$showDescription)
                     Toggle(isOn: self.$useExperimentalDashboard) {
                         Group {
                             Text("Use new dashboard style UI")

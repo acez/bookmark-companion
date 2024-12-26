@@ -12,6 +12,8 @@
 		83017F392910313800C341D2 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83017F382910313800C341D2 /* ShareViewController.swift */; };
 		83017F412910313800C341D2 /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 83017F362910313800C341D2 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8339E8582A05AFDF003E7762 /* CompanionApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834922FB2A05AE6A004CBDEF /* CompanionApplication.framework */; };
+		83403F9F2B3B6FBA0048212B /* BookmarkListViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83403F9E2B3B6FBA0048212B /* BookmarkListViewV2.swift */; };
+		83403FBD2B3C74E40048212B /* BookmarkListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83403FBC2B3C74E40048212B /* BookmarkListItemView.swift */; };
 		834923032A05AE6A004CBDEF /* CompanionApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834922FB2A05AE6A004CBDEF /* CompanionApplication.framework */; };
 		8349230A2A05AE6A004CBDEF /* ApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834923092A05AE6A004CBDEF /* ApplicationTests.swift */; };
 		8349230B2A05AE6A004CBDEF /* Application.h in Headers */ = {isa = PBXBuildFile; fileRef = 834922FD2A05AE6A004CBDEF /* Application.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -179,6 +181,8 @@
 		83038DA52981BB6F00A1FA15 /* Structure.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Structure.md; sourceTree = "<group>"; };
 		8305572B2946371C007E128A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		8312CF4E29100EED00CE3C1C /* BookmarkCompanion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BookmarkCompanion.entitlements; sourceTree = "<group>"; };
+		83403F9E2B3B6FBA0048212B /* BookmarkListViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListViewV2.swift; sourceTree = "<group>"; };
+		83403FBC2B3C74E40048212B /* BookmarkListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListItemView.swift; sourceTree = "<group>"; };
 		834922FB2A05AE6A004CBDEF /* CompanionApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CompanionApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		834922FD2A05AE6A004CBDEF /* Application.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
 		834923022A05AE6A004CBDEF /* CompanionApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CompanionApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -340,6 +344,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		83403F9D2B3B6FA50048212B /* bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				83403F9E2B3B6FBA0048212B /* BookmarkListViewV2.swift */,
+				83403FBC2B3C74E40048212B /* BookmarkListItemView.swift */,
+			);
+			path = bookmark;
 			sourceTree = "<group>";
 		};
 		834922FC2A05AE6A004CBDEF /* CompanionApplication */ = {
@@ -777,6 +790,7 @@
 		83657F032A97966800F00067 /* dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				83403F9D2B3B6FA50048212B /* bookmark */,
 				83657F142A98E8B200F00067 /* configuration */,
 				83657F012A97966000F00067 /* DashboardTile.swift */,
 				83657F0A2A97A29D00F00067 /* Dashboard.swift */,
@@ -1084,6 +1098,7 @@
 				834923512A05AEF5004CBDEF /* TagListView.swift in Sources */,
 				834923982A05AF23004CBDEF /* LinkdingTagBookmarksView.swift in Sources */,
 				83C470922A05B9D5006F6E8F /* InitialConfiguration.swift in Sources */,
+				83403FBD2B3C74E40048212B /* BookmarkListItemView.swift in Sources */,
 				8349234A2A05AEF5004CBDEF /* BookmarkListView.swift in Sources */,
 				834923562A05AEF5004CBDEF /* BaseIntegrationDashboard.swift in Sources */,
 				83657F072A97A16300F00067 /* BookmarkStore.swift in Sources */,
@@ -1097,6 +1112,7 @@
 				834923442A05AEF5004CBDEF /* Integrations.swift in Sources */,
 				834923B02A05AF23004CBDEF /* LinkdingBookmarkUpdateDto.swift in Sources */,
 				83657F162A996AFC00F00067 /* ConfigurationSheet.swift in Sources */,
+				83403F9F2B3B6FBA0048212B /* BookmarkListViewV2.swift in Sources */,
 				834923B42A05AF23004CBDEF /* LinkdingBookmarkDto.swift in Sources */,
 				834923452A05AEF5004CBDEF /* View.swift in Sources */,
 				834923B52A05AF23004CBDEF /* LinkdingModel.xcdatamodeld in Sources */,

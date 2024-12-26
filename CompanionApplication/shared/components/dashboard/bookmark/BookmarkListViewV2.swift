@@ -12,7 +12,11 @@ struct BookmarkListViewV2<ID: Hashable>: View {
     var body: some View {
         Form {
             ForEach(self.bookmarks) { bookmark in
-                Text(bookmark.title)
+                HStack(alignment: .top) {
+                    BookmarkListItemView(bookmark: bookmark)
+                    Spacer()
+                    UrlLinkView(url: bookmark.url)
+                }
             }
         }
         .navigationTitle(self.title)
