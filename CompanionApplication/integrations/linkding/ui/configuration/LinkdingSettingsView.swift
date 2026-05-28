@@ -37,13 +37,13 @@ public struct LinkdingSettingsView: View {
                 .keyboardType(.URL)
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
-                .onChange(of: self.url, perform: { newValue in
+                .onChange(of: self.url) { oldValue, newValue in
                     if (newValue == "") {
                         self.urlError = true
                     } else {
                         self.urlError = false
                     }
-                })
+                }
                 if (self.urlError) {
                     Text("URL is required.")
                         .foregroundColor(.red)
@@ -56,13 +56,13 @@ public struct LinkdingSettingsView: View {
                 .textContentType(.password)
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
-                .onChange(of: self.secureToken.wrappedValue, perform: { newValue in
+                .onChange(of: self.secureToken.wrappedValue) { oldValue, newValue in
                     if (newValue == "") {
                         self.tokenError = true
                     } else {
                         self.tokenError = false
                     }
-                })
+                }
                 if (self.tokenError) {
                     Text("Token is required.")
                         .foregroundColor(.red)
@@ -80,12 +80,9 @@ public struct LinkdingSettingsView: View {
     }
 }
 
-
-struct LinkdingSettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        List {
-            LinkdingSettingsView()
-        }
+#Preview("Settings View") {
+    List {
+        LinkdingSettingsView()
     }
 }
 

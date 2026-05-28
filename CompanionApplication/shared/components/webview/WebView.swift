@@ -19,8 +19,6 @@ struct WebView: UIViewControllerRepresentable {
     }
 }
 
-struct WebView_Previews: PreviewProvider {
-    static var previews: some View {
-        WebView(url: URL(string: "https://www.google.de")!)
-    }
+#Preview("WebView") {
+    WebView(url: URL(string: "https://www.google.de")!)
 }

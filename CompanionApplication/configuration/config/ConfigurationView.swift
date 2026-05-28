@@ -66,14 +66,12 @@ struct ConfigurationView<DismissToolbarItem: View>: View {
     }
 }
 
-struct ConfigurationView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            ConfigurationView(dismissToolbarItem: {
-                Text("Close")
-            }, dismissHandler: {
-                return true
-            })
-        }
+#Preview("Configuration View") {
+    NavigationStack {
+        ConfigurationView(dismissToolbarItem: {
+            Text("Close")
+        }, dismissHandler: {
+            return true
+        })
     }
 }

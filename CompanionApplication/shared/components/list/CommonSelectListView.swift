@@ -82,34 +82,4 @@ public struct CommonSelectListView<T: CommonListItem>: View {
     }
 }
 
-struct CommonListView_Previews: PreviewProvider {
-    struct TestItem: CommonListItem {
-        var id: UUID
-        var text: String
-        func getDisplayText() -> String {
-            return self.text
-        }
-    }
-    
-    struct TestHandler: CreateNotFoundItemHandler {
-        func createItem(text: String) {
-        }
-    }
-    
-    static var testItems = [
-        TestItem(id: UUID(), text: "test-1"),
-        TestItem(id: UUID(), text: "test-2"),
-        TestItem(id: UUID(), text: "test-3")
-    ]
-    
-    @State static var selection: Set<TestItem> = [testItems[0]]
-    
-    static var previews: some View {
-        NavigationView {
-            CommonSelectListView(items: testItems, selectedItems: $selection)
-        }.previewDisplayName("without create handler")
-        NavigationView {
-            CommonSelectListView(items: testItems, selectedItems: $selection, createNotFoundHandler: TestHandler())
-        }.previewDisplayName("with create handler")
-    }
-}
+

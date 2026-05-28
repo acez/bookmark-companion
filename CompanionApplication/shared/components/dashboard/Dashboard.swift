@@ -86,45 +86,48 @@ struct Dashboard<ID: Hashable>: View {
     }
 }
 
-struct Dashboard_Previews: PreviewProvider {
-    struct PreviewBookmarkStore: BookmarkStore {
-        typealias ID = UUID
+#Preview("Dashboard") {
+    Dashboard(
+        bookmarkStore: PreviewBookmarkStore(),
+        tagStore: PreviewTagStore(),
+        syncService: PreviewSyncService(),
+        title: "Preview"
+    )
+}
 
-        func filter(text: String?, filter: BookmarkStoreFilter?) -> [Bookmark<UUID>] {
-            if filter == .all {
-                return [
-                    Bookmark(id: UUID(), title: "Dummy Title 1", url: "http://dummy-url-1", tags: []),
-                    Bookmark(id: UUID(), title: "Dummy Title 2", url: "http://dummy-url-2", tags: [])
-                ]
-            } else {
-                return [
-                    Bookmark(id: UUID(), title: "Dummy Title 3", url: "http://dummy-url-3", tags: [])
-                ]
-            }
-        }
-        
-        func byTag(tag: Tag<UUID>) -> [Bookmark<UUID>] {
-            return []
-        }
-    }
-    
-    struct PreviewTagStore: TagStore {
-        typealias ID = UUID
-        
-        func filter(text: String?) -> [Tag<UUID>] {
+private struct PreviewBookmarkStore: BookmarkStore {
+    typealias ID = UUID
+
+    func filter(text: String?, filter: BookmarkStoreFilter?) -> [Bookmark<UUID>] {
+        if filter == .all {
             return [
-                Tag(id: UUID(), name: "tag-1"),
-                Tag(id: UUID(), name: "tag-2"),
-                Tag(id: UUID(), name: "tag-3")
+                Bookmark(id: UUID(), title: "Dummy Title 1", url: "http://dummy-url-1", tags: []),
+                Bookmark(id: UUID(), title: "Dummy Title 2", url: "http://dummy-url-2", tags: [])
+            ]
+        } else {
+            return [
+                Bookmark(id: UUID(), title: "Dummy Title 3", url: "http://dummy-url-3", tags: [])
             ]
         }
     }
     
-    struct PreviewSyncService: SyncService {
-        func runFullSync() {}
+    func byTag(tag: Tag<UUID>) -> [Bookmark<UUID>] {
+        return []
     }
+}
 
-    static var previews: some View {
-        Dashboard(bookmarkStore: PreviewBookmarkStore(), tagStore: PreviewTagStore(), syncService: PreviewSyncService(), title: "Preview")
+private struct PreviewTagStore: TagStore {
+    typealias ID = UUID
+    
+    func filter(text: String?) -> [Tag<UUID>] {
+        return [
+            Tag(id: UUID(), name: "tag-1"),
+            Tag(id: UUID(), name: "tag-2"),
+            Tag(id: UUID(), name: "tag-3")
+        ]
     }
+}
+
+private struct PreviewSyncService: SyncService {
+    func runFullSync() {}
 }

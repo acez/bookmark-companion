@@ -73,27 +73,36 @@ public struct BookmarkListView<Content: View, ID: Hashable>: View {
     }
 }
 
-struct BookmarkListView_Previews: PreviewProvider {
-    struct PreviewBookmarkStore: FilteredBookmarkStore {
-        func filter(text: String) -> [Bookmark<UUID>] {
-            return [
-                Bookmark(id: UUID(), title: "bookmark-1", url: "https://www.github.com", tags: [Tag(id: UUID(), name: "tag-1")]),
-                Bookmark(id: UUID(), title: "bookmark-2", url: "https://www.github.com", tags: []),
-                Bookmark(id: UUID(), title: "bookmark-3", url: "https://www.github.com", tags: [Tag(id: UUID(), name: "tag-2"), Tag(id: UUID(), name: "tag-3")]),
-                Bookmark(id: UUID(), title: "bookmark-4", url: "https://www.github.com", description: "A dummy description", tags: []),
-                Bookmark(id: UUID(), title: "bookmark-5", url: "https://www.github.com", description: "A dummy description", tags: [Tag(id: UUID(), name: "tag-4")])
-            ]
+#Preview("Default") {
+    BookmarkListView(bookmarkStore: PreviewBookmarkStore())
+}
+
+#Preview("Without extras") {
+    BookmarkListView(
+        bookmarkStore: PreviewBookmarkStore(),
+        showLinkButton: false,
+        showTags: false,
+        showDescription: false,
+        enableDelete: false
+    )
+}
+
+#Preview("With error") {
+    BookmarkListView(bookmarkStore: PreviewBookmarkStore(), preListView: {
+        Section() {
+            SyncErrorView(errorDetails: "Some more details about the error.")
         }
-    }
-    static let store = PreviewBookmarkStore()
-    
-    static var previews: some View {
-        BookmarkListView(bookmarkStore: store)
-        BookmarkListView(bookmarkStore: store, showLinkButton: false, showTags: false, showDescription: false, enableDelete: false)
-        BookmarkListView(bookmarkStore: store, preListView: {
-            Section() {
-                SyncErrorView(errorDetails: "Some more details about the error.")
-            }
-        })
+    })
+}
+
+private struct PreviewBookmarkStore: FilteredBookmarkStore {
+    func filter(text: String) -> [Bookmark<UUID>] {
+        return [
+            Bookmark(id: UUID(), title: "bookmark-1", url: "https://www.github.com", tags: [Tag(id: UUID(), name: "tag-1")]),
+            Bookmark(id: UUID(), title: "bookmark-2", url: "https://www.github.com", tags: []),
+            Bookmark(id: UUID(), title: "bookmark-3", url: "https://www.github.com", tags: [Tag(id: UUID(), name: "tag-2"), Tag(id: UUID(), name: "tag-3")]),
+            Bookmark(id: UUID(), title: "bookmark-4", url: "https://www.github.com", description: "A dummy description", tags: []),
+            Bookmark(id: UUID(), title: "bookmark-5", url: "https://www.github.com", description: "A dummy description", tags: [Tag(id: UUID(), name: "tag-4")])
+        ]
     }
 }

@@ -9,7 +9,7 @@ struct InitialConfiguration: View {
     @AppStorage(LinkdingSettingKeys.configComplete.rawValue, store: AppStorageSupport.shared.sharedStore) var configComplete: Bool = false
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ConfigurationView(
                 dismissToolbarItem: {
                     Text("Save")
@@ -27,16 +27,15 @@ struct InitialConfiguration: View {
                 .navigationTitle("Setup")
                 .navigationBarBackButtonHidden(true)
                 .navigationBarTitleDisplayMode(.inline)
-                .alert(isPresented: self.$showSettingsError) {
-                    Alert(title: Text("Invalid Settings. Please always set URL and Token."))
+                .alert("Invalid Settings", isPresented: self.$showSettingsError) {
+                    Button("OK") { }
+                } message: {
+                    Text("Please always set URL and Token.")
                 }
         }
-            .navigationViewStyle(.stack)
     }
 }
 
-struct InitialConfiguration_Previews: PreviewProvider {
-    static var previews: some View {
-        InitialConfiguration()
-    }
+#Preview {
+    InitialConfiguration()
 }

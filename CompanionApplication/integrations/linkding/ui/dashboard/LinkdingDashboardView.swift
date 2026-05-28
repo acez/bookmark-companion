@@ -58,14 +58,14 @@ public struct LinkdingDashboardView: View, BaseIntegrationDashboard {
                     try await sync.sync()
                 }
             }
-            .onChange(of: scenePhase, perform: { newPhase in
+            .onChange(of: scenePhase) { oldPhase, newPhase in
                 if newPhase == .active {
                     let sync = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
                     Task {
                         try await sync.sync()
                     }
                 }
-            })
+            }
     }
 }
 

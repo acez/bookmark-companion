@@ -31,7 +31,7 @@ struct ShareBookmarkCreate: View {
     var onClose: @MainActor () -> ()
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section(
                     content: {
@@ -157,6 +157,5 @@ struct ShareBookmarkCreate: View {
                     }
                 }
         }
-            .navigationViewStyle(.stack)
     }
 }
