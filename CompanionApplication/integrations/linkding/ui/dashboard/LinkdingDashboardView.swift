@@ -23,7 +23,11 @@ public struct LinkdingDashboardView: View, BaseIntegrationDashboard {
     var selectedView: some View {
         ZStack {
             if self.useExperimentalDashboard {
-                Dashboard(bookmarkStore: self, tagStore: self, syncService: self, title: "Linkding")
+                Dashboard(bookmarkStore: self, tagStore: self, syncService: self, title: "Linkding") {
+                    LinkdingCreateBookmarkView()
+                        .environmentObject(self.tagStore)
+                        .environmentObject(self.bookmarkStore)
+                }
             } else {
                 TabView {
                     LinkdingBookmarkTabView(openConfig: self.openConfig)

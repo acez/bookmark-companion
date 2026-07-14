@@ -5,7 +5,10 @@
 
 import Foundation
 
+@MainActor
 public class LinkdingSyncClient: ObservableObject {
+    private static var syncInProgress = false
+
     private var apiClient: LinkdingApiClient
 
     private let tagStore: LinkdingTagStore
@@ -39,9 +42,11 @@ public class LinkdingSyncClient: ObservableObject {
     }
 
     public func sync() async throws {
-        if (self.syncRunning()) {
+        if (Self.syncInProgress || self.syncRunning()) {
             return
         }
+        Self.syncInProgress = true
+        defer { Self.syncInProgress = false }
 
         AppStorageSupport.shared.sharedStore.set(false, forKey: LinkdingSettingKeys.syncHadError.rawValue)
         AppStorageSupport.shared.sharedStore.set("", forKey: LinkdingSettingKeys.syncErrorMessage.rawValue)

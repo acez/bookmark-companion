@@ -13,9 +13,12 @@ public class LinkdingTagRepository {
     }
     
     public func createTag(tag: TagModel) -> LinkdingTagEntity {
-        let entity = self.getOrCreateEntity(serverId: tag.serverId, name: tag.name)
-        entity.updateServerData(serverId: tag.serverId ?? 0, name: tag.name, dateAdded: tag.dateAdded)
-        try? LinkdingPersistenceController.shared.viewContext.save()
+        var entity: LinkdingTagEntity!
+        LinkdingPersistenceController.shared.viewContext.performAndWait {
+            entity = self.getOrCreateEntity(serverId: tag.serverId, name: tag.name)
+            entity.updateServerData(serverId: tag.serverId ?? 0, name: tag.name, dateAdded: tag.dateAdded)
+            try? LinkdingPersistenceController.shared.viewContext.save()
+        }
         return entity
     }
     

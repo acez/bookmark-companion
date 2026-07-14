@@ -23,14 +23,15 @@ struct PersistenceHistoryMerger {
         }
 
         history.merge(into: backgroundContext)
+
+        let lastTimestamp = history.last?.timestamp
         viewContext.perform {
             history.merge(into: self.viewContext)
-        }
 
-        guard let lastTimestamp = history.last?.timestamp else {
-            return
+            if let lastTimestamp {
+                UserDefaults.standard.set(lastTimestamp, forKey: self.timestampKey)
+            }
         }
-        UserDefaults.standard.set(lastTimestamp, forKey: timestampKey)
     }
 
 }

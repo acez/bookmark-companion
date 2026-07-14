@@ -5,60 +5,86 @@
 
 import SwiftUI
 
-struct Dashboard<ID: Hashable>: View {
+struct Dashboard<ID: Hashable, CreateView: View>: View {
     var bookmarkStore: any BookmarkStore<ID>
     var tagStore: any TagStore<ID>
     var syncService: SyncService
-    
+
     var title: String
-    
+
+    @ViewBuilder var createBookmarkView: () -> CreateView
+
     @State var openConfig: Bool = false
-    
+    @State private var createBookmarkOpen: Bool = false
+
+    private var columns: [GridItem] {
+        [
+            GridItem(.flexible(), spacing: 14),
+            GridItem(.flexible(), spacing: 14)
+        ]
+    }
+
     var body: some View {
-        GeometryReader { geometry in
-            NavigationStack {
-                ScrollView {
-                    VStack(alignment: .leading) {
-                        HStack {
-                            NavigationLink(destination: BookmarkListViewV2(title: "All bookmarks", bookmarks: self.allBookmarks())) {
-                                DashboardTile(title: "All bookmarks", count: self.allBookmarksCount(), width: geometry.size.width / 2.0)
-                            }
-                            NavigationLink(destination: BookmarkListViewV2(title: "Unread bookmarks", bookmarks: self.unreadBookmarks())) {
-                                DashboardTile(title: "Unread bookmarks", count: self.unreadBookmarksCount(), width: geometry.size.width / 2.0, color: Color.orange, iconName: "tray.full.fill")
-                            }
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 28) {
+                    LazyVGrid(columns: self.columns, spacing: 14) {
+                        NavigationLink(destination: BookmarkListViewV2(title: "All bookmarks", bookmarks: self.allBookmarks(), createBookmarkView: self.createBookmarkView)) {
+                            DashboardTile(title: "All bookmarks", count: self.allBookmarksCount(), color: .blue, iconName: "bookmark.fill")
                         }
-                        HStack {
-                            VStack {
-                                HStack {
-                                    Text("Tags")
-                                        .font(.system(size: 24))
-                                        .bold()
-                                    Spacer()
-                                }
-                                ForEach(self.tagStore.filter(text: nil)) { tag in
-                                    NavigationLink(destination: BookmarkListViewV2(title: tag.name, bookmarks: self.bookmarkStore.byTag(tag: tag))) {
-                                        DashboardTagListItem(tagName: tag.name, tagBookmarkCount: self.tagBookmarkCount(tag: tag), width: geometry.size.width)
+                        .buttonStyle(.plain)
+
+                        NavigationLink(destination: BookmarkListViewV2(title: "Unread bookmarks", bookmarks: self.unreadBookmarks(), createBookmarkView: self.createBookmarkView)) {
+                            DashboardTile(title: "Unread bookmarks", count: self.unreadBookmarksCount(), color: .orange, iconName: "tray.full.fill")
+                        }
+                        .buttonStyle(.plain)
+                    }
+
+                    let tags = self.tagStore.filter(text: nil)
+                    if !tags.isEmpty {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Tags")
+                                .font(.title2.weight(.bold))
+
+                            VStack(spacing: 10) {
+                                ForEach(tags) { tag in
+                                    NavigationLink(destination: BookmarkListViewV2(title: tag.name, bookmarks: self.bookmarkStore.byTag(tag: tag), createBookmarkView: self.createBookmarkView)) {
+                                        DashboardTagListItem(tagName: tag.name, tagBookmarkCount: self.tagBookmarkCount(tag: tag))
                                     }
+                                    .buttonStyle(.plain)
                                 }
                             }
                         }
-                        .padding(10)
                     }
                 }
-                .navigationTitle(self.title)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        ConfigurationButton(actionHandler: {
-                            self.openConfig = true
-                        })
+                .padding(.horizontal, 16)
+                .padding(.top, 8)
+                .padding(.bottom, 24)
+            }
+            .background(Color(.systemGroupedBackground).ignoresSafeArea())
+            .navigationTitle(self.title)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    ConfigurationButton(actionHandler: {
+                        self.openConfig = true
+                    })
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        self.createBookmarkOpen = true
+                    }) {
+                        Image(systemName: "plus")
                     }
                 }
-                .sheet(isPresented: self.$openConfig) {
-                    ConfigurationSheet()
-                }
-                .refreshable {
-                    await self.syncService.runFullSync()
-                }
+            }
+            .sheet(isPresented: self.$openConfig) {
+                ConfigurationSheet()
+            }
+            .sheet(isPresented: self.$createBookmarkOpen) {
+                self.createBookmarkView()
+            }
+            .refreshable {
+                await self.syncService.runFullSync()
             }
         }
     }
@@ -91,7 +117,8 @@ struct Dashboard<ID: Hashable>: View {
         bookmarkStore: PreviewBookmarkStore(),
         tagStore: PreviewTagStore(),
         syncService: PreviewSyncService(),
-        title: "Preview"
+        title: "Preview",
+        createBookmarkView: { Text("Create bookmark") }
     )
 }
 
