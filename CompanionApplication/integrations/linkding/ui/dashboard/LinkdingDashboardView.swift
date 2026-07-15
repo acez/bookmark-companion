@@ -23,8 +23,8 @@ public struct LinkdingDashboardView: View, BaseIntegrationDashboard {
     var selectedView: some View {
         ZStack {
             if self.useExperimentalDashboard {
-                Dashboard(bookmarkStore: self, tagStore: self, syncService: self, title: "Linkding") {
-                    LinkdingCreateBookmarkView()
+                Dashboard(bookmarkStore: self, tagStore: self, syncService: self, title: "Linkding") { preselectedTag in
+                    LinkdingCreateBookmarkView(preselectedTagNames: preselectedTag.map { [$0.name] } ?? [])
                         .environmentObject(self.tagStore)
                         .environmentObject(self.bookmarkStore)
                 }

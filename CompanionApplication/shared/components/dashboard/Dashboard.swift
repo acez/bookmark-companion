@@ -12,7 +12,7 @@ struct Dashboard<ID: Hashable, CreateView: View>: View {
 
     var title: String
 
-    @ViewBuilder var createBookmarkView: () -> CreateView
+    @ViewBuilder var createBookmarkView: (Tag<ID>?) -> CreateView
 
     @State var openConfig: Bool = false
     @State private var createBookmarkOpen: Bool = false
@@ -30,12 +30,12 @@ struct Dashboard<ID: Hashable, CreateView: View>: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 28) {
                     LazyVGrid(columns: self.columns, spacing: 14) {
-                        NavigationLink(destination: BookmarkListViewV2(title: "All bookmarks", bookmarks: self.allBookmarks(), createBookmarkView: self.createBookmarkView)) {
+                        NavigationLink(destination: BookmarkListViewV2(title: "All bookmarks", bookmarks: self.allBookmarks(), createBookmarkView: { self.createBookmarkView(nil) })) {
                             DashboardTile(title: "All bookmarks", count: self.allBookmarksCount(), color: .blue, iconName: "bookmark.fill")
                         }
                         .buttonStyle(.plain)
 
-                        NavigationLink(destination: BookmarkListViewV2(title: "Unread bookmarks", bookmarks: self.unreadBookmarks(), createBookmarkView: self.createBookmarkView)) {
+                        NavigationLink(destination: BookmarkListViewV2(title: "Unread bookmarks", bookmarks: self.unreadBookmarks(), createBookmarkView: { self.createBookmarkView(nil) })) {
                             DashboardTile(title: "Unread bookmarks", count: self.unreadBookmarksCount(), color: .orange, iconName: "tray.full.fill")
                         }
                         .buttonStyle(.plain)
@@ -49,7 +49,7 @@ struct Dashboard<ID: Hashable, CreateView: View>: View {
 
                             VStack(spacing: 10) {
                                 ForEach(tags) { tag in
-                                    NavigationLink(destination: BookmarkListViewV2(title: tag.name, bookmarks: self.bookmarkStore.byTag(tag: tag), createBookmarkView: self.createBookmarkView)) {
+                                    NavigationLink(destination: BookmarkListViewV2(title: tag.name, bookmarks: self.bookmarkStore.byTag(tag: tag), createBookmarkView: { self.createBookmarkView(tag) })) {
                                         DashboardTagListItem(tagName: tag.name, tagBookmarkCount: self.tagBookmarkCount(tag: tag))
                                     }
                                     .buttonStyle(.plain)
@@ -83,7 +83,7 @@ struct Dashboard<ID: Hashable, CreateView: View>: View {
                 ConfigurationSheet()
             }
             .sheet(isPresented: self.$createBookmarkOpen) {
-                self.createBookmarkView()
+                self.createBookmarkView(nil)
             }
             .refreshable {
                 await self.syncService.runFullSync()
@@ -120,7 +120,7 @@ struct Dashboard<ID: Hashable, CreateView: View>: View {
         tagStore: PreviewTagStore(),
         syncService: PreviewSyncService(),
         title: "Preview",
-        createBookmarkView: { Text("Create bookmark") }
+        createBookmarkView: { _ in Text("Create bookmark") }
     )
 }
 

@@ -14,6 +14,8 @@ struct LinkdingCreateBookmarkView: View {
     @AppStorage(LinkdingSettingKeys.createBookmarkDefaultUnread.rawValue, store: AppStorageSupport.shared.sharedStore) var defaultUnread: Bool = false
     @AppStorage(LinkdingSettingKeys.createBookmarkDefaultShared.rawValue, store: AppStorageSupport.shared.sharedStore) var defaultShared: Bool = false
 
+    var preselectedTagNames: [String] = []
+
     @State var url: String = ""
     @State var title: String = ""
     @State var description: String = ""
@@ -120,6 +122,7 @@ struct LinkdingCreateBookmarkView: View {
                     self.isArchived = self.defaultArchived
                     self.unread = self.defaultUnread
                     self.shared = self.defaultShared
+                    self.tags = Set(self.tagStore.getByNameList(names: self.preselectedTagNames))
                     let syncClient = LinkdingSyncClient(tagStore: self.tagStore, bookmarkStore: self.bookmarkStore)
                     Task {
                         if await syncClient.isBackendAvailable() {
