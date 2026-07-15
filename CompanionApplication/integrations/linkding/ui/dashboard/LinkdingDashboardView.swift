@@ -99,6 +99,12 @@ extension LinkdingDashboardView: TagStore {
     public func filter(text: String?) -> [Tag<UUID>] {
         return self.tagStore
             .usedTags
+            .filter {
+                guard let text = text, !text.isEmpty else {
+                    return true
+                }
+                return $0.name.lowercased().contains(text.lowercased())
+            }
             .map { Tag(id: $0.id, name: $0.name) }
     }
 }

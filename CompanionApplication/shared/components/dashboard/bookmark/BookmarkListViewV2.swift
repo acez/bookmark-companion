@@ -11,10 +11,30 @@ struct BookmarkListViewV2<ID: Hashable, CreateView: View>: View {
     @ViewBuilder var createBookmarkView: () -> CreateView
 
     @State private var createBookmarkOpen: Bool = false
+    @State private var searchText: String = ""
+
+    private var filteredBookmarks: [Bookmark<ID>] {
+        if self.searchText.isEmpty {
+            return self.bookmarks
+        }
+        let searchText = self.searchText.lowercased()
+        let tagSearchText = searchText.first == "#" ?
+            String(searchText.dropFirst()) :
+            searchText
+        return self.bookmarks.filter { bookmark in
+            let tagFound = bookmark.tags.contains {
+                $0.name.lowercased().starts(with: tagSearchText)
+            }
+            let titleFound = bookmark.title.lowercased().contains(searchText)
+            let urlFound = bookmark.url.lowercased().contains(searchText)
+            let descriptionFound = bookmark.description?.lowercased().contains(searchText) ?? false
+            return tagFound || titleFound || urlFound || descriptionFound
+        }
+    }
 
     var body: some View {
         Form {
-            ForEach(self.bookmarks) { bookmark in
+            ForEach(self.filteredBookmarks) { bookmark in
                 HStack(alignment: .top) {
                     BookmarkListItemView(bookmark: bookmark)
                     Spacer()
@@ -23,6 +43,7 @@ struct BookmarkListViewV2<ID: Hashable, CreateView: View>: View {
             }
         }
         .navigationTitle(self.title)
+        .searchable(text: self.$searchText, prompt: "Search bookmarks")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {

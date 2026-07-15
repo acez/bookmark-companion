@@ -16,6 +16,7 @@ struct Dashboard<ID: Hashable, CreateView: View>: View {
 
     @State var openConfig: Bool = false
     @State private var createBookmarkOpen: Bool = false
+    @State private var searchText: String = ""
 
     private var columns: [GridItem] {
         [
@@ -40,7 +41,7 @@ struct Dashboard<ID: Hashable, CreateView: View>: View {
                         .buttonStyle(.plain)
                     }
 
-                    let tags = self.tagStore.filter(text: nil)
+                    let tags = self.tagStore.filter(text: self.searchText.isEmpty ? nil : self.searchText)
                     if !tags.isEmpty {
                         VStack(alignment: .leading, spacing: 12) {
                             Text("Tags")
@@ -63,6 +64,7 @@ struct Dashboard<ID: Hashable, CreateView: View>: View {
             }
             .background(Color(.systemGroupedBackground).ignoresSafeArea())
             .navigationTitle(self.title)
+            .searchable(text: self.$searchText, prompt: "Search tags")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     ConfigurationButton(actionHandler: {
