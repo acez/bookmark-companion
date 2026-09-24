@@ -37,7 +37,7 @@ public class LinkdingBookmarkEntity: NSManagedObject, Identifiable {
         get {
             self.relTags.map { tag in
                 let castedTag = tag as! LinkdingTagEntity
-                return Tag(id: castedTag.internalId, name: castedTag.name)
+                return Tag(id: castedTag.internalId, name: castedTag.name, favorite: castedTag.favorite)
             }
         }
     }

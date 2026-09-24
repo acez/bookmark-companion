@@ -8,10 +8,26 @@ import SwiftUI
 struct BookmarkListViewV2<ID: Hashable, CreateView: View>: View {
     var title: String
     var bookmarks: [Bookmark<ID>]
+    var favoriteAction: ((Bool) -> Void)?
     @ViewBuilder var createBookmarkView: () -> CreateView
 
     @State private var createBookmarkOpen: Bool = false
     @State private var searchText: String = ""
+    @State private var isFavorite: Bool
+
+    init(
+        title: String,
+        bookmarks: [Bookmark<ID>],
+        isFavorite: Bool = false,
+        favoriteAction: ((Bool) -> Void)? = nil,
+        @ViewBuilder createBookmarkView: @escaping () -> CreateView
+    ) {
+        self.title = title
+        self.bookmarks = bookmarks
+        self.favoriteAction = favoriteAction
+        self.createBookmarkView = createBookmarkView
+        self._isFavorite = State(initialValue: isFavorite)
+    }
 
     private var filteredBookmarks: [Bookmark<ID>] {
         if self.searchText.isEmpty {
@@ -45,7 +61,16 @@ struct BookmarkListViewV2<ID: Hashable, CreateView: View>: View {
         .navigationTitle(self.title)
         .searchable(text: self.$searchText, prompt: "Search bookmarks")
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                if let favoriteAction = self.favoriteAction {
+                    Button(action: {
+                        self.isFavorite.toggle()
+                        favoriteAction(self.isFavorite)
+                    }) {
+                        Image(systemName: self.isFavorite ? "star.fill" : "star")
+                            .foregroundStyle(self.isFavorite ? Color.yellow : Color.accentColor)
+                    }
+                }
                 Button(action: {
                     self.createBookmarkOpen = true
                 }) {

@@ -46,6 +46,10 @@ public struct LinkdingPersistenceController {
         description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
         description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
 
+        // Migrate existing stores to new model versions on first launch
+        description.shouldMigrateStoreAutomatically = true
+        description.shouldInferMappingModelAutomatically = true
+
         container.persistentStoreDescriptions = [description]
 
         try? container.viewContext.setQueryGenerationFrom(.current)

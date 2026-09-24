@@ -29,6 +29,13 @@ public class LinkdingTagRepository {
         }
     }
 
+    public func setFavorite(tag: LinkdingTagEntity, favorite: Bool) {
+        LinkdingPersistenceController.shared.viewContext.performAndWait {
+            tag.setFavorite(favorite: favorite)
+            try? LinkdingPersistenceController.shared.viewContext.save()
+        }
+    }
+
     public func batchApplyChanges(models: [TagModel]) {
         LinkdingPersistenceController.shared.viewContext.performAndWait {
             models.forEach {

@@ -244,6 +244,7 @@
 		834923872A05AF23004CBDEF /* LinkdingBookmarkDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkDto.swift; sourceTree = "<group>"; };
 		834923892A05AF23004CBDEF /* LinkdingModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinkdingModel.xcdatamodel; sourceTree = "<group>"; };
 		8349238A2A05AF23004CBDEF /* LinkdingModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LinkdingModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		83D4F1A02C10000000CBDEF1 /* LinkdingModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LinkdingModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		8349238C2A05AF23004CBDEF /* LinkdingSyncClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingSyncClient.swift; sourceTree = "<group>"; };
 		8349238F2A05AF23004CBDEF /* LinkdingBookmarkEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkEntity.swift; sourceTree = "<group>"; };
 		834923902A05AF23004CBDEF /* LinkdingBookmarkRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkdingBookmarkRepository.swift; sourceTree = "<group>"; };
@@ -1592,8 +1593,9 @@
 			children = (
 				834923892A05AF23004CBDEF /* LinkdingModel.xcdatamodel */,
 				8349238A2A05AF23004CBDEF /* LinkdingModel 2.xcdatamodel */,
+				83D4F1A02C10000000CBDEF1 /* LinkdingModel 3.xcdatamodel */,
 			);
-			currentVersion = 8349238A2A05AF23004CBDEF /* LinkdingModel 2.xcdatamodel */;
+			currentVersion = 83D4F1A02C10000000CBDEF1 /* LinkdingModel 3.xcdatamodel */;
 			path = LinkdingModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

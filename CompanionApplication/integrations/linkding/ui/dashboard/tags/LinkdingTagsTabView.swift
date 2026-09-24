@@ -56,12 +56,23 @@ struct LinkdingTagsTabView: View {
                 } else {
                     NavigationLink(value: item, label: {
                         HStack {
-                            Image(systemName: "tag")
+                            Image(systemName: item.tag?.favorite == true ? "star.fill" : "tag")
                             Text(item.name)
                                 .badge(item.badge ?? 0)
                                 .lineLimit(1)
                         }
                     })
+                    .swipeActions(edge: .trailing) {
+                        if let tag = item.tag {
+                            Button(action: {
+                                let repository = LinkdingTagRepository(tagStore: self.tagStore)
+                                repository.setFavorite(tag: tag, favorite: !tag.favorite)
+                            }) {
+                                Image(systemName: tag.favorite ? "star.slash" : "star")
+                            }
+                            .tint(.yellow)
+                        }
+                    }
                 }
             }
             .listStyle(.sidebar)
@@ -124,12 +135,23 @@ struct LinkdingTagsTabView: View {
         var menu: [TagViewMenuItem] = []
         
         menu.append(TagViewMenuItem(name: "Untagged", type: .untagged, badge: self.bookmarkStore.untagged.count))
-        
-        let tags = self.filteredTags().map {
-            TagViewMenuItem(name: $0.name, type: .tag, badge: $0.bookmarks.count, tag: $0)
+
+        let favoriteTags = self.filteredTags()
+            .filter { $0.favorite }
+            .map {
+                TagViewMenuItem(name: $0.name, type: .tag, badge: $0.bookmarks.count, tag: $0)
+            }
+        if !favoriteTags.isEmpty {
+            menu.append(TagViewMenuItem(name: "Favorites", type: .folder, children: favoriteTags))
         }
+
+        let tags = self.filteredTags()
+            .filter { !$0.favorite }
+            .map {
+                TagViewMenuItem(name: $0.name, type: .tag, badge: $0.bookmarks.count, tag: $0)
+            }
         menu.append(TagViewMenuItem(name: "Tags", type: .folder, children: tags))
-        
+
         return menu
     }
 }

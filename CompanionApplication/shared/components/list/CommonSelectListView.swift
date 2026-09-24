@@ -11,6 +11,13 @@ public protocol CreateNotFoundItemHandler {
 
 public protocol CommonListItem: Hashable, Identifiable {
     func getDisplayText() -> String
+    func isFavorite() -> Bool
+}
+
+extension CommonListItem {
+    public func isFavorite() -> Bool {
+        return false
+    }
 }
 
 public struct CommonSelectListView<T: CommonListItem>: View {
@@ -35,17 +42,27 @@ public struct CommonSelectListView<T: CommonListItem>: View {
             let exactSearchMatch = !self.filteredItems().map({ $0.getDisplayText().lowercased() }).contains(self.searchTerm.lowercased())
             let showCreateButton = (exactSearchMatch && self.searchTerm != "") && self.createNotFoundHandler != nil
 
+            let favoriteItems = self.filteredItems().filter { $0.isFavorite() }
+            let otherItems = self.filteredItems().filter { !$0.isFavorite() }
+
             if self.filteredItems().isEmpty && !showCreateButton {
                 Text("No items")
+            } else if favoriteItems.isEmpty {
+                ForEach(otherItems) { item in
+                    self.selectableItem(item: item)
+                }
             } else {
-                ForEach(self.filteredItems()) { item in
-                    SelectableListItemView(text: item.getDisplayText(), selected: self.selectedItems.wrappedValue.contains(item), tapHandler: {
-                        if self.selectedItems.wrappedValue.contains(item) {
-                            self.selectedItems.wrappedValue.remove(item)
-                        } else {
-                            self.selectedItems.wrappedValue.insert(item)
+                Section("Favorites") {
+                    ForEach(favoriteItems) { item in
+                        self.selectableItem(item: item)
+                    }
+                }
+                if !otherItems.isEmpty {
+                    Section("Other") {
+                        ForEach(otherItems) { item in
+                            self.selectableItem(item: item)
                         }
-                    })
+                    }
                 }
             }
             
@@ -66,6 +83,16 @@ public struct CommonSelectListView<T: CommonListItem>: View {
         .searchable(text: self.$searchTerm)
     }
     
+    private func selectableItem(item: T) -> some View {
+        SelectableListItemView(text: item.getDisplayText(), selected: self.selectedItems.wrappedValue.contains(item), tapHandler: {
+            if self.selectedItems.wrappedValue.contains(item) {
+                self.selectedItems.wrappedValue.remove(item)
+            } else {
+                self.selectedItems.wrappedValue.insert(item)
+            }
+        })
+    }
+
     func filteredItems() -> [T] {
         if self.searchTerm == "" {
             return self.items

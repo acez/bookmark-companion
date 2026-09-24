@@ -105,7 +105,15 @@ extension LinkdingDashboardView: TagStore {
                 }
                 return $0.name.lowercased().contains(text.lowercased())
             }
-            .map { Tag(id: $0.id, name: $0.name) }
+            .map { Tag(id: $0.id, name: $0.name, favorite: $0.favorite) }
+    }
+
+    public func setFavorite(tag: Tag<UUID>, favorite: Bool) {
+        guard let entity = self.tagStore.getByInternalIdList(uuids: [tag.id]).first else {
+            return
+        }
+        let repository = LinkdingTagRepository(tagStore: self.tagStore)
+        repository.setFavorite(tag: entity, favorite: favorite)
     }
 }
 

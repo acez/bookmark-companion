@@ -12,6 +12,7 @@ public class LinkdingTagEntity: NSManagedObject, Identifiable {
     @NSManaged private(set) public var internalId: UUID
     @NSManaged private(set) public var name: String
     @NSManaged private(set) public var dateAdded: Date?
+    @NSManaged private(set) public var favorite: Bool
     @NSManaged private(set) public var relBookmarks: NSSet
 
     public var bookmarks: [LinkdingBookmarkEntity] {
@@ -33,6 +34,10 @@ public class LinkdingTagEntity: NSManagedObject, Identifiable {
         self.name = name
         self.dateAdded = dateAdded
     }
+
+    public func setFavorite(favorite: Bool) {
+        self.favorite = favorite
+    }
 }
 
 extension LinkdingTagEntity {
@@ -45,6 +50,7 @@ extension LinkdingTagEntity {
         entity.serverId = 0
         entity.internalId = UUID()
         entity.name = name
+        entity.favorite = false
 
         return entity
     }

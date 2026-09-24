@@ -46,4 +46,8 @@ extension LinkdingTagEntity: CommonListItem {
     public func getDisplayText() -> String {
         return self.name
     }
+
+    public func isFavorite() -> Bool {
+        return self.favorite
+    }
 }

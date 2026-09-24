@@ -17,6 +17,7 @@ struct Dashboard<ID: Hashable, CreateView: View>: View {
     @State var openConfig: Bool = false
     @State private var createBookmarkOpen: Bool = false
     @State private var searchText: String = ""
+    @State private var tagsRefresh: Int = 0
 
     private var columns: [GridItem] {
         [
@@ -41,21 +42,16 @@ struct Dashboard<ID: Hashable, CreateView: View>: View {
                         .buttonStyle(.plain)
                     }
 
+                    let _ = self.tagsRefresh
                     let tags = self.tagStore.filter(text: self.searchText.isEmpty ? nil : self.searchText)
-                    if !tags.isEmpty {
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("Tags")
-                                .font(.title2.weight(.bold))
+                    let favoriteTags = tags.filter { $0.favorite }
+                    let otherTags = tags.filter { !$0.favorite }
 
-                            VStack(spacing: 10) {
-                                ForEach(tags) { tag in
-                                    NavigationLink(destination: BookmarkListViewV2(title: tag.name, bookmarks: self.bookmarkStore.byTag(tag: tag), createBookmarkView: { self.createBookmarkView(tag) })) {
-                                        DashboardTagListItem(tagName: tag.name, tagBookmarkCount: self.tagBookmarkCount(tag: tag))
-                                    }
-                                    .buttonStyle(.plain)
-                                }
-                            }
-                        }
+                    if !favoriteTags.isEmpty {
+                        self.tagSection(title: "Favorites", tags: favoriteTags)
+                    }
+                    if !otherTags.isEmpty {
+                        self.tagSection(title: "Tags", tags: otherTags)
                     }
                 }
                 .padding(.horizontal, 16)
@@ -91,6 +87,40 @@ struct Dashboard<ID: Hashable, CreateView: View>: View {
         }
     }
     
+    @ViewBuilder
+    private func tagSection(title: String, tags: [Tag<ID>]) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(title)
+                .font(.title2.weight(.bold))
+
+            VStack(spacing: 10) {
+                ForEach(tags) { tag in
+                    NavigationLink(destination: BookmarkListViewV2(
+                        title: tag.name,
+                        bookmarks: self.bookmarkStore.byTag(tag: tag),
+                        isFavorite: tag.favorite,
+                        favoriteAction: { favorite in
+                            self.tagStore.setFavorite(tag: tag, favorite: favorite)
+                            self.tagsRefresh += 1
+                        },
+                        createBookmarkView: { self.createBookmarkView(tag) }
+                    )) {
+                        DashboardTagListItem(
+                            tagName: tag.name,
+                            tagBookmarkCount: self.tagBookmarkCount(tag: tag),
+                            isFavorite: tag.favorite,
+                            favoriteAction: {
+                                self.tagStore.setFavorite(tag: tag, favorite: !tag.favorite)
+                                self.tagsRefresh += 1
+                            }
+                        )
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+        }
+    }
+
     func allBookmarks() -> [Bookmark<ID>] {
         return self.bookmarkStore.filter(text: nil, filter: .all)
     }
@@ -150,11 +180,13 @@ private struct PreviewTagStore: TagStore {
     
     func filter(text: String?) -> [Tag<UUID>] {
         return [
-            Tag(id: UUID(), name: "tag-1"),
+            Tag(id: UUID(), name: "tag-1", favorite: true),
             Tag(id: UUID(), name: "tag-2"),
             Tag(id: UUID(), name: "tag-3")
         ]
     }
+
+    func setFavorite(tag: Tag<UUID>, favorite: Bool) {}
 }
 
 private struct PreviewSyncService: SyncService {

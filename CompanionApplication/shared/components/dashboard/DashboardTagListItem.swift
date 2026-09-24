@@ -8,6 +8,8 @@ import SwiftUI
 struct DashboardTagListItem: View {
     var tagName: String = ""
     var tagBookmarkCount: Int = 0
+    var isFavorite: Bool = false
+    var favoriteAction: (() -> Void)? = nil
 
     var body: some View {
         HStack(spacing: 12) {
@@ -29,6 +31,17 @@ struct DashboardTagListItem: View {
                 .padding(.horizontal, 9)
                 .padding(.vertical, 4)
                 .background(Color(.tertiarySystemFill), in: Capsule())
+
+            if let favoriteAction = self.favoriteAction {
+                Button(action: favoriteAction) {
+                    Image(systemName: self.isFavorite ? "star.fill" : "star")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(self.isFavorite ? Color.yellow : Color(.tertiaryLabel))
+                        .frame(width: 28, height: 28)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.borderless)
+            }
 
             Image(systemName: "chevron.right")
                 .font(.footnote.weight(.semibold))
