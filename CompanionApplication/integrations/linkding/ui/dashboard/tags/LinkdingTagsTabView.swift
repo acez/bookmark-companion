@@ -36,6 +36,7 @@ struct LinkdingTagsTabView: View {
     @State var filterSheetOpen: Bool = false
 
     @State var tagGroupExpanded: Bool = true
+    @State var favoriteGroupExpanded: Bool = true
     
     @Binding var openConfig: Bool
     
@@ -46,32 +47,16 @@ struct LinkdingTagsTabView: View {
                     SyncErrorView(errorDetails: self.syncErrorMessage)
                 }
             }
-            List(self.buildMenu(), children: \.children, selection: self.$selectedItem) { item in
-                if item.children != nil {
-                    HStack {
-                        Image(systemName: "folder")
-                        Text(item.name)
-                            .lineLimit(1)
-                    }
-                } else {
-                    NavigationLink(value: item, label: {
-                        HStack {
-                            Image(systemName: item.tag?.favorite == true ? "star.fill" : "tag")
-                            Text(item.name)
-                                .badge(item.badge ?? 0)
-                                .lineLimit(1)
-                        }
-                    })
-                    .swipeActions(edge: .trailing) {
-                        if let tag = item.tag {
-                            Button(action: {
-                                let repository = LinkdingTagRepository(tagStore: self.tagStore)
-                                repository.setFavorite(tag: tag, favorite: !tag.favorite)
-                            }) {
-                                Image(systemName: tag.favorite ? "star.slash" : "star")
+            List(selection: self.$selectedItem) {
+                ForEach(self.buildMenu()) { item in
+                    if let children = item.children {
+                        Section(item.name, isExpanded: self.expandedBinding(for: item)) {
+                            ForEach(children) { child in
+                                self.menuItemRow(item: child)
                             }
-                            .tint(.yellow)
                         }
+                    } else {
+                        self.menuItemRow(item: item)
                     }
                 }
             }
@@ -119,6 +104,33 @@ struct LinkdingTagsTabView: View {
             .sheet(isPresented: self.$filterSheetOpen) {
                 FilterTagView()
             }
+    }
+
+    @ViewBuilder
+    private func menuItemRow(item: TagViewMenuItem) -> some View {
+        NavigationLink(value: item, label: {
+            HStack {
+                Image(systemName: item.tag?.favorite == true ? "star.fill" : "tag")
+                Text(item.name)
+                    .badge(item.badge ?? 0)
+                    .lineLimit(1)
+            }
+        })
+        .swipeActions(edge: .trailing) {
+            if let tag = item.tag {
+                Button(action: {
+                    let repository = LinkdingTagRepository(tagStore: self.tagStore)
+                    repository.setFavorite(tag: tag, favorite: !tag.favorite)
+                }) {
+                    Image(systemName: tag.favorite ? "star.slash" : "star")
+                }
+                .tint(.yellow)
+            }
+        }
+    }
+
+    private func expandedBinding(for folder: TagViewMenuItem) -> Binding<Bool> {
+        return folder.name == "Favorites" ? self.$favoriteGroupExpanded : self.$tagGroupExpanded
     }
 
     private func filteredTags() -> [LinkdingTagEntity] {

@@ -13,8 +13,8 @@ public struct LinkdingDashboardView: View, BaseIntegrationDashboard {
     @Environment(\.scenePhase) var scenePhase
     let persistenceController = LinkdingPersistenceController.shared
 
-    var tagStore: LinkdingTagStore = LinkdingTagStore()
-    var bookmarkStore: LinkdingBookmarkStore = LinkdingBookmarkStore()
+    @StateObject var tagStore: LinkdingTagStore = LinkdingTagStore()
+    @StateObject var bookmarkStore: LinkdingBookmarkStore = LinkdingBookmarkStore()
     
     public init(openConfig: Binding<Bool>) {
         self.openConfig = openConfig
